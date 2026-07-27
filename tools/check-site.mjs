@@ -11,6 +11,15 @@ const emDashFiles = [];
 const misplacedHistory = [];
 const emDash = "\u2014";
 
+function escapeHtml(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 for (const page of pages) {
   for (const section of page.sections || []) {
     for (const card of section.cards || []) {
@@ -29,6 +38,12 @@ for (const page of pages) {
   if (!html.includes("<h1")) missing.push(`${page.file}: level-one heading`);
   if ((html.match(/<h1\b/g) || []).length !== 1) missing.push(`${page.file}: exactly one level-one heading`);
   if (!html.includes('href="site-map.html"')) missing.push(`${page.file}: site map link`);
+  if (page.question) {
+    const questionCount = html.split(escapeHtml(page.question)).length - 1;
+    if (questionCount > 1) {
+      missing.push(`${page.file}: repeated reflection question without an explicit reason`);
+    }
+  }
   if (/planned to launch|token sale|actively recruiting/i.test(html)) {
     oldClaims.push(page.file);
   }

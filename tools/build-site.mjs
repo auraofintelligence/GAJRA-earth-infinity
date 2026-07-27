@@ -611,7 +611,7 @@ function renderPage(page, buildLogMarkdown) {
       : page.alignmentLab
         ? renderAlignmentLab()
         : renderSections(page);
-  const question = page.question
+  const question = page.question && !page.home
     ? `<aside class="question-pause" aria-labelledby="reflection-question-${page.slug}">
         <h2 id="reflection-question-${page.slug}">Pause here</h2>
         <p>${escapeHtml(page.question)}</p>
