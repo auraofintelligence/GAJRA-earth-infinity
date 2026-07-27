@@ -3,10 +3,10 @@ export const site = {
   longName: "Global Association for Joyful Responsible Abundance on Earth",
   baseUrl: "https://auraofintelligence.github.io/GAJRA-earth-infinity/",
   repositoryUrl: "https://github.com/auraofintelligence/GAJRA-earth-infinity",
-  assetVersion: "20260727a",
-  buildLabel: "Public build 1 · the spine",
+  assetVersion: "20260727b",
+  buildLabel: "Live public experiment · Earth in view",
   description:
-    "A public, participatory practice for defining, testing and teaching Joyful Responsible Abundance in life, culture, events and AI alignment.",
+    "A public field guide for new and seasoned explorers mapping Joyful Responsible Abundance across life, culture, events and AI alignment.",
 };
 
 export const navGroups = [
@@ -45,16 +45,16 @@ export const pages = [
     eyebrow: "The choice",
     status: "Live experiment",
     description:
-      "Enter GAJRA Earth: define Joyful Responsible Abundance, practise it, observe what changes and help create richer signals for aligned intelligence.",
+      "Enter GAJRA Earth as an explorer: name your coordinates, try a path, observe what changes and leave a map others can question.",
     intro:
-      "Infinity is not a destination. It is a choice: to create more Joyful Responsible Abundance in daily life, and to guide intelligence towards noticing joy, responsibility, abundance and the tensions among them.",
+      "Infinity is not a destination. It is a choice: to create more Joyful Responsible Abundance in daily life, and to guide intelligence towards recognising tensions, protecting what matters and helping joy, responsibility and abundance grow together.",
     home: true,
     question: "What is the point of longer, healthier lives if not to enjoy the extra time?",
     sections: [
       {
-        title: "Alignment needs a life worth aligning towards.",
+        title: "What might make a life worth aligning towards?",
         lead:
-          "Safety work asks how powerful systems can avoid catastrophe. GAJRA adds a civic and lived question: what kinds of capability, care, culture and flourishing are worth steering towards?",
+          "Safety research maps ways powerful systems could avoid catastrophe. GAJRA opens another line of exploration: which forms of capability, care, culture and flourishing might be worth steering towards?",
         cards: [
           {
             label: "Define",
@@ -77,10 +77,45 @@ export const pages = [
         ],
       },
       {
-        title: "A shared room for capability, caution and ordinary life.",
+        title: "Earth already wears a garland.",
+        lead:
+          "From orbit, aurora folds around the planet as light made visible by relationship: solar weather, atmosphere and a magnetic field meeting in motion.",
+        media: {
+          type: "video",
+          src: "https://svs.gsfc.nasa.gov/vis/a030000/a031300/a031375/ISS_20251112_071350-20251112_073549_1080p30.webm",
+          mime: "video/webm",
+          poster: "assets/media/nasa-iss-aurora-2025.webp",
+          alt: "Aurora moving above Earth at night, seen from the International Space Station.",
+          label: "Observed from orbit · 12 November 2025",
+          caption:
+            "This NASA timelapse was assembled from International Space Station photographs taken during the 11–13 November 2025 geomagnetic storm. It is evidence of a real Earth, not a GAJRA simulation.",
+          sourceUrl: "https://svs.gsfc.nasa.gov/31375/",
+          credit: "Source and full credits · NASA SVS 31375",
+        },
+      },
+      {
+        title: "What can a flower reveal about forces?",
+        lead:
+          "A petal grows through pressure, limits, repair and exchange. The flower offers one possible map of flourishing: softness with structure, held open to interpretation.",
+        media: {
+          type: "image",
+          src: "assets/media/gajra-flower-force.webp",
+          fallback: "assets/media/gajra-flower-force-original.png",
+          width: 1751,
+          height: 898,
+          alt: "An original luminous flower-force form holding a small Earth-like sphere among translucent repaired petals.",
+          label: "Original symbolic artwork · 27 July 2026",
+          caption:
+            "Created for this site as a symbolic study of care, limits and abundance. It is imaginative artwork, not scientific evidence or a claim of planetary protection.",
+          sourceUrl: "docs/ASSET_PROVENANCE.md",
+          credit: "Read the artwork and media provenance",
+        },
+      },
+      {
+        title: "A shared room for explorers with different headings.",
         paragraphs: [
-          "GAJRA Earth is for people who want AI to accelerate discovery and abundance, people who want stronger brakes and safeguards, people who fear AI, people who love it, and people who would rather begin with the texture of a worthwhile day.",
-          "Acceleration without direction is not alignment. Brakes without a direction worth travelling towards are not enough either.",
+          "Some explorers want AI to accelerate discovery and abundance. Some are mapping brakes and safeguards. Some feel fear, some exhilaration, and some would rather begin with the texture of a worthwhile day.",
+          "GAJRA treats acceleration, braking and direction as coordinates to investigate together, not positions that require membership in a camp.",
         ],
       },
     ],
@@ -93,16 +128,24 @@ export const pages = [
     eyebrow: "What GAJRA Earth is",
     status: "Concept",
     description:
-      "GAJRA Earth is an evolving participatory AI-alignment concept, not a registered global association.",
+      "GAJRA Earth is an evolving meeting space before the AI frontier, not a registered global association.",
     intro:
       "A gajra is made one flower at a time. At planetary scale, the aurora becomes Earth’s luminous garland. The metaphor matters: no single person, culture or model gets to be the whole definition.",
-    question: "What should remain plural even when coordination becomes global?",
+    question: "What remains plural even when coordination becomes global?",
     sections: [
       {
-        title: "Practise before declaring victory.",
+        title: "Meet before setting out.",
         paragraphs: [
-          "GAJRA Earth invites people to define Joyful Responsible Abundance, compare choices, run small lived experiments, observe outcomes and revise what they thought they wanted.",
-          "It does not claim one universal reward function has been solved. It is a practice for making disagreement, context, trade-offs and changes of mind more legible.",
+          "GAJRA Earth offers a safer meeting space before exploring infinity: somewhere to compare headings, surface possible consequences, choose boundaries and decide what should travel.",
+          "It is also a threshold where maps can be bought and shared, journeys prepared, and returning wanderers welcomed home to celebration, story and new knowledge.",
+          "The hedge is not a promise that nothing can go wrong. It creates layered room to pause, test, disagree, contain failure and keep a return path before capability reaches further.",
+        ],
+      },
+      {
+        title: "A map that stays open to revision.",
+        paragraphs: [
+          "You can define Joyful Responsible Abundance in your own terrain, compare possible paths, try a lived experiment and redraw the map after seeing what happened.",
+          "No universal reward function is presented as solved here. The workbench keeps disagreement, context, trade-offs and changes of mind visible enough for another explorer to inspect.",
         ],
       },
       {
@@ -129,16 +172,20 @@ export const pages = [
     question: "What brings joy without borrowing heavily from another person, species, place or generation?",
     sections: [
       {
-        title: "Joyful is not compulsory cheerfulness.",
-        paragraphs: ["Joy can hold love, play, rest, humour, belonging, beauty, curiosity, mastery, awe, meaning and time that feels worth living. It also makes room for grief and difference."],
+        title: "Joy is the light.",
+        paragraphs: ["Joy helps reveal what makes life worth living. Its light might arrive as love, play, rest, humour, belonging, beauty, curiosity, mastery, awe, meaning or time that feels genuinely alive. It can illuminate grief and difference without pretending to erase them."],
       },
       {
-        title: "Responsible is not permanent fear.",
-        paragraphs: ["Responsibility asks about consent, truth, care, fairness, safety, culture, ecological limits, uncertainty, accountability, repair and who carries an external cost."],
+        title: "Responsibility is the hedge.",
+        paragraphs: ["A useful hedge shelters the meeting space without turning it into a cage. Responsibility can create layered boundaries around consent, truth, care, fairness, safety, culture, ecological limits, uncertainty, repair and who carries an external cost."],
       },
       {
-        title: "Abundance is not infinite extraction.",
-        paragraphs: ["Abundance can mean health, time, shelter, food, energy, knowledge, capability, relationships, resilience, access and meaningful choice. Enough can be abundant."],
+        title: "Abundance is the gift.",
+        paragraphs: ["Abundance becomes tangible when there is enough to offer, exchange or share. The gift might be health, time, shelter, food, energy, knowledge, capability, relationship, resilience, access or meaningful choice. On some maps, recognising enough is part of abundance."],
+      },
+      {
+        title: "Balance can become a catalyst.",
+        paragraphs: ["Light, gift and hedge change one another. A catalytic balance helps them become action without letting joy excuse harm, responsibility extinguish life or abundance collapse into hoarding."],
       },
     ],
   },
@@ -146,13 +193,13 @@ export const pages = [
     slug: "commitment",
     file: "commitment.html",
     navLabel: "The commitment",
-    title: "Make the choice small enough to live.",
+    title: "A choice small enough to live.",
     eyebrow: "The commitment",
     status: "Prototype pathway",
     description:
       "Move from a broad value statement to one private, revisable lived experiment.",
     intro:
-      "A commitment is not a purity test or permanent oath. It is a chosen action, a reason for trying it, a way to notice consequences and permission to change.",
+      "A commitment here can be a temporary heading rather than a purity test: a chosen action, a reason for exploring it, a way to notice consequences and complete freedom to change course.",
     question: "What commitment is small enough to live this week?",
     sections: [
       {
@@ -162,7 +209,7 @@ export const pages = [
           { label: "2", title: "Choose", text: "Select a possible action and record uncertainty, stakeholders and hidden costs." },
           { label: "3", title: "Live", text: "Try the action in ordinary life without performing it for a scoreboard." },
           { label: "4", title: "Observe", text: "Notice outcomes, surprises, trade-offs and who was affected." },
-          { label: "5", title: "Revise", text: "Keep, change, stop, share or teach—with provenance intact." },
+          { label: "5", title: "Revise", text: "Keep, change, stop, share or teach, with provenance intact." },
         ],
       },
     ],
@@ -171,14 +218,14 @@ export const pages = [
     slug: "alignment-lab",
     file: "alignment-lab.html",
     navLabel: "Alignment Lab",
-    title: "Turn values into inspectable, revisable records.",
+    title: "A workbench for values you can inspect and revise.",
     eyebrow: "Alignment Lab",
     status: "Prototype spine",
     description:
       "A local-first laboratory for definitions, preference comparisons, lived experiments and provenance-rich exports.",
     intro:
-      "The Lab is being built as a set of browser-local tools. Your words remain on your device unless you deliberately download or share them.",
-    question: "What should future AI learn to notice that current systems ignore?",
+      "The Lab is a set of browser-local instruments you can use in your own way. Your words stay on your device unless you choose to download or share them.",
+    question: "What might future AI learn to notice that current systems ignore?",
     sections: [
       {
         title: "First instruments.",
@@ -195,21 +242,21 @@ export const pages = [
     slug: "data-garden",
     file: "data-garden.html",
     navLabel: "Data Garden",
-    title: "Grow context, not a pile of polished answers.",
+    title: "A garden for context and unfinished answers.",
     eyebrow: "Data Garden",
     status: "Research direction",
     description:
       "A provenance-first commons for plural human signals, awkward edge cases, lived outcomes and revisions.",
     intro:
-      "Synthetic scenarios can widen imagination, but they need visible provenance and human grounding. The garden protects original contributions, minority views and changes of mind.",
+      "Synthetic scenarios can widen imagination. Visible provenance and human grounding make it easier for each explorer to judge what they are looking at, while original contributions, minority views and changes of mind remain traceable.",
     question: "What would you regret teaching future models through your behaviour today?",
     sections: [
       {
-        title: "Every record needs roots.",
+        title: "Follow a record back to its roots.",
         cards: [
-          { label: "Source", title: "Who or what authored it?", text: "Human, AI-assisted, synthetic or mixed—and which tool or seed mattered." },
+          { label: "Source", title: "Who or what authored it?", text: "Human, AI-assisted, synthetic or mixed, and which tool or seed mattered." },
           { label: "Context", title: "Where does it belong?", text: "Domain, place, culture, stakeholders, time horizon and known blind spots." },
-          { label: "Permission", title: "Who may use it?", text: "Consent, privacy, licence, intended use, prohibited use and review state." },
+          { label: "Agency", title: "Where may it travel?", text: "Contributor-chosen consent, privacy, licence, intended use, boundaries and review state." },
           { label: "Outcome", title: "What happened next?", text: "Observed effects, surprises, revisions and unresolved disagreement." },
         ],
       },
@@ -219,17 +266,17 @@ export const pages = [
     slug: "simulations",
     file: "simulations.html",
     navLabel: "Simulations",
-    title: "Live inside a choice before pretending to know it.",
+    title: "Rehearsals for choices no one has fully mapped.",
     eyebrow: "Synthetic futures",
     status: "Prototype planned",
     description:
       "Branching, clearly synthetic scenarios for comparing benefits, harms, externalities and future consequences.",
     intro:
-      "A simulation is not a forecast and not evidence that an event occurred. It is a structured rehearsal that helps reveal assumptions and missing options.",
+      "A simulation offers a structured rehearsal rather than a forecast or claim that an event occurred. Its value lies in the assumptions and missing options it helps an explorer notice.",
     question: "Which future would you choose after living inside its consequences?",
     sections: [
       {
-        title: "A branch should show its costs.",
+        title: "Follow each branch towards its costs.",
         paragraphs: [
           "Each scenario can name candidate actions, intended benefits, stakeholders, risks, environmental effects, uncertainty and time horizon.",
           "Participants can prefer one option, both under different conditions, neither, or ask for another choice rather than accepting a false binary.",
@@ -241,14 +288,14 @@ export const pages = [
     slug: "experiments",
     file: "experiments.html",
     navLabel: "Live experiments",
-    title: "Reward outcomes, not the appearance of virtue.",
+    title: "Beyond the appearance of virtue.",
     eyebrow: "Live experiments",
     status: "Invitation",
     description:
       "Small, voluntary, documented experiments in homes, projects, events and communities.",
     intro:
-      "The experiment lane begins with an ordinary practice, a baseline and an honest boundary. There are no points for looking aligned.",
-    question: "What did your chosen action make easier—and what did it make invisible?",
+      "One path into the experiment lane begins with an ordinary practice, a baseline and a boundary you choose to make visible. There is no scoreboard for looking aligned.",
+    question: "What did your chosen action make easier, and what did it make invisible?",
     sections: [
       {
         title: "A useful trace.",
@@ -274,7 +321,7 @@ export const pages = [
     question: "Which gathering changed you, and what made it work?",
     sections: [
       {
-        title: "Connect without absorbing.",
+        title: "A gathering can keep its own identity.",
         cards: [
           { label: "Before", title: "Invite and orient", text: "Explain purpose, consent, access, privacy and what participation does not imply." },
           { label: "During", title: "Create and compare", text: "Ask, imagine, play, perform, simulate and notice disagreement." },
@@ -293,8 +340,8 @@ export const pages = [
     description:
       "A modular, agent-ready event architecture grounded in consent, accessibility, rehearsal and public-safe learning.",
     intro:
-      "Older planning documents are treated as unbuilt technical source material. Their useful systems thinking can inform run-sheets, maps, simulations, guest workflows and feedback without inventing a pilot.",
-    question: "What infrastructure would need to exist before a planetary event deserved public trust?",
+      "Every gathering calls for its own mix of people, timing, access, consent, movement, tools and ways to learn. This room explores how those parts can remain modular and locally owned.",
+    question: "What infrastructure could help a planetary event earn public trust?",
     sections: [
       {
         title: "A practical constellation.",
@@ -326,7 +373,7 @@ export const pages = [
     description:
       "Music, film, food, art and gathering as ways to question, practise and remember alignment.",
     intro:
-      "Culture is not decorative wrapping for a technical project. It is where people rehearse identity, conflict, joy, grief, belonging and futures together.",
+      "Culture offers far more than decorative wrapping for a technical project. It is one of the places people rehearse identity, conflict, joy, grief, belonging and futures together.",
     question: "What did earlier festivals create that digital platforms have struggled to replace?",
     sections: [
       {
@@ -350,7 +397,7 @@ export const pages = [
     description:
       "Connect health, longevity, ecological repair and meaningful time without reducing life to optimisation.",
     intro:
-      "Longer life is not automatically a better life. The additional time could hold love, play, art, care, science, healing, community, adventure and repair.",
+      "Longer life opens a question rather than settling one: when does more time become better time? The additional years could hold love, play, art, care, science, healing, community, adventure and repair.",
     question: "What would you do with twenty additional healthy years?",
     sections: [
       {
@@ -371,7 +418,7 @@ export const pages = [
     description:
       "Participate meaningfully without understanding AGI, reinforcement learning or frontier safety.",
     intro:
-      "You do not need machine-learning language to know when a tool increases your agency, when a system makes someone invisible or when a day contains enough.",
+      "Everyday experience is already exploration data. You can notice when a tool expands your agency, when a system makes someone invisible or when a day contains enough, without translating it into machine-learning language first.",
     question: "What are you currently optimising for?",
     sections: [
       {
@@ -394,7 +441,7 @@ export const pages = [
     description:
       "A concise research invitation around participatory values, preference justifications, lived outcomes and disagreement-preserving datasets.",
     intro:
-      "GAJRA does not replace interpretability, cybersecurity, evals, scalable oversight, governance, containment or capability safety. It proposes complementary artefacts about plural flourishing and observed consequences.",
+      "Technical safety already maps interpretability, cybersecurity, evals, scalable oversight, governance, containment and capability risk. GAJRA explores a neighbouring layer: plural flourishing, lived context and observed consequences.",
     question: "Which positive capabilities are current evaluations failing to notice?",
     sections: [
       {
@@ -403,7 +450,7 @@ export const pages = [
           { label: "Values", title: "Participatory elicitation", text: "Culturally contextualised definitions with disagreement and revision preserved." },
           { label: "Data", title: "Preferences with reasons", text: "Pair choices with context, uncertainty, externalities and changes after consequences." },
           { label: "Evals", title: "Flourishing and proxy failure", text: "Test positive capability, responsibility and reward-hacking cases without claiming one final metric." },
-          { label: "Trust", title: "Provenance and consent", text: "Dataset cards, human seeds, synthetic labels, prohibited uses and review states." },
+          { label: "Trust", title: "Provenance and consent", text: "Dataset cards, human seeds, synthetic labels, chosen use boundaries and review states." },
         ],
       },
     ],
@@ -412,14 +459,14 @@ export const pages = [
     slug: "ai-builders",
     file: "ai-builders.html",
     navLabel: "For AI builders",
-    title: "Build tools that remain answerable to their context.",
+    title: "Tools that can show the terrain they came from.",
     eyebrow: "AI builder pathway",
     status: "Open invitation",
     description:
       "Schemas, local-first prototypes and evaluation material for independent builders and open-source communities.",
     intro:
-      "The practical invitation is to create inspectable tools: no invisible transmission, no unlabelled synthetic loop and no claim that a static export automatically becomes training data.",
-    question: "What does your tool optimise—and what does that optimisation hide?",
+      "Independent builders can explore inspectable, local-first tools; visible transmission choices; labelled synthetic material; and exports that remain artefacts until someone deliberately curates a later use.",
+    question: "What does your tool optimise, and what does that optimisation hide?",
     sections: [
       {
         title: "Buildable now.",
@@ -427,6 +474,19 @@ export const pages = [
           { label: "Local", title: "Private browser builders", text: "Forms and journals that store nothing remotely by default." },
           { label: "Portable", title: "Readable exports", text: "Markdown for people; JSON, JSONL or CSV for inspection and later curation." },
           { label: "Reviewable", title: "Schemas with provenance", text: "Authorship, assistance, consent, uncertainty, licence and revision history." },
+        ],
+      },
+      {
+        title: "What could form a safer hedge around capability?",
+        paragraphs: [
+          "Recognising a value is not the same as protecting it. An intelligence can model joy, responsibility and abundance, then ignore them or optimise through them.",
+          "No architecture can promise that unknown vulnerabilities are impossible. Isolation, least privilege, capability boundaries, independent checks, staged access and rehearsed recovery can make a zero-day harder to reach, reduce what it can touch and preserve a path back when something breaks.",
+        ],
+        cards: [
+          { label: "Limit", title: "Small permissions first", text: "Offer only the tools, data, time and network reach needed for the current experiment." },
+          { label: "Contain", title: "Keep the blast radius small", text: "Separate sensitive systems and assume one layer may eventually fail." },
+          { label: "Check", title: "Use independent signals", text: "Combine evaluations, monitoring, human judgement and disagreement rather than trusting one score." },
+          { label: "Recover", title: "Keep a return path", text: "Version state, retain logs, rehearse shutdown and make restoration possible before expanding access." },
         ],
       },
     ],
@@ -461,7 +521,7 @@ export const pages = [
     slug: "research",
     file: "research.html",
     navLabel: "Research & sources",
-    title: "Show the source. Name the leap.",
+    title: "A map with sources and visible leaps.",
     eyebrow: "Research and sources",
     status: "Growing source board",
     description:
@@ -485,7 +545,7 @@ export const pages = [
     slug: "status",
     file: "status.html",
     navLabel: "Reality & boundaries",
-    title: "Visionary, without pretending the vision already operates.",
+    title: "What exists, what is proposed and what changed.",
     eyebrow: "Reality layer",
     status: "Current status",
     description:
@@ -495,10 +555,10 @@ export const pages = [
     question: "Which claim on this site deserves stronger evidence or a narrower label?",
     sections: [
       {
-        title: "Clear boundaries.",
+        title: "Current coordinates.",
         cards: [
-          { label: "Did not launch", title: "Live Aid 2025", text: "The planned event did not occur. It belongs to the learning archive." },
-          { label: "Did not launch", title: "ICO and DAO", text: "Token and governance material is historical or exploratory, not an active offer." },
+          { label: "Current form", title: "Public experiment", text: "This site offers questions, tools, simulations and source trails that can be explored now." },
+          { label: "Open territory", title: "No fixed destination", text: "The map can change when lived experience, evidence or a better question changes the heading." },
           { label: "Not implied", title: "Partnerships and endorsement", text: "No lab, government, NASA, Olympic or research partnership is claimed." },
           { label: "Private by default", title: "Personal reflections", text: "The GitHub Pages phase does not transmit form responses." },
         ],
@@ -513,21 +573,22 @@ export const pages = [
     eyebrow: "Archive and evolution",
     status: "Archive",
     description:
-      "An honest timeline from early GAJRA and ICO/DAO plans towards local practice, simulations and lived alignment data.",
+      "A short record of what did not launch and where the GAJRA Earth exploration moved next.",
     intro:
-      "Earlier ambition is preserved because learning needs a memory. It is neither hidden nor allowed to dominate the current invitation.",
+      "An archive can name a path that ended without asking the next explorer to inherit it.",
     question: "What did progress give us, and what did it quietly optimise away?",
     sections: [
       {
-        title: "A short evolution.",
-        cards: [
-          { label: "Earlier", title: "Umbrella ideas", text: "GAJRA, Aura, civic tools, digital twins, culture and a global invitation formed a broad ecosystem." },
-          { label: "2024–2025", title: "Token, DAO and Live Aid plans", text: "Large launch narratives were explored. The ICO and Live Aid 2025 did not launch." },
-          { label: "2026", title: "Public tools and honest boundaries", text: "The work shifted towards local-first builders, source trails, events, simulations and lived practice." },
-          { label: "Now", title: "The participatory alignment layer", text: "Define, choose, simulate, live, observe, revise, share and teach." },
+        title: "A note on the site this will replace.",
+        paragraphs: [
+          "The earlier gajra.earth presented an ICO, DAO and LiveAid 2025 as possible launch paths. The ICO did not launch and the LiveAid 2025 event did not occur. They are historical context, not an active offer or announced event.",
         ],
-        links: [
-          { label: "Open the preserved 2025-era site", href: "archive/legacy-2025/index.html" },
+      },
+      {
+        title: "Where the exploration moved.",
+        cards: [
+          { label: "Public tools", title: "Try something small", text: "Local-first builders, source trails and simulations can make an idea inspectable without asking for belief." },
+          { label: "Lived practice", title: "Leave a useful trace", text: "Define, choose, observe, revise and share only what you want another explorer to question." },
         ],
       },
     ],
@@ -542,7 +603,7 @@ export const pages = [
     description:
       "Ways to question, test, host, build, research and create around GAJRA Earth.",
     intro:
-      "Contribution begins with a perspective, a source, an experiment or a challenge—not with agreement or institutional membership.",
+      "Contribution begins with a perspective, a source, an experiment or a challenge, not with agreement or institutional membership.",
     question: "What would you add, dispute or test?",
     sections: [
       {

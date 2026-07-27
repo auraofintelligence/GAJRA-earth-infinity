@@ -9,6 +9,15 @@
     ? window.matchMedia("(prefers-reduced-motion: reduce)")
     : null;
 
+  function setViewportWidth() {
+    var viewportWidth = root.clientWidth;
+    root.style.setProperty("--viewport-width", viewportWidth + "px");
+    root.style.setProperty("--viewport-half-width", viewportWidth / 2 + "px");
+  }
+
+  setViewportWidth();
+  window.addEventListener("resize", setViewportWidth, { passive: true });
+
   function storedValue() {
     try {
       var stored = window.localStorage.getItem(storageKey);
@@ -32,6 +41,7 @@
     root.style.setProperty("--motion-distance", (4 + factor * 20).toFixed(1) + "px");
     root.style.setProperty("--motion-duration", (0.15 + factor * 0.85).toFixed(2) + "s");
     root.style.setProperty("--ticker-duration", (80 - factor * 56).toFixed(1) + "s");
+    root.style.setProperty("--seam-duration", (16 - factor * 10).toFixed(1) + "s");
     root.style.setProperty("--glow-strength", (0.1 + factor * 0.9).toFixed(2));
     root.dataset.motion = normalised === 0 ? "off" : "on";
     if (slider) slider.value = String(normalised);
@@ -66,6 +76,36 @@
   if (reset) {
     reset.addEventListener("click", function () {
       setMotion(50, true);
+    });
+  }
+
+  document.querySelectorAll("[data-motion-video]").forEach(function (video) {
+    video.addEventListener("pause", function () {
+      if (root.dataset.motion !== "off") video.dataset.userPaused = "true";
+    });
+    video.addEventListener("play", function () {
+      video.dataset.userPaused = "false";
+    });
+  });
+
+  var seams = document.querySelectorAll("[data-kintsugi]");
+  if ("IntersectionObserver" in window) {
+    var seamObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-drawn");
+          seamObserver.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px" },
+    );
+    seams.forEach(function (seam) {
+      seamObserver.observe(seam);
+    });
+  } else {
+    seams.forEach(function (seam) {
+      seam.classList.add("is-drawn");
     });
   }
 

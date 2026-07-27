@@ -89,6 +89,9 @@
     planet(systemX, systemY, Math.max(9, systemScale * 0.055), ["#fff7d5", "#ffc363", "#d35a32"]);
 
     orbitRadii.forEach(function (orbit, index) {
+      // Earth is deliberately not drawn here. The real planet is shown with
+      // credited NASA raster imagery at the threshold of the hero.
+      if (index === 2) return;
       var speed = (0.00006 + index * 0.000008) * (0.25 + motion * 1.2);
       var angle = time * speed + index * 1.31;
       var x = systemX + Math.cos(angle) * systemScale * orbit;

@@ -3,24 +3,35 @@
 ## Build 0 - Reconnaissance - 27 July 2026
 
 - Selected `GAJRA-earth-infinity` as a separate build repository so the established `GAJRA-earth` repository remains intact.
-- Inspected the existing GitHub Pages site, the older public hub, the Brisbane summit proposal, Aura Events, P4A, the Infinity music universe and related local-first builders.
-- Read the supplied festival and GAJRA planning PDFs as source material.
-- Set the public boundary: the festival documents are planning exercises, not evidence of a completed pilot.
-- Chose to extract transferable systems thinking, link adjacent projects, archive superseded launch material and omit private or unbuilt venue narratives.
+- Mapped the connected public projects, local-first builders and source trails.
+- Separated visible facts, open questions and proposed work.
 
 ## Build 1 - The public spine - 27 July 2026
 
-- Created an honest multi-page replacement for the superseded ICO/DAO presentation currently served at `gajra.earth`.
-- Kept the established `GAJRA-earth` repository separate and preserved the earlier page at `archive/legacy-2025/` for context.
+- Created a multi-page replacement while leaving `gajra.earth` unchanged during review.
+- Kept the established `GAJRA-earth` repository separate.
 - Added grouped desktop and mobile navigation, a sitemap, a reality layer and this public build log.
 - Added the persistent 0-100 Motion Vibrancy control as a site-wide system.
 - Kept the Strange But True Public Source Licence with all commercial rights reserved.
 - Published early so later visual, interactive and research work will have a visible history.
 - Published from a dedicated repository before moving the `gajra.earth` domain.
 
+## Build 2 - Earth in view - 27 July 2026
+
+- Added NASA SVS 31375 aurora footage and a locally optimised poster with direct source credit and no endorsement claim.
+- Added original flower-force artwork made for the project, plus a 178 KB web delivery version.
+- Connected video playback to Motion Vibrancy: motion 0 pauses it, while a visitor's own pause remains respected.
+- Added source-specific captions that distinguish observed Earth imagery, symbolic artwork and future simulations.
+- Removed the synthetic vector-like Earth treatment; real Earth now appears only through credited raster imagery.
+- Restored the original Aura heart logo and browser icons from the supplied GAJRA build.
+- Made the section seams span the full viewport and made the ticker loop without an empty interval.
+- Reframed the site around new and seasoned explorers mapping infinity.
+- Added a unique full-width hero image to every room.
+- Added a punctuation check that rejects em dashes.
+- Left `gajra.earth` unchanged while this dedicated Pages site remains the public build preview.
+
 ## Next builds
 
-- Build 2: cinematic solar-system hero, NASA SVS 31375 aurora media and original flower/force artwork.
 - Build 3: working local-first Alignment Lab builders with Markdown, JSON and JSONL exports.
 - Build 4: deeper event system, research source board, ecosystem links and contemporary alignment grounding.
 - Build 5: full accessibility, motion, mobile, performance and overstatement review.

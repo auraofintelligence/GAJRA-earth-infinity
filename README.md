@@ -36,12 +36,15 @@ The site uses a small dependency-free Node generator:
 - `tools/check-site.mjs` checks generated pages, local links and superseded launch language.
 - `docs/RECONNAISSANCE.md` records the source decisions and public boundaries.
 - `docs/ASSET_PROVENANCE.md` records media sources and rights treatment.
+- `docs/VOICE_AND_TONE.md` keeps the public voice self-sovereign and explorer-facing.
+- `docs/DESIGN.md` keeps visual and interaction notes out of public page copy.
 
 Generated HTML is committed so GitHub Pages can serve the site without a server or build action.
 
 ## Build locally
 
 ```powershell
+npm.cmd run build:heroes
 npm.cmd run build
 npm.cmd run check
 python -m http.server 4179

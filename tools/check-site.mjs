@@ -1,4 +1,4 @@
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { pages } from "../src/site-data.mjs";
@@ -6,6 +6,10 @@ import { pages } from "../src/site-data.mjs";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const missing = [];
 const oldClaims = [];
+const heroImages = new Set();
+const emDashFiles = [];
+const misplacedHistory = [];
+const emDash = "\u2014";
 
 for (const page of pages) {
   const filePath = resolve(root, page.file);
@@ -15,6 +19,24 @@ for (const page of pages) {
   if (!html.includes('href="site-map.html"')) missing.push(`${page.file}: site map link`);
   if (/planned to launch|token sale|actively recruiting/i.test(html)) {
     oldClaims.push(page.file);
+  }
+  if (html.includes(emDash)) emDashFiles.push(page.file);
+  if (
+    page.slug !== "archive"
+    && /older planning documents|unbuilt technical source material|\bICO\b|\bDAO\b|Live ?Aid 2025/i.test(html)
+  ) {
+    misplacedHistory.push(page.file);
+  }
+
+  if (!page.home) {
+    const expectedHero = `assets/heroes/${page.slug}.webp`;
+    if (!html.includes(`src="${expectedHero}"`)) {
+      missing.push(`${page.file}: unique hero ${expectedHero}`);
+    }
+    if (heroImages.has(expectedHero)) {
+      missing.push(`${page.file}: duplicate hero ${expectedHero}`);
+    }
+    heroImages.add(expectedHero);
   }
 
   for (const match of html.matchAll(/(?:href|src)="([^"#?]+)(?:[?#][^"]*)?"/g)) {
@@ -34,9 +56,49 @@ if (oldClaims.length) {
   process.exitCode = 1;
 }
 
+if (misplacedHistory.length) {
+  console.error(`Old planning or launch language found outside the Archive note: ${misplacedHistory.join(", ")}`);
+  process.exitCode = 1;
+}
+
+const textExtensions = new Set([".css", ".html", ".js", ".json", ".md", ".mjs", ".py", ".txt"]);
+
+async function findEmDashes(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  for (const entry of entries) {
+    if (entry.name === ".git") continue;
+    const path = resolve(directory, entry.name);
+    if (entry.isDirectory()) {
+      await findEmDashes(path);
+      continue;
+    }
+    const extension = entry.name.includes(".")
+      ? entry.name.slice(entry.name.lastIndexOf(".")).toLowerCase()
+      : "";
+    if (!textExtensions.has(extension)) continue;
+    const text = await readFile(path, "utf8");
+    if (text.includes(emDash)) emDashFiles.push(path.slice(root.length + 1));
+  }
+}
+
+await findEmDashes(root);
+
+if (emDashFiles.length) {
+  const uniqueEmDashFiles = [...new Set(emDashFiles)];
+  console.error(`Em dash found in project text: ${uniqueEmDashFiles.join(", ")}`);
+  process.exitCode = 1;
+}
+
+const notFoundHtml = await readFile(resolve(root, "404.html"), "utf8");
+if (!notFoundHtml.includes('src="assets/heroes/not-found.webp"')) {
+  missing.push("404.html: unique hero assets/heroes/not-found.webp");
+}
+
 if (missing.length) {
   console.error(`Site checks failed:\n${missing.map((item) => `- ${item}`).join("\n")}`);
   process.exitCode = 1;
-} else {
-  console.log(`Checked ${pages.length} generated pages: local links and status language pass.`);
+}
+
+if (!process.exitCode) {
+  console.log(`Checked ${pages.length} generated pages: links, unique heroes, status language and punctuation pass.`);
 }

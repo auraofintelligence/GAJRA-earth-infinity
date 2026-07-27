@@ -77,11 +77,85 @@ function renderLinks(links = []) {
     .join("")}</div>`;
 }
 
+function renderMedia(media) {
+  if (!media) return "";
+
+  const visual =
+    media.type === "video"
+      ? `<video data-motion-video muted loop playsinline controls preload="metadata" poster="${media.poster}" aria-label="${escapeHtml(media.alt)}">
+          <source src="${media.src}" type="${media.mime}">
+          <p>Your browser cannot play this film. <a href="${media.sourceUrl}"${externalAttributes(media.sourceUrl)}>Open it at the source</a>.</p>
+        </video>`
+      : `<picture>
+          <source srcset="${media.src}" type="image/webp">
+          <img src="${media.fallback}" width="${media.width}" height="${media.height}" loading="lazy" alt="${escapeHtml(media.alt)}">
+        </picture>`;
+
+  return `<figure class="media-feature media-feature--${media.type}">
+    <div class="media-frame">${visual}<span class="media-halo" aria-hidden="true"></span></div>
+    <figcaption>
+      <span>${escapeHtml(media.label)}</span>
+      <p>${escapeHtml(media.caption)}</p>
+      <a href="${media.sourceUrl}"${externalAttributes(media.sourceUrl)}>${escapeHtml(media.credit)}<span aria-hidden="true">↗</span></a>
+    </figcaption>
+  </figure>`;
+}
+
+const seamShapes = [
+  {
+    path: "M0 24 L130 20 L215 28 L305 14 L360 26 L475 18 L530 30 L645 16 L740 24 L810 10 L890 26 L1000 18 L1090 26 L1200 22",
+    branches: ["M305 14 L320 4", "M530 30 L545 42", "M810 10 L796 2", "M1000 18 L1016 35"],
+  },
+  {
+    path: "M0 22 L110 26 L190 14 L275 28 L370 18 L440 30 L560 16 L650 24 L760 12 L850 26 L940 18 L1050 28 L1130 20 L1200 24",
+    branches: ["M190 14 L176 4", "M440 30 L452 42", "M760 12 L774 3", "M1050 28 L1037 41"],
+  },
+];
+
+function renderKintsugiSeam(id, variant = 0) {
+  const shape = seamShapes[variant % seamShapes.length];
+  const gradientId = `rgb-${id}`;
+  return `<div class="kintsugi-seam" data-kintsugi aria-hidden="true">
+    <svg viewBox="0 0 1200 46" preserveAspectRatio="none" focusable="false">
+      <defs>
+        <linearGradient id="${gradientId}" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#ff4654"/>
+          <stop offset=".17" stop-color="#ffbf52"/>
+          <stop offset=".35" stop-color="#73f4df"/>
+          <stop offset=".54" stop-color="#236bff"/>
+          <stop offset=".72" stop-color="#b194ff"/>
+          <stop offset=".87" stop-color="#ff5ba3"/>
+          <stop offset="1" stop-color="#ff4654"/>
+        </linearGradient>
+      </defs>
+      <path class="seam-path" pathLength="1" stroke="url(#${gradientId})" d="${shape.path}"/>
+      ${shape.branches
+        .map(
+          (branch) =>
+            `<path class="seam-path seam-branch" pathLength="1" stroke="url(#${gradientId})" d="${branch}"/>`,
+        )
+        .join("")}
+      <path class="seam-light" pathLength="1" stroke="url(#${gradientId})" d="${shape.path}"/>
+    </svg>
+  </div>`;
+}
+
+function renderTicker() {
+  const words = "JOY · RESPONSIBILITY · ABUNDANCE · BALANCE · CARE · PLAY · CONSENT · TRUTH · REPAIR · COURAGE ·";
+  const loop = `${words} ${words}`;
+  return `<div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-group">${loop}</span>
+      <span class="ticker-group">${loop}</span>
+    </div>
+  </div>`;
+}
+
 function renderSections(page) {
   return page.sections
     .map(
       (section, index) => `
-      ${index ? '<div class="rgb-seam" aria-hidden="true"><i></i><i></i><i></i></div>' : ""}
+      ${index ? renderKintsugiSeam(`section-${page.slug}-${index}`, index) : ""}
       <section class="content-section">
         <div class="section-heading">
           <span class="section-number">${String(index + 1).padStart(2, "0")}</span>
@@ -89,6 +163,7 @@ function renderSections(page) {
         </div>
         ${section.lead ? `<p class="section-lead">${escapeHtml(section.lead)}</p>` : ""}
         ${(section.paragraphs || []).map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}
+        ${renderMedia(section.media)}
         ${renderCards(section.cards)}
         ${renderLinks(section.links)}
       </section>`,
@@ -199,17 +274,21 @@ function renderHero(page) {
           <a class="button secondary" href="alignment-lab.html">Enter the Alignment Lab</a>
         </div>
       </div>
-      <div class="earth-threshold" aria-hidden="true"><span></span></div>
+      <figure class="earth-threshold" aria-hidden="true">
+        <img src="assets/media/nasa-iss-aurora-2025.webp" width="1920" height="1080" alt="">
+      </figure>
     </section>`;
   }
   return `<header class="page-hero">
-    <div>
+    <figure class="page-hero-media" aria-hidden="true">
+      <img src="assets/heroes/${escapeHtml(page.slug)}.webp" width="1920" height="720" alt="">
+    </figure>
+    <div class="page-hero-copy">
       <span class="status-chip">${escapeHtml(page.status)}</span>
       <p class="eyebrow">${escapeHtml(page.eyebrow)}</p>
       <h1>${escapeHtml(page.title)}</h1>
       <p class="page-intro">${escapeHtml(page.intro)}</p>
     </div>
-    <div class="hero-orbit" aria-hidden="true"><i></i><i></i><i></i><span></span></div>
   </header>`;
 }
 
@@ -239,8 +318,9 @@ function renderPage(page, buildLogMarkdown) {
   <meta property="og:description" content="${escapeHtml(page.description)}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="${site.baseUrl}${page.file}">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="assets/aura-heart-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/aura-heart-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="assets/aura-heart-180.png">
   <link rel="stylesheet" href="assets/site.css?v=${site.assetVersion}">
   <script>document.documentElement.classList.add("js");</script>
   <script defer src="assets/site.js?v=${site.assetVersion}"></script>
@@ -250,7 +330,7 @@ function renderPage(page, buildLogMarkdown) {
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="${site.name} home">
-      <span class="brand-flower" aria-hidden="true"><i></i></span>
+      <img class="brand-mark" src="assets/aura-heart-192.png" width="192" height="192" alt="">
       <span><strong>${site.name}</strong><small>${site.longName}</small></span>
     </a>
     <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation">Menu</button>
@@ -262,7 +342,7 @@ function renderPage(page, buildLogMarkdown) {
 
   <main id="main">
     ${renderHero(page)}
-    <div class="ticker" aria-hidden="true"><div>JOY · RESPONSIBILITY · ABUNDANCE · BALANCE · CARE · PLAY · CONSENT · TRUTH · REPAIR · COURAGE ·</div></div>
+    ${renderTicker()}
     <div class="page-shell">
       ${page.home ? `<div class="opening-statement"><p>${escapeHtml(page.question)}</p></div>` : ""}
       ${pageContent}
@@ -271,12 +351,12 @@ function renderPage(page, buildLogMarkdown) {
     </div>
   </main>
 
-  <div class="rgb-seam footer-seam" aria-hidden="true"><i></i><i></i><i></i></div>
+  ${renderKintsugiSeam("footer", 1)}
   <footer class="site-footer">
     <div class="footer-intro">
       <span class="eyebrow">${site.buildLabel}</span>
       <h2>A living public doorway.</h2>
-      <p>This site is an evolving concept, practice and research invitation—not a registered global association or announced global event.</p>
+      <p>This site is an evolving concept, practice and research invitation, not a registered global association or announced global event.</p>
     </div>
     <div class="footer-map">${renderFooter()}</div>
     <div class="colophon">
@@ -297,10 +377,14 @@ function render404() {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Room not found · ${site.name}</title>
   <meta name="robots" content="noindex">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/aura-heart-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/aura-heart-180.png">
   <link rel="stylesheet" href="assets/site.css?v=${site.assetVersion}">
 </head>
 <body class="error-page">
+  <figure class="error-hero-media" aria-hidden="true">
+    <img src="assets/heroes/not-found.webp" width="1920" height="720" alt="">
+  </figure>
   <main id="main" class="error-panel">
     <span class="status-chip">404</span>
     <p class="eyebrow">This room has not been strung yet</p>
