@@ -609,7 +609,7 @@ function renderWorldMapTool(mapRecordsData) {
       <div>
         <p class="eyebrow">Bridge atlas</p>
         <h2 id="world-map-tool-title">Where the next trace appears.</h2>
-        <p id="world-map-description" class="page-intro">Move between sphere and flat view, follow public records and choose how much place detail belongs in the open. The first seed is broad on purpose: enough to orient, light enough to leave people sovereign.</p>
+        <p id="world-map-description" class="page-intro">Sphere and flat views let travellers read the same public traces at different scales. Broad first records keep place visible while people remain sovereign.</p>
       </div>
       <div class="world-map-tool-panel" aria-label="Map controls and current records">
         <dl>

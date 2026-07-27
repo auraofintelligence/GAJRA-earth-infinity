@@ -3,7 +3,7 @@ export const site = {
   longName: "Global Association for Joyful Responsible Abundance on Earth",
   baseUrl: "https://auraofintelligence.github.io/GAJRA-earth-infinity/",
   repositoryUrl: "https://github.com/auraofintelligence/GAJRA-earth-infinity",
-  assetVersion: "20260727g",
+  assetVersion: "20260727h",
   buildLabel: "Live public experiment · Earth in view",
   description:
     "A public field guide for new and seasoned explorers mapping Joyful Responsible Abundance across life, culture, events and AI alignment.",
@@ -203,17 +203,17 @@ export const pages = [
     description:
       "Move from a broad value statement to one private, revisable lived experiment.",
     intro:
-      "A commitment here is a temporary heading: a chosen action, a reason for exploring it, a way to notice consequences and complete freedom to change course.",
-    question: "What commitment is small enough to live this week?",
+      "Treat a commitment as a trail marker, not a cage. Choose a small crossing, carry it into ordinary life, then return with a clearer map.",
+    question: "Which crossing is small enough to walk this week?",
     sections: [
       {
         title: "The Garland Loop.",
         steps: [
-          { title: "Define", text: "Name what joyful, responsible, abundant and balanced mean in this context." },
-          { title: "Choose", text: "Select a possible action and record uncertainty, stakeholders and hidden costs." },
-          { title: "Live", text: "Try the action in ordinary life without performing it for a scoreboard." },
-          { title: "Observe", text: "Notice outcomes, surprises, trade-offs and who was affected." },
-          { title: "Revise", text: "Keep, change, stop, share or teach, with provenance intact." },
+          { title: "Name the light", text: "Write the joy, responsibility, abundance and balance visible in this terrain." },
+          { title: "Choose a crossing", text: "Pick one small action that could make a bridge real this week. Name the people, places and hidden costs it touches." },
+          { title: "Walk it in ordinary life", text: "Try the action quietly enough to learn from it, with room to turn back." },
+          { title: "Notice the flow-on effects", text: "Look for gifts, friction, surprises, external costs and the branch that only appeared after movement." },
+          { title: "Bring the trace home", text: "Keep it private, revise it, share it or turn it into a field-kit note with source and consent intact." },
         ],
         links: [
           { label: "Start the loop in the Alignment Lab", href: "alignment-lab.html#lab-workbench" },
@@ -268,19 +268,28 @@ export const pages = [
     file: "simulations.html",
     navLabel: "Simulations",
     title: "Rehearsals for choices no one has fully mapped.",
-    eyebrow: "Synthetic futures",
-    status: "Rehearsal room",
+    eyebrow: "Branching rehearsals",
+    status: "Edge room",
     description:
-      "Branching, clearly synthetic scenarios for comparing benefits, harms, externalities and future consequences.",
+      "Branching scenarios for exploring choices, gifts, risks, hidden costs and return paths.",
     intro:
-      "A simulation offers a structured rehearsal rather than a forecast or claim that an event occurred. Its value lies in the assumptions and missing options it helps an explorer notice.",
-    question: "Which future would you choose after living inside its consequences?",
+      "A simulation is an edge-walk: start with a question, visit two possible futures, notice what each one gives and what it asks in return, then bring back a better map.",
+    question: "Which future would you visit twice, and what would you carry back?",
     sections: [
       {
-        title: "Follow each branch towards its costs.",
+        title: "Try the edge where the data gets thin.",
         paragraphs: [
-          "Each scenario can name candidate actions, intended benefits, stakeholders, risks, environmental effects, uncertainty and time horizon.",
-          "Participants can prefer one option, both under different conditions, neither, or ask for another choice rather than accepting a false binary.",
+          "Each branch names possible actions, intended gifts, people touched, environmental effects, uncertainty and time horizon.",
+          "An explorer may choose one path, braid two, refuse both or sketch the missing branch.",
+        ],
+        steps: [
+          { title: "Choose the question", text: "Name the crossing you are testing and who or what travels with it." },
+          { title: "Walk two branches", text: "Track joy, responsibility, abundance, friction and hidden externalities in each path." },
+          { title: "Bring back a better map", text: "Save the insight, add the missing branch or carry the question into the Alignment Lab." },
+        ],
+        links: [
+          { label: "Open the Alignment Lab", href: "alignment-lab.html#lab-workbench" },
+          { label: "Visit the Data Garden", href: "data-garden.html" },
         ],
       },
     ],

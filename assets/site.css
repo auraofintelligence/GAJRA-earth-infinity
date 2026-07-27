@@ -916,6 +916,51 @@ html[data-motion="off"] .ticker::after {
   font-size: clamp(1.15rem, 2.1vw, 1.4rem);
 }
 
+.action-sequence {
+  display: grid;
+  gap: clamp(1rem, 2.5vw, 1.4rem);
+  margin: clamp(1.4rem, 3vw, 2.2rem) 0 0 min(4rem, 7vw);
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+
+.action-sequence li {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: clamp(0.85rem, 2vw, 1.2rem);
+  align-items: start;
+  border: 1px solid var(--line);
+  border-radius: 1.45rem 0 1.45rem 0;
+  padding: clamp(1rem, 2.5vw, 1.45rem);
+  background:
+    radial-gradient(circle at var(--mx, 72%) var(--my, 28%), rgba(115, 244, 223, calc(0.08 * var(--glow-strength))), transparent 12rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+}
+
+.action-sequence li > span {
+  color: var(--responsibility);
+  font-size: 0.84rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+}
+
+.action-sequence h3 {
+  max-width: 42rem;
+  margin-bottom: 0.45rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.45rem, 2.5vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.action-sequence p {
+  max-width: 58rem;
+  margin: 0;
+  color: var(--paper-dim);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+}
+
 .media-feature {
   position: relative;
   display: block;
@@ -2246,6 +2291,14 @@ html[data-motion="off"] *::after {
   .content-section > p,
   .section-lead {
     margin-left: 0;
+  }
+
+  .action-sequence {
+    margin-left: 0;
+  }
+
+  .action-sequence li {
+    grid-template-columns: 1fr;
   }
 
   .media-frame video {

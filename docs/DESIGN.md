@@ -146,6 +146,39 @@ Submission model:
 4. Human review checks consent, source, location precision, wording and safety.
 5. Reviewed public records are added to the GitHub repo as static data.
 
+## Page-count usefulness audit
+
+The current 22-page spine was useful as scaffolding and public build history,
+but it is too broad for the live visitor path. Next pruning pass should reduce
+the main journey to about eight useful doors:
+
+1. Home: the invitation and first choice.
+2. Meeting space: what GAJRA Earth is in lived terms, including JRA and the
+   small commitment loop.
+3. Alignment Lab: browser-local builders and exports.
+4. Gather: events, starter field kits and listening stations.
+5. Bridge Atlas: sphere and flat map workbench with public records.
+6. Frontier and builders: AI labs, working groups, data centres and careful
+   technical invitations.
+7. Culture and source trails: songline compass, Earth time, research and
+   acknowledgements.
+8. Build with us: contribution path, group join package, build log and archive.
+
+Pages outside those doors should become redirects, anchored sections or future
+workbench notes unless they have a clear tool, map layer, source trail or field
+kit function. Repetition is allowed only when the repeat changes the visitor's
+choice, not as filler.
+
+Map workbenches should appear only where the map helps someone act:
+
+- Festivals and field-kit hosts: find places to visit, support or learn from.
+- Working groups and AI labs: broad public geography with consent and no
+  endorsement claim.
+- Data centres and infrastructure: source-backed signals, not drama.
+- Grants, tenders and local labs: practical help desks and local capability.
+- Founder atlas and Straddie digital twin: only after auditing the local and
+  remote repos and translating them into GAJRA Earth purpose.
+
 ## Regeneration
 
 Run:

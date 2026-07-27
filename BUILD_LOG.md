@@ -66,7 +66,7 @@
 
 ## Next builds
 
-- Build 5: a browser-first group join package with local drafting, readable exports and deliberate SMS, WhatsApp or email handoff for human review.
-- Build 6: prune the early 22-page spine into eight useful visitor journeys, preserving old links with redirects.
-- Build 7: useful map layers for festivals, working groups, labs, data centres, grants, tenders and starter field kits.
+- Build 5: prune the early 22-page spine into about eight useful visitor journeys, preserving old links with redirects.
+- Build 6: useful map layers for festivals, working groups, labs, data centres, grant labs, tender labs and starter field kits.
+- Build 7: a browser-first group join package with local drafting, readable exports and deliberate SMS, WhatsApp or email handoff for human review.
 - Build 8: final accessibility, motion, mobile, performance and overstatement review.

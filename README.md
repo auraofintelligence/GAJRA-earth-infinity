@@ -22,9 +22,10 @@ The site is being built in visible layers so the Git history and [public build l
 - Build 2: cinematic media system and rights-safe visual language.
 - Build 3: local-first Alignment Lab builders and exports.
 - Build 4: borderless world map with satellite, flat and sphere views.
-- Build 5: browser-first group join package and human review path.
-- Build 6: prune the early spine into eight useful visitor journeys.
-- Build 7: final accessibility, motion, mobile, performance and overstatement review.
+- Build 5: prune the early 22-page spine into about eight useful visitor journeys.
+- Build 6: add useful atlas layers and map workbenches where location does real work.
+- Build 7: browser-first group join package and human review path.
+- Build 8: final accessibility, motion, mobile, performance and overstatement review.
 
 ## Architecture
 
