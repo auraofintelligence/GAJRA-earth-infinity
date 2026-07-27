@@ -3,24 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Add a perspective without surrendering it. · GAJRA Earth</title>
-  <meta name="description" content="Ways to question, test, host, build, research and create around GAJRA Earth.">
+  <title>Carry a trace into the shared map. · GAJRA Earth</title>
+  <meta name="description" content="Draft a source-linked contribution locally, then choose an explicit handoff for human review.">
   <meta name="theme-color" content="#07070a">
-  <meta property="og:title" content="Add a perspective without surrendering it. · GAJRA Earth">
-  <meta property="og:description" content="Ways to question, test, host, build, research and create around GAJRA Earth.">
+  <meta property="og:title" content="Carry a trace into the shared map. · GAJRA Earth">
+  <meta property="og:description" content="Draft a source-linked contribution locally, then choose an explicit handoff for human review.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://auraofintelligence.github.io/GAJRA-earth-infinity/contribute.html">
   <link rel="icon" href="assets/aura-heart-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="assets/aura-heart-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="assets/aura-heart-180.png">
 
-  <link rel="stylesheet" href="assets/site.css?v=20260728e">
+  <link rel="stylesheet" href="assets/site.css?v=20260728r2">
   <script>document.documentElement.classList.add("js");</script>
-  <script defer src="assets/site.js?v=20260728e"></script>
+  <script defer src="assets/site.js?v=20260728r2"></script>
 
 
 
 
+
+  <script defer src="assets/contribution-tool.js?v=20260728r2"></script>
 
 </head>
 <body id="top" data-page="contribute">
@@ -33,17 +35,17 @@
     <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation">Menu</button>
     <nav id="primary-navigation" class="primary-navigation" aria-label="Primary" data-primary-nav>
       <details class="nav-world">
-        <summary>Choose</summary>
-        <div class="nav-world-links"><a href="index.html">Home</a><a href="about.html">The meeting space</a></div>
+        <summary>Begin</summary>
+        <div class="nav-world-links"><a href="index.html">Home</a><a href="alignment-lab.html">Alignment Lab</a></div>
       </details><details class="nav-world">
-        <summary>Practise</summary>
-        <div class="nav-world-links"><a href="alignment-lab.html">Alignment Lab</a><a href="events.html">Events &amp; gatherings</a></div>
+        <summary>Gather</summary>
+        <div class="nav-world-links"><a href="about.html">Meeting Circle</a><a href="events.html">Field Kit</a></div>
       </details><details class="nav-world">
-        <summary>Atlas</summary>
-        <div class="nav-world-links"><a href="ecosystem.html">Ecosystem map</a><a href="frontier-labs.html">For frontier labs</a></div>
+        <summary>Explore</summary>
+        <div class="nav-world-links"><a href="ecosystem.html">Bridge Atlas</a><a href="frontier-labs.html">Future Watch</a></div>
       </details><details class="nav-world" data-current-group>
-        <summary>Culture</summary>
-        <div class="nav-world-links"><a href="culture.html">Culture, music &amp; art</a><a href="contribute.html" aria-current="page">Contribute</a></div>
+        <summary>Carry</summary>
+        <div class="nav-world-links"><a href="culture.html">Culture Compass</a><a href="contribute.html" aria-current="page">Join or Build</a></div>
       </details>
     </nav>
     <details class="motion-control">
@@ -65,183 +67,118 @@
   </header>
 
   <main id="main">
-    <header class="page-hero">
+    <header class="page-hero compact-hero">
     <figure class="page-hero-media" aria-hidden="true">
       <img src="assets/heroes/contribute.webp" width="1920" height="720" alt="">
     </figure>
     <div class="page-hero-copy">
-      <span class="status-chip">Open invitation</span>
-      <p class="eyebrow">Contribute, host and build</p>
-      <h1>Add a perspective without surrendering it.</h1>
-      <p class="page-intro">Contribution begins with a perspective, a source, an experiment or a challenge, not with agreement or institutional membership.</p>
+      <span class="status-chip">Local contribution packet</span>
+      <p class="eyebrow">Join or build</p>
+      <h1>Carry a trace into the shared map.</h1>
+      <p class="page-intro">Draft a perspective, broad location, source, consent state and correction route.</p>
     </div>
   </header>
-    <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <span class="ticker-group"><span class="ticker-word">Joy</span><span class="ticker-word">Responsibility</span><span class="ticker-word">Abundance</span><span class="ticker-word">Balance</span><span class="ticker-word">Care</span><span class="ticker-word">Play</span><span class="ticker-word">Consent</span><span class="ticker-word">Truth</span><span class="ticker-word">Repair</span><span class="ticker-word">Courage</span></span><span class="ticker-group"><span class="ticker-word">Joy</span><span class="ticker-word">Responsibility</span><span class="ticker-word">Abundance</span><span class="ticker-word">Balance</span><span class="ticker-word">Care</span><span class="ticker-word">Play</span><span class="ticker-word">Consent</span><span class="ticker-word">Truth</span><span class="ticker-word">Repair</span><span class="ticker-word">Courage</span></span>
-    </div>
-  </div>
+
 
     <div class="page-shell">
 
-
-
-      <section class="content-section" id="choose-your-doorway">
-        <div class="section-heading">
-          <span class="section-number">01</span>
-          <h2>Choose your doorway.</h2>
+      <section class="planner-tool" data-contribution-tool id="contribution-tool" aria-labelledby="contribution-tool-title">
+    <header class="planner-intro">
+      <div>
+        <span class="eyebrow">Draft a trace</span>
+        <h2 id="contribution-tool-title">Prepare a contribution you control.</h2>
+        <p>The preview gathers the source, broad location, consent and correction route into one reviewable packet.</p>
+      </div>
+      <p class="planner-status" data-contribution-status role="status" aria-live="polite" aria-atomic="true">Private draft.</p>
+    </header>
+    <div class="planner-grid">
+      <form class="planner-form" data-contribution-form>
+        <div class="lab-fields two-column">
+          <label class="full-field">
+            <span>Trace title</span>
+            <input type="text" name="title" placeholder="A name a reviewer will recognise">
+          </label>
+          <label>
+            <span>Contribution type</span>
+            <select name="contribution_type">
+              <option value="group">Group or working circle</option>
+              <option value="event">Event or future watch lead</option>
+              <option value="atlas">Atlas trace</option>
+              <option value="field-kit">Field kit</option>
+              <option value="source">Source or research lead</option>
+              <option value="correction">Correction</option>
+            </select>
+          </label>
+          <label>
+            <span>Contributor or group</span>
+            <input type="text" name="contributor" placeholder="A name, group name or anonymous">
+          </label>
+          <label class="full-field">
+            <span>Broad location</span>
+            <input type="text" name="broad_location" placeholder="Town, island, region, country scale or online">
+          </label>
+          <label class="full-field">
+            <span>Source link</span>
+            <input type="url" name="source" inputmode="url" placeholder="https://">
+          </label>
+          <label class="full-field">
+            <span>Public summary</span>
+            <textarea name="summary" rows="5" placeholder="What is useful, who it may serve and why it belongs in the shared field"></textarea>
+          </label>
+          <label>
+            <span>Consent for review</span>
+            <select name="consent">
+              <option value="private-review">Private review only</option>
+              <option value="contact-first">Contact me before publication</option>
+              <option value="public-candidate">Public candidate after review</option>
+            </select>
+          </label>
+          <label>
+            <span>Contact route</span>
+            <input type="text" name="contact" placeholder="Email, phone or another route you choose">
+          </label>
+          <label class="full-field">
+            <span>Correction or return path</span>
+            <textarea name="correction" rows="3" placeholder="How can this trace be corrected, updated or withdrawn?"></textarea>
+          </label>
         </div>
-
-
-
-
-
-        <div class="card-grid"><a class="signal-card" href="https://github.com/auraofintelligence/GAJRA-earth-infinity/issues/new?title=Contribution%3A%20host%20a%20conversation" target="_blank" rel="noopener noreferrer"><span class="card-label">Host</span>
-        <h3>Hold a conversation</h3>
-        <p>Use one question, record context and consent, preserve disagreement.</p><span class="card-arrow" aria-hidden="true">↗</span></a><a class="signal-card" href="https://github.com/auraofintelligence/GAJRA-earth-infinity/issues/new?title=Contribution%3A%20improve%20a%20tool" target="_blank" rel="noopener noreferrer"><span class="card-label">Build</span>
-        <h3>Improve a local-first tool</h3>
-        <p>Fork the public source, test accessibility and make provenance clearer.</p><span class="card-arrow" aria-hidden="true">↗</span></a><a class="signal-card" href="https://github.com/auraofintelligence/GAJRA-earth-infinity/issues/new?title=Contribution%3A%20challenge%20a%20hypothesis" target="_blank" rel="noopener noreferrer"><span class="card-label">Research</span>
-        <h3>Challenge a hypothesis</h3>
-        <p>Add a primary source, counterexample, edge case or better evaluation.</p><span class="card-arrow" aria-hidden="true">↗</span></a><a class="signal-card" href="https://github.com/auraofintelligence/GAJRA-earth-infinity/issues/new?title=Contribution%3A%20make%20culture" target="_blank" rel="noopener noreferrer"><span class="card-label">Create</span>
-        <h3>Make culture</h3>
-        <p>Offer music, film, art, food or play that opens the question rather than closing it.</p><span class="card-arrow" aria-hidden="true">↗</span></a></div>
-        <div class="link-field"><a href="https://github.com/auraofintelligence/GAJRA-earth-infinity" target="_blank" rel="noopener noreferrer">View the public repository<span aria-hidden="true">↗</span></a></div>
-      </section>
-      <div class="kintsugi-seam" data-kintsugi aria-hidden="true">
-    <svg viewBox="0 0 1200 46" preserveAspectRatio="none" focusable="false">
-      <defs>
-        <linearGradient class="seam-gradient" id="rgb-section-contribute-1" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#ff4654"/>
-          <stop offset=".17" stop-color="#ffbf52"/>
-          <stop offset=".35" stop-color="#73f4df"/>
-          <stop offset=".54" stop-color="#236bff"/>
-          <stop offset=".72" stop-color="#b194ff"/>
-          <stop offset=".87" stop-color="#ff5ba3"/>
-          <stop offset="1" stop-color="#ff4654"/>
-        </linearGradient>
-      </defs>
-      <path class="seam-path" pathLength="1" stroke="url(#rgb-section-contribute-1)" d="M0 22 L110 26 L190 14 L275 28 L370 18 L440 30 L560 16 L650 24 L760 12 L850 26 L940 18 L1050 28 L1130 20 L1200 24"/>
-      <path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-contribute-1)" d="M190 14 L176 4"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-contribute-1)" d="M440 30 L452 42"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-contribute-1)" d="M760 12 L774 3"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-contribute-1)" d="M1050 28 L1037 41"/>
-    </svg>
-  </div>
-      <section class="content-section" id="join-the-bridge-atlas">
-        <div class="section-heading">
-          <span class="section-number">02</span>
-          <h2>Join the Bridge Atlas.</h2>
+      </form>
+      <aside class="planner-preview" aria-labelledby="contribution-preview-title">
+        <h3 id="contribution-preview-title">Contribution package preview</h3>
+        <pre data-contribution-output tabindex="0"></pre>
+        <div class="planner-actions">
+          <button type="button" class="button primary" data-contribution-copy>Copy package</button>
+          <button type="button" class="button secondary" data-contribution-download>Download Markdown</button>
+          <button type="button" class="button secondary" data-contribution-email>Open email draft</button>
+          <button type="button" class="button secondary" data-contribution-whatsapp>Open WhatsApp draft</button>
+          <button type="button" class="button secondary" data-contribution-sms>Open SMS draft</button>
         </div>
-
-
-
-        <ol class="action-sequence"><li>
-        <span>01</span>
-        <div>
-          <h3>Draft locally</h3>
-          <p>Write a broad location, public note, consent state and source trail before anything appears on the map.</p>
-        </div>
-      </li><li>
-        <span>02</span>
-        <div>
-          <h3>Choose the handoff</h3>
-          <p>Send a readable package by email, SMS, WhatsApp or issue only when the review path is ready.</p>
-        </div>
-      </li><li>
-        <span>03</span>
-        <div>
-          <h3>Review before public</h3>
-          <p>A human checks wording, source, location precision, consent and safety before the record joins the static data.</p>
-        </div>
-      </li><li>
-        <span>04</span>
-        <div>
-          <h3>Keep a way back</h3>
-          <p>Every public marker should carry a correction path so a group can revise, narrow or leave.</p>
-        </div>
-      </li></ol>
-
-
-        <div class="link-field"><a href="ecosystem.html#world-map-tool-title">Open the current atlas<span aria-hidden="true">↗</span></a><a href="alignment-lab.html#lab-workbench">Try the source card first<span aria-hidden="true">↗</span></a></div>
-      </section>
-      <div class="kintsugi-seam" data-kintsugi aria-hidden="true">
-    <svg viewBox="0 0 1200 46" preserveAspectRatio="none" focusable="false">
-      <defs>
-        <linearGradient class="seam-gradient" id="rgb-section-contribute-2" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#ff4654"/>
-          <stop offset=".17" stop-color="#ffbf52"/>
-          <stop offset=".35" stop-color="#73f4df"/>
-          <stop offset=".54" stop-color="#236bff"/>
-          <stop offset=".72" stop-color="#b194ff"/>
-          <stop offset=".87" stop-color="#ff5ba3"/>
-          <stop offset="1" stop-color="#ff4654"/>
-        </linearGradient>
-      </defs>
-      <path class="seam-path" pathLength="1" stroke="url(#rgb-section-contribute-2)" d="M0 24 L130 20 L215 28 L305 14 L360 26 L475 18 L530 30 L645 16 L740 24 L810 10 L890 26 L1000 18 L1090 26 L1200 22"/>
-      <path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-contribute-2)" d="M305 14 L320 4"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-contribute-2)" d="M530 30 L545 42"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-contribute-2)" d="M810 10 L796 2"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-contribute-2)" d="M1000 18 L1016 35"/>
-    </svg>
-  </div>
-      <section class="content-section" id="status-archive-and-build-log">
-        <div class="section-heading">
-          <span class="section-number">03</span>
-          <h2>Status, archive and build log.</h2>
-        </div>
-
-        <p>This is a public experiment and source trail. Formal association, partner and global-event layers remain open territory until people, evidence and agreements catch up.</p><p>The build history stays visible so travellers can see what changed, what was pruned and where the next working parts are meant to appear.</p>
-
-
-
-
-        <div class="link-field"><a href="build-log.html">Read the build log<span aria-hidden="true">↗</span></a><a href="site-map.html">Open the site map<span aria-hidden="true">↗</span></a><a href="https://github.com/auraofintelligence/GAJRA-earth-infinity" target="_blank" rel="noopener noreferrer">Inspect the source repository<span aria-hidden="true">↗</span></a></div>
-      </section>
-      <aside class="question-pause" aria-labelledby="reflection-question-contribute">
-        <h2 id="reflection-question-contribute">Pause here</h2>
-        <p>What would you add, dispute or test?</p>
-        <a href="alignment-lab.html">Carry this question into the Lab</a>
       </aside>
-      <nav class="page-sequence" aria-label="Page sequence">
-    <a class="sequence-link previous" href="ecosystem.html"><span>Previous</span><strong>Ecosystem map</strong></a>
-    <a class="sequence-link next" href="site-map.html"><span>Next</span><strong>Site map</strong></a>
-  </nav>
+    </div>
+  </section>
+
+
     </div>
   </main>
 
-  <div class="kintsugi-seam" data-kintsugi aria-hidden="true">
-    <svg viewBox="0 0 1200 46" preserveAspectRatio="none" focusable="false">
-      <defs>
-        <linearGradient class="seam-gradient" id="rgb-footer" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#ff4654"/>
-          <stop offset=".17" stop-color="#ffbf52"/>
-          <stop offset=".35" stop-color="#73f4df"/>
-          <stop offset=".54" stop-color="#236bff"/>
-          <stop offset=".72" stop-color="#b194ff"/>
-          <stop offset=".87" stop-color="#ff5ba3"/>
-          <stop offset="1" stop-color="#ff4654"/>
-        </linearGradient>
-      </defs>
-      <path class="seam-path" pathLength="1" stroke="url(#rgb-footer)" d="M0 22 L110 26 L190 14 L275 28 L370 18 L440 30 L560 16 L650 24 L760 12 L850 26 L940 18 L1050 28 L1130 20 L1200 24"/>
-      <path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-footer)" d="M190 14 L176 4"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-footer)" d="M440 30 L452 42"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-footer)" d="M760 12 L774 3"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-footer)" d="M1050 28 L1037 41"/>
-    </svg>
-  </div>
+
   <footer class="site-footer">
-    <div class="footer-intro">
-      <span class="eyebrow">Live public experiment · Earth in view</span>
-      <h2>A living public doorway.</h2>
-      <p>This doorway is a public experiment, practice space and research invitation. The formal association and global event layers remain open territory.</p>
-    </div>
-    <div class="footer-map"><div class="footer-group">
-        <h2>Choose</h2>
-        <ul><li><a href="index.html">Home</a></li><li><a href="about.html">The meeting space</a></li></ul>
+    <nav class="footer-map" aria-label="Footer"><div class="footer-group">
+        <h2>Begin</h2>
+        <ul><li><a href="index.html">Home</a></li><li><a href="alignment-lab.html">Alignment Lab</a></li></ul>
       </div><div class="footer-group">
-        <h2>Practise</h2>
-        <ul><li><a href="alignment-lab.html">Alignment Lab</a></li><li><a href="events.html">Events &amp; gatherings</a></li></ul>
+        <h2>Gather</h2>
+        <ul><li><a href="about.html">Meeting Circle</a></li><li><a href="events.html">Field Kit</a></li></ul>
       </div><div class="footer-group">
-        <h2>Atlas</h2>
-        <ul><li><a href="ecosystem.html">Ecosystem map</a></li><li><a href="frontier-labs.html">For frontier labs</a></li></ul>
+        <h2>Explore</h2>
+        <ul><li><a href="ecosystem.html">Bridge Atlas</a></li><li><a href="frontier-labs.html">Future Watch</a></li></ul>
       </div><div class="footer-group">
-        <h2>Culture</h2>
-        <ul><li><a href="culture.html">Culture, music &amp; art</a></li><li><a href="contribute.html">Contribute</a></li></ul>
-      </div></div>
+        <h2>Carry</h2>
+        <ul><li><a href="culture.html">Culture Compass</a></li><li><a href="contribute.html">Join or Build</a></li></ul>
+      </div></nav>
     <div class="colophon">
       <p>Built on Minjerribah, Quandamooka Country, Australia. Analytics-free, cookie-free and quiet unless you choose an export.</p>
-      <p><a href="site-map.html">Site map</a>. <a href="build-log.html">Build log</a>. <a href="LICENSE">Strange But True Public Source Licence</a>: non-commercial use with credit; all commercial rights reserved. <a href="https://github.com/auraofintelligence/GAJRA-earth-infinity" target="_blank" rel="noopener noreferrer">Source repository</a>.</p>
+      <p><a href="site-map.html">Site map</a>. <a href="build-log.html">Build log</a>. <a href="LICENSE">Strange But True Public Source Licence</a>: non-commercial use with credit; all commercial rights reserved. <a href="https://github.com/auraofintelligence/GAJRA-earth-infinity" target="_blank" rel="noopener noreferrer">Source repository<span class="sr-only"> (opens in a new tab)</span></a>.</p>
     </div>
   </footer>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>

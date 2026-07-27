@@ -14,11 +14,13 @@
   <link rel="icon" href="assets/aura-heart-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="assets/aura-heart-180.png">
 
-  <link rel="stylesheet" href="assets/site.css?v=20260728e">
+  <link rel="stylesheet" href="assets/site.css?v=20260728r2">
   <script>document.documentElement.classList.add("js");</script>
-  <script defer src="assets/site.js?v=20260728e"></script>
+  <script defer src="assets/site.js?v=20260728r2"></script>
 
-  <script defer src="assets/alignment-lab.js?v=20260728e"></script>
+  <script defer src="assets/alignment-lab.js?v=20260728r2"></script>
+
+
 
 
 
@@ -32,18 +34,18 @@
     </a>
     <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation">Menu</button>
     <nav id="primary-navigation" class="primary-navigation" aria-label="Primary" data-primary-nav>
-      <details class="nav-world">
-        <summary>Choose</summary>
-        <div class="nav-world-links"><a href="index.html">Home</a><a href="about.html">The meeting space</a></div>
-      </details><details class="nav-world" data-current-group>
-        <summary>Practise</summary>
-        <div class="nav-world-links"><a href="alignment-lab.html" aria-current="page">Alignment Lab</a><a href="events.html">Events &amp; gatherings</a></div>
+      <details class="nav-world" data-current-group>
+        <summary>Begin</summary>
+        <div class="nav-world-links"><a href="index.html">Home</a><a href="alignment-lab.html" aria-current="page">Alignment Lab</a></div>
       </details><details class="nav-world">
-        <summary>Atlas</summary>
-        <div class="nav-world-links"><a href="ecosystem.html">Ecosystem map</a><a href="frontier-labs.html">For frontier labs</a></div>
+        <summary>Gather</summary>
+        <div class="nav-world-links"><a href="about.html">Meeting Circle</a><a href="events.html">Field Kit</a></div>
       </details><details class="nav-world">
-        <summary>Culture</summary>
-        <div class="nav-world-links"><a href="culture.html">Culture, music &amp; art</a><a href="contribute.html">Contribute</a></div>
+        <summary>Explore</summary>
+        <div class="nav-world-links"><a href="ecosystem.html">Bridge Atlas</a><a href="frontier-labs.html">Future Watch</a></div>
+      </details><details class="nav-world">
+        <summary>Carry</summary>
+        <div class="nav-world-links"><a href="culture.html">Culture Compass</a><a href="contribute.html">Join or Build</a></div>
       </details>
     </nav>
     <details class="motion-control">
@@ -65,7 +67,7 @@
   </header>
 
   <main id="main">
-    <header class="page-hero">
+    <header class="page-hero compact-hero">
     <figure class="page-hero-media" aria-hidden="true">
       <img src="assets/heroes/alignment-lab.webp" width="1920" height="720" alt="">
     </figure>
@@ -73,14 +75,10 @@
       <span class="status-chip">Local-first lab</span>
       <p class="eyebrow">Alignment Lab</p>
       <h1>A workbench for values you can inspect and revise.</h1>
-      <p class="page-intro">The Lab is a set of browser-local instruments you can use in your own way. Your words stay on your device unless you choose to download or share them.</p>
+      <p class="page-intro">The Lab holds four private tools for mapping values, comparing paths, recording lived experiments and carrying sources with context. Your words stay on your device unless you choose to download or share them.</p>
     </div>
   </header>
-    <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <span class="ticker-group"><span class="ticker-word">Joy</span><span class="ticker-word">Responsibility</span><span class="ticker-word">Abundance</span><span class="ticker-word">Balance</span><span class="ticker-word">Care</span><span class="ticker-word">Play</span><span class="ticker-word">Consent</span><span class="ticker-word">Truth</span><span class="ticker-word">Repair</span><span class="ticker-word">Courage</span></span><span class="ticker-group"><span class="ticker-word">Joy</span><span class="ticker-word">Responsibility</span><span class="ticker-word">Abundance</span><span class="ticker-word">Balance</span><span class="ticker-word">Care</span><span class="ticker-word">Play</span><span class="ticker-word">Consent</span><span class="ticker-word">Truth</span><span class="ticker-word">Repair</span><span class="ticker-word">Courage</span></span>
-    </div>
-  </div>
+
 
     <div class="page-shell">
 
@@ -89,7 +87,7 @@
       <div>
         <span class="eyebrow">Private workbench</span>
         <h2>Make a map you can revise.</h2>
-        <p id="lab-privacy-note">This tool does not send your words anywhere. Save to this browser only when you choose, or download a copy you control.</p>
+        <p id="lab-privacy-note">Your words stay in this browser. Save locally or download a copy when you choose.</p>
       </div>
       <div class="lab-local-state">
         <span aria-hidden="true">●</span>
@@ -102,14 +100,14 @@
       <button type="button" role="tab" id="lab-tab-jra" aria-controls="lab-panel-jra" aria-selected="true" data-lab-tab="jra">
         <span>01</span><strong>My JRA map</strong><small>Name your coordinates.</small>
       </button>
-      <button type="button" role="tab" id="lab-tab-preference" aria-controls="lab-panel-preference" aria-selected="false" data-lab-tab="preference">
-        <span>02</span><strong>Compare paths</strong><small>Keep more than two doors open.</small>
+      <button type="button" role="tab" id="lab-tab-preference" aria-controls="lab-panel-preference" aria-selected="false" data-lab-tab="preference" data-lab-optional>
+        <span>02</span><strong>Compare paths</strong><small>Optional. Keep more than two doors open.</small>
       </button>
-      <button type="button" role="tab" id="lab-tab-experiment" aria-controls="lab-panel-experiment" aria-selected="false" data-lab-tab="experiment">
-        <span>03</span><strong>Live and observe</strong><small>Record what reality changed.</small>
+      <button type="button" role="tab" id="lab-tab-experiment" aria-controls="lab-panel-experiment" aria-selected="false" data-lab-tab="experiment" data-lab-optional>
+        <span>03</span><strong>Live and observe</strong><small>Optional. Record what reality changed.</small>
       </button>
-      <button type="button" role="tab" id="lab-tab-source" aria-controls="lab-panel-source" aria-selected="false" data-lab-tab="source">
-        <span>04</span><strong>Source card</strong><small>Choose how the record may travel.</small>
+      <button type="button" role="tab" id="lab-tab-source" aria-controls="lab-panel-source" aria-selected="false" data-lab-tab="source" data-lab-optional>
+        <span>04</span><strong>Source card</strong><small>Optional. Choose how the record may travel.</small>
       </button>
     </nav>
 
@@ -118,7 +116,7 @@
         <div class="lab-panel-heading">
           <span>Instrument 01</span>
           <h3>My Joyful Responsible Abundance map</h3>
-          <p>There is no final definition hiding here. Name what these ideas mean in the terrain you are actually crossing.</p>
+          <p>Name a working definition for the terrain you are actually crossing, then revise it when the terrain answers back.</p>
         </div>
         <div class="lab-fields two-column">
           <label class="full-field">
@@ -156,11 +154,11 @@
         </div>
       </section>
 
-      <section class="lab-panel" id="lab-panel-preference" role="tabpanel" aria-labelledby="lab-tab-preference" data-lab-panel="preference">
+      <section class="lab-panel" id="lab-panel-preference" role="tabpanel" aria-labelledby="lab-tab-preference" data-lab-panel="preference" data-lab-optional>
         <div class="lab-panel-heading">
-          <span>Instrument 02</span>
+          <span>Optional instrument 02</span>
           <h3>Compare paths without accepting a false binary.</h3>
-          <p>Two options can reveal a tension. They do not have to imprison the question.</p>
+          <p>Two options can reveal a tension while leaving another door open.</p>
         </div>
         <div class="lab-fields two-column">
           <label>
@@ -191,11 +189,11 @@
         </div>
       </section>
 
-      <section class="lab-panel" id="lab-panel-experiment" role="tabpanel" aria-labelledby="lab-tab-experiment" data-lab-panel="experiment">
+      <section class="lab-panel" id="lab-panel-experiment" role="tabpanel" aria-labelledby="lab-tab-experiment" data-lab-panel="experiment" data-lab-optional>
         <div class="lab-panel-heading">
-          <span>Instrument 03</span>
+          <span>Optional instrument 03</span>
           <h3>Let reality answer back.</h3>
-          <p>A lived experiment is a small, revisable action. It is not a performance score or proof that the idea is universally right.</p>
+          <p>A lived experiment is a small, revisable action. Its value comes from what reality reveals, including surprise and disagreement.</p>
         </div>
         <div class="lab-fields two-column">
           <label class="full-field">
@@ -240,11 +238,11 @@
         </div>
       </section>
 
-      <section class="lab-panel" id="lab-panel-source" role="tabpanel" aria-labelledby="lab-tab-source" data-lab-panel="source">
+      <section class="lab-panel" id="lab-panel-source" role="tabpanel" aria-labelledby="lab-tab-source" data-lab-panel="source" data-lab-optional>
         <div class="lab-panel-heading">
-          <span>Instrument 04</span>
+          <span>Optional instrument 04</span>
           <h3>Choose how this record may travel.</h3>
-          <p>This source card describes your record. It does not make the record training-ready or grant permission you have not chosen.</p>
+          <p>This source card describes your record, its permissions and the context needed for any later review.</p>
         </div>
         <div class="lab-fields two-column">
           <label>
@@ -272,9 +270,9 @@
           <label>
             <span>Consent</span>
             <select name="consent" data-lab-field>
-              <option value="no_sharing">Do not share</option>
+              <option value="no_sharing">Keep private</option>
               <option value="download_review">Download for my review</option>
-              <option value="explicit_later">Ask me again before any sharing</option>
+              <option value="explicit_later">Return to me before sharing</option>
             </select>
           </label>
           <label>
@@ -301,7 +299,7 @@
           </label>
           <label class="full-field">
             <span>Boundaries and prohibited uses</span>
-            <textarea name="use_boundaries" data-lab-field rows="3" placeholder="Where should this record not travel or be used?"></textarea>
+            <textarea name="use_boundaries" data-lab-field rows="3" placeholder="Where may this record travel, and where does the boundary sit?"></textarea>
           </label>
           <label class="full-field">
             <span>Known blind spots</span>
@@ -313,8 +311,8 @@
 
     <footer class="lab-actions">
       <div class="lab-progress" aria-live="polite">
-        <span>Map filled</span>
-        <strong><output data-lab-progress>0</output>%</strong>
+        <span>Record state</span>
+        <strong><output data-lab-progress>0 answers</output></strong>
         <span class="lab-progress-track" aria-hidden="true"><span data-lab-progress-bar></span></span>
       </div>
       <div class="lab-action-buttons">
@@ -324,86 +322,32 @@
         <button type="button" class="button secondary" data-lab-download="jsonl" aria-describedby="lab-export-note">Download JSONL</button>
         <button type="button" class="quiet-button" data-lab-clear>Clear local record</button>
       </div>
-      <p id="lab-export-note">Downloads are personal records or raw contribution material. They are not automatically valid training datasets.</p>
+      <p id="lab-export-note">Downloads remain personal records or raw contribution material until someone deliberately reviews their context and permissions.</p>
     </footer>
   </section>
 
-      <section class="content-section" id="source-garden-and-edge-walks">
-        <div class="section-heading">
-          <span class="section-number">01</span>
-          <h2>Source garden and edge walks.</h2>
-        </div>
 
-        <p>The Lab already holds the first practical tools: a JRA map, path comparison, lived experiment and source card. Data Garden, Simulations and Live Experiments now land here because they are parts of the same workbench.</p><p>A useful record can carry source, context, consent, uncertainty and what changed after it met ordinary life.</p>
-
-
-        <div class="prompt-grid"><article>
-        <span>Source</span>
-        <h3>Who or what shaped this?</h3>
-        <p>Human, AI-assisted, synthetic or mixed, with the tool, seed or witness that mattered.</p>
-      </article><article>
-        <span>Branch</span>
-        <h3>Which future did you visit?</h3>
-        <p>Name two possible paths, the gifts they offer, the costs they hide and the branch still missing.</p>
-      </article><article>
-        <span>Return</span>
-        <h3>What came back different?</h3>
-        <p>Record surprises, frictions, people touched and the next map correction.</p>
-      </article></div>
-
-
-      </section>
-      <aside class="question-pause" aria-labelledby="reflection-question-alignment-lab">
-        <h2 id="reflection-question-alignment-lab">Pause here</h2>
-        <p>What might future AI learn to notice that current systems ignore?</p>
-        <a href="#lab-workbench">Open the first instrument</a>
-      </aside>
-      <nav class="page-sequence" aria-label="Page sequence">
-    <a class="sequence-link previous" href="about.html"><span>Previous</span><strong>The meeting space</strong></a>
-    <a class="sequence-link next" href="events.html"><span>Next</span><strong>Events &amp; gatherings</strong></a>
-  </nav>
     </div>
   </main>
 
-  <div class="kintsugi-seam" data-kintsugi aria-hidden="true">
-    <svg viewBox="0 0 1200 46" preserveAspectRatio="none" focusable="false">
-      <defs>
-        <linearGradient class="seam-gradient" id="rgb-footer" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#ff4654"/>
-          <stop offset=".17" stop-color="#ffbf52"/>
-          <stop offset=".35" stop-color="#73f4df"/>
-          <stop offset=".54" stop-color="#236bff"/>
-          <stop offset=".72" stop-color="#b194ff"/>
-          <stop offset=".87" stop-color="#ff5ba3"/>
-          <stop offset="1" stop-color="#ff4654"/>
-        </linearGradient>
-      </defs>
-      <path class="seam-path" pathLength="1" stroke="url(#rgb-footer)" d="M0 22 L110 26 L190 14 L275 28 L370 18 L440 30 L560 16 L650 24 L760 12 L850 26 L940 18 L1050 28 L1130 20 L1200 24"/>
-      <path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-footer)" d="M190 14 L176 4"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-footer)" d="M440 30 L452 42"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-footer)" d="M760 12 L774 3"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-footer)" d="M1050 28 L1037 41"/>
-    </svg>
-  </div>
+
   <footer class="site-footer">
-    <div class="footer-intro">
-      <span class="eyebrow">Live public experiment · Earth in view</span>
-      <h2>A living public doorway.</h2>
-      <p>This doorway is a public experiment, practice space and research invitation. The formal association and global event layers remain open territory.</p>
-    </div>
-    <div class="footer-map"><div class="footer-group">
-        <h2>Choose</h2>
-        <ul><li><a href="index.html">Home</a></li><li><a href="about.html">The meeting space</a></li></ul>
+    <nav class="footer-map" aria-label="Footer"><div class="footer-group">
+        <h2>Begin</h2>
+        <ul><li><a href="index.html">Home</a></li><li><a href="alignment-lab.html">Alignment Lab</a></li></ul>
       </div><div class="footer-group">
-        <h2>Practise</h2>
-        <ul><li><a href="alignment-lab.html">Alignment Lab</a></li><li><a href="events.html">Events &amp; gatherings</a></li></ul>
+        <h2>Gather</h2>
+        <ul><li><a href="about.html">Meeting Circle</a></li><li><a href="events.html">Field Kit</a></li></ul>
       </div><div class="footer-group">
-        <h2>Atlas</h2>
-        <ul><li><a href="ecosystem.html">Ecosystem map</a></li><li><a href="frontier-labs.html">For frontier labs</a></li></ul>
+        <h2>Explore</h2>
+        <ul><li><a href="ecosystem.html">Bridge Atlas</a></li><li><a href="frontier-labs.html">Future Watch</a></li></ul>
       </div><div class="footer-group">
-        <h2>Culture</h2>
-        <ul><li><a href="culture.html">Culture, music &amp; art</a></li><li><a href="contribute.html">Contribute</a></li></ul>
-      </div></div>
+        <h2>Carry</h2>
+        <ul><li><a href="culture.html">Culture Compass</a></li><li><a href="contribute.html">Join or Build</a></li></ul>
+      </div></nav>
     <div class="colophon">
       <p>Built on Minjerribah, Quandamooka Country, Australia. Analytics-free, cookie-free and quiet unless you choose an export.</p>
-      <p><a href="site-map.html">Site map</a>. <a href="build-log.html">Build log</a>. <a href="LICENSE">Strange But True Public Source Licence</a>: non-commercial use with credit; all commercial rights reserved. <a href="https://github.com/auraofintelligence/GAJRA-earth-infinity" target="_blank" rel="noopener noreferrer">Source repository</a>.</p>
+      <p><a href="site-map.html">Site map</a>. <a href="build-log.html">Build log</a>. <a href="LICENSE">Strange But True Public Source Licence</a>: non-commercial use with credit; all commercial rights reserved. <a href="https://github.com/auraofintelligence/GAJRA-earth-infinity" target="_blank" rel="noopener noreferrer">Source repository<span class="sr-only"> (opens in a new tab)</span></a>.</p>
     </div>
   </footer>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>

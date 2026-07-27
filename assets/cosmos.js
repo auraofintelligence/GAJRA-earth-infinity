@@ -3,7 +3,16 @@
   if (!canvas) return;
 
   var context = canvas.getContext("2d", { alpha: true });
-  var motion = 0.5;
+  var root = document.documentElement;
+  var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var configuredMotion = Number.parseFloat(
+    root.style.getPropertyValue("--motion") || getComputedStyle(root).getPropertyValue("--motion"),
+  );
+  var motion = reducedMotion || root.dataset.motion === "off"
+    ? 0
+    : Number.isFinite(configuredMotion)
+      ? configuredMotion
+      : 0.5;
   var stars = [];
   var frame;
   var width = 0;

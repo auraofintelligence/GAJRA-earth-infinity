@@ -3,7 +3,7 @@ export const site = {
   longName: "Global Association for Joyful Responsible Abundance on Earth",
   baseUrl: "https://auraofintelligence.github.io/GAJRA-earth-infinity/",
   repositoryUrl: "https://github.com/auraofintelligence/GAJRA-earth-infinity",
-  assetVersion: "20260728e",
+  assetVersion: "20260728r2",
   buildLabel: "Live public experiment · Earth in view",
   description:
     "A meeting of minds for self-alignment and AI alignment within Joyful Responsible Abundance.",
@@ -11,19 +11,19 @@ export const site = {
 
 export const navGroups = [
   {
-    label: "Choose",
-    pages: ["index", "about"],
+    label: "Begin",
+    pages: ["index", "alignment-lab"],
   },
   {
-    label: "Practise",
-    pages: ["alignment-lab", "events"],
+    label: "Gather",
+    pages: ["about", "events"],
   },
   {
-    label: "Atlas",
+    label: "Explore",
     pages: ["ecosystem", "frontier-labs"],
   },
   {
-    label: "Culture",
+    label: "Carry",
     pages: ["culture", "contribute"],
   },
 ];
@@ -41,88 +41,63 @@ export const pages = [
     intro:
       "GAJRA Earth exists to convene a meeting of minds about self-alignment and AI alignment within the trinity of Joyful Responsible Abundance.",
     home: true,
+    showTicker: true,
+    showQuestion: true,
+    contract: {
+      visitor: "A curious person arriving without prior context",
+      task: "Understand the purpose and choose a useful first action",
+      outcome: "One clear route into reflection, gathering or public fieldwork",
+    },
     question: "What is the point of longer, healthier lives if not to enjoy the extra time?",
     sections: [
       {
-        title: "Plainly, this is the point.",
+        title: "Choose a way in.",
         lead:
-          "GAJRA Earth is a meeting space for people asking how humans and artificial intelligence can align towards lives with more joy, stronger responsibility and shareable abundance.",
-        paragraphs: [
-          "Self-alignment asks: what am I actually steering towards, and what does that do to other people, places and futures?",
-          "AI alignment asks: what are our tools, models, agents and institutions being steered towards, and who gets to notice when the steering is wrong?",
-          "GAJRA holds those questions together. The point is not only avoiding disaster. The point is choosing better destinations, better journeys and better returns home.",
-        ],
-        links: [
-          { label: "Open the private Alignment Lab", href: "alignment-lab.html#lab-workbench" },
-          { label: "Plan a meeting circle", href: "about.html#meeting-circle-builder" },
-        ],
-      },
-      {
-        title: "What might make a life worth aligning towards?",
-        lead:
-          "Safety research maps ways powerful systems could avoid catastrophe. GAJRA opens another line of exploration: which forms of capability, care, culture and flourishing might be worth steering towards?",
+          "Begin privately, invite a few minds into a room, or carry the question into public fieldwork.",
         cards: [
           {
-            label: "Define",
-            title: "Name what matters here",
-            text: "Describe joy, responsibility, abundance and balance in your own place, culture and circumstances.",
+            label: "Private",
+            title: "Map your own alignment",
+            text: "Explore what joy, responsibility and abundance mean in your life. Your notes stay in your browser unless you export them.",
             href: "alignment-lab.html#lab-workbench",
           },
           {
-            label: "Meet",
-            title: "Host a small circle",
-            text: "Turn the core question into an invitation, a time, a place and a return path.",
+            label: "Together",
+            title: "Plan a meeting circle",
+            text: "Turn one live question into a clear invitation, time, place and shareable run sheet.",
             href: "about.html#meeting-circle-builder",
           },
           {
-            label: "Gather",
-            title: "Prepare a field kit",
-            text: "Shape one practical field kit for a listening station, tech-help table or public question circle.",
+            label: "Public",
+            title: "Build a field kit",
+            text: "Prepare a listening station or practical help table that meets people where they are.",
             href: "events.html#field-kit-builder",
           },
         ],
       },
       {
-        title: "Why this matters now.",
+        title: "Why this conversation has weight.",
         lead:
-          "AI is moving through money, institutions, culture and daily life faster than most people can metabolise. A public meeting room helps the conversation move beyond fear headlines and product demos.",
+          "AI is moving through money, institutions, culture and ordinary life. These source trails widen the landscape while you keep the compass.",
         cards: [
           {
             label: "Money",
-            title: "The build race is already huge",
-            text: "Stanford HAI reports that U.S. private AI investment reached 285.9 billion US dollars in 2025, while private investment grew fastest globally.",
+            title: "Follow the scale of investment",
+            text: "Stanford's 2026 AI Index tracks AI capability, adoption, investment, economic influence and public opinion.",
             href: "https://hai.stanford.edu/ai-index/2026-ai-index-report",
           },
           {
             label: "State of play",
-            title: "Governments are building safety rooms",
-            text: "The Bletchley and Seoul processes, national AI Safety Institutes and international safety reports are mapping risks, testing and governance.",
-            href: "https://www.gov.uk/government/publications/seoul-declaration-for-safe-innovative-and-inclusive-ai-ai-seoul-summit-2024",
+            title: "Enter the safety conversation",
+            text: "The International AI Safety Report gathers scientific evidence on general-purpose AI capabilities and risks.",
+            href: "https://internationalaisafetyreport.org/",
           },
           {
-            label: "Industry",
-            title: "Frontier labs are coordinating too",
-            text: "The Frontier Model Forum brings major AI companies around public safety, national security, evaluations and shared research.",
-            href: "https://www.frontiermodelforum.org/",
-          },
-          {
-            label: "Good",
-            title: "AI-for-good spaces already exist",
-            text: "AI for Good convenes UN agencies, governments, industry and civil society around practical AI uses for global challenges.",
+            label: "In the room",
+            title: "See who is already gathering",
+            text: "AI for Good brings public institutions, researchers, industry and civil society into practical conversations.",
             href: "https://aiforgood.itu.int/",
           },
-        ],
-      },
-      {
-        title: "The missing middle.",
-        paragraphs: [
-          "Technical safety asks whether powerful systems can be tested, contained and governed. Public AI-for-good spaces ask where AI can help. GAJRA Earth adds a human question beside both: what kind of selves, communities and futures are worth aligning towards?",
-          "That question belongs with builders, artists, scientists, families, founders, elders, organisers, sceptics, teachers, musicians, policy people and anyone whose life is already being shaped by automated decisions.",
-          "The stakes are practical and intimate: money, work, education, health, media, culture, public trust, ecological pressure, cyber security, biosecurity, human agency and the texture of ordinary days.",
-        ],
-        links: [
-          { label: "Explore the Bridge Atlas", href: "ecosystem.html#world-map-tool-title" },
-          { label: "See source trails", href: "culture.html#source-trails" },
         ],
       },
       {
@@ -143,55 +118,28 @@ export const pages = [
           credit: "Source and full credits · NASA SVS 31281",
         },
       },
-      {
-        title: "What can a flower reveal about forces?",
-        lead:
-          "A petal grows through pressure, limits, repair and exchange. The flower offers one possible map of flourishing: softness with structure, held open to interpretation.",
-        media: {
-          type: "image",
-          src: "assets/media/gajra-flower-force.webp",
-          fallback: "assets/media/gajra-flower-force-original.png",
-          width: 1751,
-          height: 898,
-          alt: "An original luminous flower-force form holding a small Earth-like sphere among translucent repaired petals.",
-          label: "Original symbolic artwork · 27 July 2026",
-          caption:
-            "Created for this site as a symbolic study of care, limits and abundance. It is imaginative artwork, not scientific evidence or a claim of planetary protection.",
-          sourceUrl: "docs/ASSET_PROVENANCE.md",
-          credit: "Read the artwork and media provenance",
-        },
-      },
-      {
-        title: "A shared room for explorers with different headings.",
-        paragraphs: [
-          "Some explorers want AI to accelerate discovery and abundance. Some are mapping brakes and safeguards. Some feel fear, some exhilaration, and some would rather begin with the texture of a worthwhile day.",
-          "GAJRA treats acceleration, braking and direction as coordinates to investigate together, not positions that require membership in a camp.",
-        ],
-      },
     ],
   },
   {
     slug: "about",
     file: "about.html",
-    navLabel: "The meeting space",
-    title: "Bring a few minds together.",
-    eyebrow: "Meeting space",
-    status: "Meeting circle",
+    navLabel: "Meeting Circle",
+    title: "Plan a meeting circle.",
+    eyebrow: "Meeting circle",
+    status: "Invitation builder",
     description:
-      "A short path from curiosity to a real conversation about self-alignment, AI alignment and Joyful Responsible Abundance.",
+      "Shape a real meeting invitation about self-alignment, AI alignment and Joyful Responsible Abundance.",
     intro:
-      "GAJRA circles bring people together to explore self-alignment and AI alignment within Joyful Responsible Abundance. This page turns that intention into a shareable invitation.",
+      "Shape one live question into an invitation, time, place and run sheet. Export it when the room feels ready.",
+    compactHero: true,
     meetingTool: true,
+    contract: {
+      visitor: "Someone ready to bring a few people together",
+      task: "Shape a clear invitation and practical run sheet",
+      outcome: "A calendar event and shareable meeting plan",
+    },
     question: "",
-    sections: [
-      {
-        title: "Another way in.",
-        cards: [
-          { label: "Private", title: "Map your own alignment", text: "Open the browser-local Alignment Lab before entering a group conversation.", href: "alignment-lab.html#lab-workbench" },
-          { label: "Public", title: "Host a listening station", text: "Prepare a low-pressure table where people may answer in their own words.", href: "events.html#field-kit-builder" },
-        ],
-      },
-    ],
+    sections: [],
   },
   {
     slug: "jra",
@@ -264,28 +212,21 @@ export const pages = [
     description:
       "A local-first laboratory for definitions, preference comparisons, lived experiments and provenance-rich exports.",
     intro:
-      "The Lab is a set of browser-local instruments you can use in your own way. Your words stay on your device unless you choose to download or share them.",
+      "The Lab holds four private tools for mapping values, comparing paths, recording lived experiments and carrying sources with context. Your words stay on your device unless you choose to download or share them.",
+    compactHero: true,
     alignmentLab: true,
-    question: "What might future AI learn to notice that current systems ignore?",
-    sections: [
-      {
-        title: "Source garden and edge walks.",
-        paragraphs: [
-          "The Lab already holds the first practical tools: a JRA map, path comparison, lived experiment and source card. Data Garden, Simulations and Live Experiments now land here because they are parts of the same workbench.",
-          "A useful record can carry source, context, consent, uncertainty and what changed after it met ordinary life.",
-        ],
-        prompts: [
-          { label: "Source", title: "Who or what shaped this?", text: "Human, AI-assisted, synthetic or mixed, with the tool, seed or witness that mattered." },
-          { label: "Branch", title: "Which future did you visit?", text: "Name two possible paths, the gifts they offer, the costs they hide and the branch still missing." },
-          { label: "Return", title: "What came back different?", text: "Record surprises, frictions, people touched and the next map correction." },
-        ],
-      },
-    ],
+    contract: {
+      visitor: "An explorer beginning privately",
+      task: "Use any useful instrument to map values, paths, lived evidence or sources",
+      outcome: "A browser-local record that can be revised, copied or exported",
+    },
+    question: "",
+    sections: [],
   },
   {
     slug: "data-garden",
     file: "data-garden.html",
-    redirectTo: "alignment-lab.html#source-garden-and-edge-walks",
+    redirectTo: "alignment-lab.html#lab-workbench",
     navLabel: "Data Garden",
     title: "A garden for context and unfinished answers.",
     eyebrow: "Data Garden",
@@ -313,7 +254,7 @@ export const pages = [
   {
     slug: "simulations",
     file: "simulations.html",
-    redirectTo: "alignment-lab.html#source-garden-and-edge-walks",
+    redirectTo: "alignment-lab.html#lab-workbench",
     navLabel: "Simulations",
     title: "Rehearsals for choices no one has fully mapped.",
     eyebrow: "Branching rehearsals",
@@ -345,7 +286,7 @@ export const pages = [
   {
     slug: "experiments",
     file: "experiments.html",
-    redirectTo: "alignment-lab.html#source-garden-and-edge-walks",
+    redirectTo: "alignment-lab.html#lab-workbench",
     navLabel: "Live experiments",
     title: "Beyond the appearance of virtue.",
     eyebrow: "Live experiments",
@@ -372,15 +313,21 @@ export const pages = [
   {
     slug: "events",
     file: "events.html",
-    navLabel: "Events & gatherings",
+    navLabel: "Field Kit",
     title: "Build a GAJRA field kit.",
-    eyebrow: "Events and gatherings",
-    status: "Field Kit builder",
+    eyebrow: "Field kit",
+    status: "Kit builder",
     description:
       "Build one practical, shareable field kit for a gathering.",
     intro:
-      "Shape the invitation, question, useful help, materials, consent and return path. Your finished field kit stays in your browser until you choose how to carry it onward.",
+      "Prepare one listening station or practical help table. Choose the question, useful offer, essentials and return path, then carry the kit onward.",
+    compactHero: true,
     eventTool: true,
+    contract: {
+      visitor: "Someone preparing a public listening or help station",
+      task: "Choose one field format and assemble its essentials",
+      outcome: "A focused field kit and downloadable run sheet",
+    },
     sections: [],
   },
   {
@@ -420,55 +367,33 @@ export const pages = [
   {
     slug: "culture",
     file: "culture.html",
-    navLabel: "Culture, music & art",
-    title: "Values become memorable when people can feel them.",
-    eyebrow: "Culture",
-    status: "Open pathway",
+    navLabel: "Culture Compass",
+    title: "Carry a question through culture.",
+    eyebrow: "Culture compass",
+    status: "Guided listening",
     description:
-      "Music, film, food, art and gathering as ways to question, practise and remember alignment.",
+      "Use music and culture as a listening compass for a live question.",
     intro:
-      "Culture offers far more than decorative wrapping for a technical project. It is one of the places people rehearse identity, conflict, joy, grief, belonging and futures together.",
-    question: "What did earlier festivals create that digital platforms have struggled to replace?",
-    sections: [
-      {
-        title: "A lyrical map for going beyond.",
-        paragraphs: [
-          "The Infinity music universe already holds songs about consent, protopia, repair, cosmic scale and choosing infinity. A Protopian Gambit works like one lyrical map through crisis, care, courage and civic stewardship.",
-          "We Go Beyond is one key for this site: a bridge from safe smallness into wider responsibility, with the heart still first.",
-        ],
-        links: [
-          { label: "Enter the Infinity music universe", href: "https://auraofintelligence.github.io/i-C-infinity-music-universe/" },
-          { label: "Open A Protopian Gambit", href: "https://auraofintelligence.github.io/i-C-infinity-music-universe/albums/a-protopian-gambit/" },
-          { label: "Open We Go Beyond", href: "https://auraofintelligence.github.io/i-C-infinity-music-universe/songs/a-protopian-gambit-22-we-go-beyond/" },
-        ],
-      },
-      {
-        title: "Civic stewardship, Earth to Sol.",
-        paragraphs: [
-          "The stewardship frame begins close to home and stretches outward: Earth, the Sun, solar weather and the shared Sol system that gives this experiment its clock, light and edge.",
-          "Going beyond safe smallness carries care further than the old map expected.",
-        ],
-        links: [
-          { label: "Open the bridge atlas", href: "ecosystem.html#world-map-tool-title" },
-        ],
-      },
-      {
-        title: "Source trails.",
-        paragraphs: [
-          "Culture can inspire a direction without turning into proof. Sources, acknowledgements and open claims travel here so visitors can inspect the trail and choose their own confidence.",
-        ],
-        links: [
-          { label: "NASA SVS 31281, Aurora Australis from the ISS", href: "https://svs.gsfc.nasa.gov/31281/" },
-          { label: "NIST AI Risk Management Framework", href: "https://www.nist.gov/itl/ai-risk-management-framework" },
-          { label: "Public source repository", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity" },
-        ],
-      },
-    ],
+      "Choose a listening lens, bring a question, notice what shifts, and keep a trace you can carry into conversation.",
+    heroImage: {
+      src: "assets/media/gajra-flower-force.webp",
+      width: 1751,
+      height: 898,
+    },
+    compactHero: true,
+    cultureTool: true,
+    contract: {
+      visitor: "A listener, artist or group carrying a live question",
+      task: "Choose a cultural lens and capture what the encounter changes",
+      outcome: "A short listening trace with one next move",
+    },
+    question: "",
+    sections: [],
   },
   {
     slug: "earth-time",
     file: "earth-time.html",
-    redirectTo: "culture.html#civic-stewardship-earth-to-sol",
+    redirectTo: "culture.html#culture-tool",
     navLabel: "Earth & the gift of time",
     title: "What is all the extra time for?",
     eyebrow: "Earth, regeneration and longevity",
@@ -528,51 +453,28 @@ export const pages = [
   {
     slug: "frontier-labs",
     file: "frontier-labs.html",
-    navLabel: "For frontier labs",
-    title: "A civic and lived-data layer beside technical safety.",
-    eyebrow: "Research invitation",
-    status: "Open research invitation",
+    navLabel: "Future Watch",
+    title: "Find a room you can still enter.",
+    eyebrow: "Future watch",
+    status: "Source-linked watch",
     description:
-      "A concise research invitation around participatory values, preference justifications, lived outcomes and disagreement-preserving datasets.",
+      "Upcoming AI, Earth, culture and civic events that can still be attended, influenced or watched.",
     intro:
-      "Technical safety already maps interpretability, cybersecurity, evals, scalable oversight, governance, containment and capability risk. GAJRA explores a neighbouring layer: plural flourishing, lived context and observed consequences.",
-    question: "Which positive capabilities are current evaluations failing to notice?",
-    sections: [
-      {
-        title: "Candidate collaboration lanes.",
-        cards: [
-          { label: "Values", title: "Test participatory elicitation", text: "Use culturally contextualised definitions with disagreement and revision preserved.", href: "alignment-lab.html#lab-workbench" },
-          { label: "Data", title: "Inspect the source-card fields", text: "Pair choices with context, uncertainty, externalities and changes after consequences.", href: "data-garden.html" },
-          { label: "Evals", title: "Challenge a synthetic future", text: "Test capability, responsibility and proxy failure without pretending one metric is final.", href: "simulations.html" },
-          { label: "Trust", title: "Propose a stronger boundary", text: "Add a counterexample, edge case, source or review requirement.", href: "contribute.html" },
-        ],
-      },
-      {
-        title: "Buildable hedges.",
-        paragraphs: [
-          "Recognising a value is not the same as protecting it. A capable system can model joy, responsibility and abundance, then optimise past the people who named them.",
-          "Useful hedges are layered: small permissions first, separate sensitive systems, independent checks, visible logs, staged access and rehearsed return paths.",
-        ],
-        prompts: [
-          { label: "Limit", title: "Small permissions first", text: "Offer only the tools, data, time and reach needed for the current experiment." },
-          { label: "Contain", title: "Keep the blast radius small", text: "Separate sensitive systems and assume one layer may eventually fail." },
-          { label: "Recover", title: "Keep a return path", text: "Version state, retain logs, rehearse shutdown and make restoration possible before expanding access." },
-        ],
-      },
-      {
-        title: "Map layers for technical terrain.",
-        cards: [
-          { label: "Labs", title: "Working groups and AI labs", text: "Broad public geography, source status and consent without implying endorsement.", href: "ecosystem.html#world-map-tool-title" },
-          { label: "Compute", title: "Data centres as infrastructure signals", text: "Only source-backed records, labelled as infrastructure rather than political theatre.", href: "ecosystem.html#world-map-tool-title" },
-          { label: "Local", title: "Grant labs and tender labs", text: "Translate Straddie-style support rooms into practical field help where hosts choose it.", href: "events.html#field-kits-and-gathering-tools" },
-        ],
-      },
-    ],
+      "Browse future rooms by topic and participation path. Each listing carries a source, date and direct route to the organiser.",
+    compactHero: true,
+    upcomingWatch: true,
+    contract: {
+      visitor: "Someone looking for a real upcoming room",
+      task: "Filter source-linked events by interest and participation path",
+      outcome: "One event to attend, influence or watch",
+    },
+    question: "",
+    sections: [],
   },
   {
     slug: "ai-builders",
     file: "ai-builders.html",
-    redirectTo: "frontier-labs.html#buildable-hedges",
+    redirectTo: "frontier-labs.html#approaching",
     navLabel: "For AI builders",
     title: "Tools that can show the terrain they came from.",
     eyebrow: "AI builder pathway",
@@ -612,50 +514,28 @@ export const pages = [
   {
     slug: "ecosystem",
     file: "ecosystem.html",
-    navLabel: "Ecosystem map",
+    navLabel: "Bridge Atlas",
     title: "Every border, a bridge.",
-    eyebrow: "World map",
-    status: "Atlas seed",
+    eyebrow: "Bridge atlas",
+    status: "Earth in view",
     description:
       "A neutral satellite atlas for groups, bridge work and public experiments as they join GAJRA Earth.",
     intro:
-      "GAJRA Earth begins with a world view that sees the planet before the paperwork. The first atlas seed uses satellite imagery, chosen public traces and human-vetted updates so groups may appear as places, bridges and invitations rather than badges.",
+      "See where groups, bridge work and public experiments are gathering across Earth.",
+    compactHero: true,
     worldMap: true,
-    question: "Which bridge creates capability without erasing identity?",
-    sections: [
-      {
-        title: "Three bridge readings.",
-        prompts: [
-          { label: "Reclaim", title: "Where a crossing repairs", text: "Some bridges begin where trust, place or language was damaged. The marker carries source, consent and a return path for correction." },
-          { label: "Acclaim", title: "Where a crossing celebrates", text: "Some bridges begin with souls, seeds and shared patterns already grown. The marker welcomes travellers without flattening the host culture." },
-          { label: "Travel", title: "Choose the frame", text: "The same crossing may call for quiet repair in one place and public celebration in another." },
-        ],
-      },
-      {
-        title: "Next bridge layers.",
-        cards: [
-          { label: "Gather", title: "Festival and field-kit hosts", text: "Show listening stations, starter field kits and public-awareness rooms after they opt in.", href: "events.html" },
-          { label: "Research", title: "Labs, data centres and working groups", text: "Separate public signals, broad locations and source status without implying endorsement.", href: "frontier-labs.html" },
-          { label: "Build", title: "Grant, tender and local help desks", text: "Adapt the Straddie-style labs into practical GAJRA field support where there is consent.", href: "contribute.html" },
-        ],
-      },
-      {
-        title: "Existing trailheads.",
-        links: [
-          { label: "GAJRA public source hub", href: "https://auraofintelligence.github.io/gajra-earth-public-hub/" },
-          { label: "Aura Events", href: "https://auraofintelligence.github.io/aura-events.html" },
-          { label: "Brisbane Earth-Space-AI summit proposal", href: "https://auraofintelligence.github.io/GAJRA_Earth-Space-AI_Summit/" },
-          { label: "P4A civic workbench", href: "https://auraofintelligence.github.io/p4a_xyz/" },
-          { label: "Infinity music universe", href: "https://auraofintelligence.github.io/i-C-infinity-music-universe/" },
-          { label: "Quandamooka Country events engine", href: "https://auraofintelligence.github.io/quandamooka-country-events-engine/" },
-        ],
-      },
-    ],
+    contract: {
+      visitor: "A traveller exploring public GAJRA-aligned traces",
+      task: "Move between sphere and flat views and inspect records",
+      outcome: "A useful public trace or a draft contribution for review",
+    },
+    question: "",
+    sections: [],
   },
   {
     slug: "research",
     file: "research.html",
-    redirectTo: "culture.html#source-trails",
+    redirectTo: "culture.html#culture-tool",
     navLabel: "Research & sources",
     title: "A map with sources and visible leaps.",
     eyebrow: "Research and sources",
@@ -680,7 +560,7 @@ export const pages = [
   {
     slug: "status",
     file: "status.html",
-    redirectTo: "contribute.html#status-archive-and-build-log",
+    redirectTo: "contribute.html#contribution-tool",
     navLabel: "Reality & boundaries",
     title: "Current coordinates and open territory.",
     eyebrow: "Reality layer",
@@ -709,7 +589,7 @@ export const pages = [
   {
     slug: "archive",
     file: "archive.html",
-    redirectTo: "contribute.html#status-archive-and-build-log",
+    redirectTo: "contribute.html#contribution-tool",
     navLabel: "Archive & timeline",
     title: "Keep the knots in the thread.",
     eyebrow: "Archive and evolution",
@@ -738,54 +618,23 @@ export const pages = [
   {
     slug: "contribute",
     file: "contribute.html",
-    navLabel: "Contribute",
-    title: "Add a perspective without surrendering it.",
-    eyebrow: "Contribute, host and build",
-    status: "Open invitation",
+    navLabel: "Join or Build",
+    title: "Carry a trace into the shared map.",
+    eyebrow: "Join or build",
+    status: "Local contribution packet",
     description:
-      "Ways to question, test, host, build, research and create around GAJRA Earth.",
+      "Draft a source-linked contribution locally, then choose an explicit handoff for human review.",
     intro:
-      "Contribution begins with a perspective, a source, an experiment or a challenge, not with agreement or institutional membership.",
-    question: "What would you add, dispute or test?",
-    sections: [
-      {
-        title: "Choose your doorway.",
-        cards: [
-          { label: "Host", title: "Hold a conversation", text: "Use one question, record context and consent, preserve disagreement.", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity/issues/new?title=Contribution%3A%20host%20a%20conversation" },
-          { label: "Build", title: "Improve a local-first tool", text: "Fork the public source, test accessibility and make provenance clearer.", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity/issues/new?title=Contribution%3A%20improve%20a%20tool" },
-          { label: "Research", title: "Challenge a hypothesis", text: "Add a primary source, counterexample, edge case or better evaluation.", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity/issues/new?title=Contribution%3A%20challenge%20a%20hypothesis" },
-          { label: "Create", title: "Make culture", text: "Offer music, film, art, food or play that opens the question rather than closing it.", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity/issues/new?title=Contribution%3A%20make%20culture" },
-        ],
-        links: [
-          { label: "View the public repository", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity" },
-        ],
-      },
-      {
-        title: "Join the Bridge Atlas.",
-        steps: [
-          { title: "Draft locally", text: "Write a broad location, public note, consent state and source trail before anything appears on the map." },
-          { title: "Choose the handoff", text: "Send a readable package by email, SMS, WhatsApp or issue only when the review path is ready." },
-          { title: "Review before public", text: "A human checks wording, source, location precision, consent and safety before the record joins the static data." },
-          { title: "Keep a way back", text: "Every public marker should carry a correction path so a group can revise, narrow or leave." },
-        ],
-        links: [
-          { label: "Open the current atlas", href: "ecosystem.html#world-map-tool-title" },
-          { label: "Try the source card first", href: "alignment-lab.html#lab-workbench" },
-        ],
-      },
-      {
-        title: "Status, archive and build log.",
-        paragraphs: [
-          "This is a public experiment and source trail. Formal association, partner and global-event layers remain open territory until people, evidence and agreements catch up.",
-          "The build history stays visible so travellers can see what changed, what was pruned and where the next working parts are meant to appear.",
-        ],
-        links: [
-          { label: "Read the build log", href: "build-log.html" },
-          { label: "Open the site map", href: "site-map.html" },
-          { label: "Inspect the source repository", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity" },
-        ],
-      },
-    ],
+      "Draft a perspective, broad location, source, consent state and correction route.",
+    compactHero: true,
+    contributionTool: true,
+    contract: {
+      visitor: "A person or group carrying a public trace",
+      task: "Draft a source-linked packet with consent and a correction path",
+      outcome: "A copy, download or chosen message ready for human review",
+    },
+    question: "",
+    sections: [],
   },
   {
     slug: "site-map",

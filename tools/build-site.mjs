@@ -3,6 +3,10 @@ import { pages, navGroups, site } from "../src/site-data.mjs";
 
 const pageBySlug = new Map(pages.map((page) => [page.slug, page]));
 const activePages = pages.filter((page) => !page.redirectTo);
+const sequencePages = navGroups
+  .flatMap((group) => group.pages)
+  .map((slug) => pageBySlug.get(slug))
+  .filter(Boolean);
 
 function escapeHtml(value = "") {
   return String(value)
@@ -13,9 +17,19 @@ function escapeHtml(value = "") {
     .replaceAll("'", "&#039;");
 }
 
+function isExternalHref(href = "") {
+  return /^https?:\/\//.test(href);
+}
+
 function externalAttributes(href) {
-  return /^https?:\/\//.test(href)
+  return isExternalHref(href)
     ? ' target="_blank" rel="noopener noreferrer"'
+    : "";
+}
+
+function externalCue(href) {
+  return isExternalHref(href)
+    ? '<span class="sr-only"> (opens in a new tab)</span>'
     : "";
 }
 
@@ -71,7 +85,7 @@ function renderCards(cards = []) {
         <h3>${escapeHtml(card.title)}</h3>
         <p>${escapeHtml(card.text)}</p>`;
       return card.href
-        ? `<a class="signal-card" href="${card.href}"${externalAttributes(card.href)}>${body}<span class="card-arrow" aria-hidden="true">↗</span></a>`
+        ? `<a class="signal-card" href="${card.href}"${externalAttributes(card.href)}>${body}${externalCue(card.href)}<span class="card-arrow" aria-hidden="true">&#8599;</span></a>`
         : `<article class="signal-card">${body}</article>`;
     })
     .join("")}</div>`;
@@ -110,7 +124,7 @@ function renderLinks(links = []) {
   return `<div class="link-field">${links
     .map(
       (link) =>
-        `<a href="${link.href}"${externalAttributes(link.href)}>${escapeHtml(link.label)}<span aria-hidden="true">↗</span></a>`,
+        `<a href="${link.href}"${externalAttributes(link.href)}>${escapeHtml(link.label)}${externalCue(link.href)}<span aria-hidden="true">&#8599;</span></a>`,
     )
     .join("")}</div>`;
 }
@@ -123,7 +137,7 @@ function renderSourceDisclosure(source, extraClass = "", descriptionId = "") {
     <div class="source-disclosure-panel">
       <strong>${labelledSource}</strong>
       <p${descriptionAttribute}>${escapeHtml(source.caption)}</p>
-      <a href="${source.sourceUrl}"${externalAttributes(source.sourceUrl)}>${escapeHtml(source.credit)}<span aria-hidden="true">↗</span></a>
+      <a href="${source.sourceUrl}"${externalAttributes(source.sourceUrl)}>${escapeHtml(source.credit)}${externalCue(source.sourceUrl)}<span aria-hidden="true">&#8599;</span></a>
     </div>
   </details>`;
 }
@@ -136,7 +150,7 @@ function renderMedia(media) {
     media.type === "video"
       ? `<video data-motion-video muted loop playsinline controls preload="metadata" poster="${media.poster}" aria-label="${escapeHtml(media.alt)}" aria-describedby="${descriptionId}">
           <source src="${media.src}" type="${media.mime}">
-          <p>Your browser cannot play this film. <a href="${media.sourceUrl}"${externalAttributes(media.sourceUrl)}>Open it at the source</a>.</p>
+          <p>Your browser cannot play this film. <a href="${media.sourceUrl}"${externalAttributes(media.sourceUrl)}>Open it at the source${externalCue(media.sourceUrl)}</a>.</p>
         </video>`
       : `<picture>
           <source srcset="${media.src}" type="image/webp">
@@ -204,7 +218,7 @@ function renderSections(page) {
     .filter((section) => section.placement !== "below-ticker")
     .map(
       (section, index) => `
-      ${index ? renderKintsugiSeam(`section-${page.slug}-${index}`, index) : ""}
+      ${section.showSeam === true || (page.showSeams === true && index > 0) ? renderKintsugiSeam(`section-${page.slug}-${index}`, index) : ""}
       <section class="content-section" id="${toId(section.title)}">
         <div class="section-heading">
           <span class="section-number">${String(index + 1).padStart(2, "0")}</span>
@@ -236,7 +250,7 @@ function renderAlignmentLab() {
       <div>
         <span class="eyebrow">Private workbench</span>
         <h2>Make a map you can revise.</h2>
-        <p id="lab-privacy-note">This tool does not send your words anywhere. Save to this browser only when you choose, or download a copy you control.</p>
+        <p id="lab-privacy-note">Your words stay in this browser. Save locally or download a copy when you choose.</p>
       </div>
       <div class="lab-local-state">
         <span aria-hidden="true">●</span>
@@ -249,14 +263,14 @@ function renderAlignmentLab() {
       <button type="button" role="tab" id="lab-tab-jra" aria-controls="lab-panel-jra" aria-selected="true" data-lab-tab="jra">
         <span>01</span><strong>My JRA map</strong><small>Name your coordinates.</small>
       </button>
-      <button type="button" role="tab" id="lab-tab-preference" aria-controls="lab-panel-preference" aria-selected="false" data-lab-tab="preference">
-        <span>02</span><strong>Compare paths</strong><small>Keep more than two doors open.</small>
+      <button type="button" role="tab" id="lab-tab-preference" aria-controls="lab-panel-preference" aria-selected="false" data-lab-tab="preference" data-lab-optional>
+        <span>02</span><strong>Compare paths</strong><small>Optional. Keep more than two doors open.</small>
       </button>
-      <button type="button" role="tab" id="lab-tab-experiment" aria-controls="lab-panel-experiment" aria-selected="false" data-lab-tab="experiment">
-        <span>03</span><strong>Live and observe</strong><small>Record what reality changed.</small>
+      <button type="button" role="tab" id="lab-tab-experiment" aria-controls="lab-panel-experiment" aria-selected="false" data-lab-tab="experiment" data-lab-optional>
+        <span>03</span><strong>Live and observe</strong><small>Optional. Record what reality changed.</small>
       </button>
-      <button type="button" role="tab" id="lab-tab-source" aria-controls="lab-panel-source" aria-selected="false" data-lab-tab="source">
-        <span>04</span><strong>Source card</strong><small>Choose how the record may travel.</small>
+      <button type="button" role="tab" id="lab-tab-source" aria-controls="lab-panel-source" aria-selected="false" data-lab-tab="source" data-lab-optional>
+        <span>04</span><strong>Source card</strong><small>Optional. Choose how the record may travel.</small>
       </button>
     </nav>
 
@@ -265,7 +279,7 @@ function renderAlignmentLab() {
         <div class="lab-panel-heading">
           <span>Instrument 01</span>
           <h3>My Joyful Responsible Abundance map</h3>
-          <p>There is no final definition hiding here. Name what these ideas mean in the terrain you are actually crossing.</p>
+          <p>Name a working definition for the terrain you are actually crossing, then revise it when the terrain answers back.</p>
         </div>
         <div class="lab-fields two-column">
           <label class="full-field">
@@ -303,11 +317,11 @@ function renderAlignmentLab() {
         </div>
       </section>
 
-      <section class="lab-panel" id="lab-panel-preference" role="tabpanel" aria-labelledby="lab-tab-preference" data-lab-panel="preference">
+      <section class="lab-panel" id="lab-panel-preference" role="tabpanel" aria-labelledby="lab-tab-preference" data-lab-panel="preference" data-lab-optional>
         <div class="lab-panel-heading">
-          <span>Instrument 02</span>
+          <span>Optional instrument 02</span>
           <h3>Compare paths without accepting a false binary.</h3>
-          <p>Two options can reveal a tension. They do not have to imprison the question.</p>
+          <p>Two options can reveal a tension while leaving another door open.</p>
         </div>
         <div class="lab-fields two-column">
           <label>
@@ -338,11 +352,11 @@ function renderAlignmentLab() {
         </div>
       </section>
 
-      <section class="lab-panel" id="lab-panel-experiment" role="tabpanel" aria-labelledby="lab-tab-experiment" data-lab-panel="experiment">
+      <section class="lab-panel" id="lab-panel-experiment" role="tabpanel" aria-labelledby="lab-tab-experiment" data-lab-panel="experiment" data-lab-optional>
         <div class="lab-panel-heading">
-          <span>Instrument 03</span>
+          <span>Optional instrument 03</span>
           <h3>Let reality answer back.</h3>
-          <p>A lived experiment is a small, revisable action. It is not a performance score or proof that the idea is universally right.</p>
+          <p>A lived experiment is a small, revisable action. Its value comes from what reality reveals, including surprise and disagreement.</p>
         </div>
         <div class="lab-fields two-column">
           <label class="full-field">
@@ -387,11 +401,11 @@ function renderAlignmentLab() {
         </div>
       </section>
 
-      <section class="lab-panel" id="lab-panel-source" role="tabpanel" aria-labelledby="lab-tab-source" data-lab-panel="source">
+      <section class="lab-panel" id="lab-panel-source" role="tabpanel" aria-labelledby="lab-tab-source" data-lab-panel="source" data-lab-optional>
         <div class="lab-panel-heading">
-          <span>Instrument 04</span>
+          <span>Optional instrument 04</span>
           <h3>Choose how this record may travel.</h3>
-          <p>This source card describes your record. It does not make the record training-ready or grant permission you have not chosen.</p>
+          <p>This source card describes your record, its permissions and the context needed for any later review.</p>
         </div>
         <div class="lab-fields two-column">
           <label>
@@ -419,9 +433,9 @@ function renderAlignmentLab() {
           <label>
             <span>Consent</span>
             <select name="consent" data-lab-field>
-              <option value="no_sharing">Do not share</option>
+              <option value="no_sharing">Keep private</option>
               <option value="download_review">Download for my review</option>
-              <option value="explicit_later">Ask me again before any sharing</option>
+              <option value="explicit_later">Return to me before sharing</option>
             </select>
           </label>
           <label>
@@ -448,7 +462,7 @@ function renderAlignmentLab() {
           </label>
           <label class="full-field">
             <span>Boundaries and prohibited uses</span>
-            <textarea name="use_boundaries" data-lab-field rows="3" placeholder="Where should this record not travel or be used?"></textarea>
+            <textarea name="use_boundaries" data-lab-field rows="3" placeholder="Where may this record travel, and where does the boundary sit?"></textarea>
           </label>
           <label class="full-field">
             <span>Known blind spots</span>
@@ -460,8 +474,8 @@ function renderAlignmentLab() {
 
     <footer class="lab-actions">
       <div class="lab-progress" aria-live="polite">
-        <span>Map filled</span>
-        <strong><output data-lab-progress>0</output>%</strong>
+        <span>Record state</span>
+        <strong><output data-lab-progress>0 answers</output></strong>
         <span class="lab-progress-track" aria-hidden="true"><span data-lab-progress-bar></span></span>
       </div>
       <div class="lab-action-buttons">
@@ -471,7 +485,7 @@ function renderAlignmentLab() {
         <button type="button" class="button secondary" data-lab-download="jsonl" aria-describedby="lab-export-note">Download JSONL</button>
         <button type="button" class="quiet-button" data-lab-clear>Clear local record</button>
       </div>
-      <p id="lab-export-note">Downloads are personal records or raw contribution material. They are not automatically valid training datasets.</p>
+      <p id="lab-export-note">Downloads remain personal records or raw contribution material until someone deliberately reviews their context and permissions.</p>
     </footer>
   </section>`;
 }
@@ -494,10 +508,6 @@ function renderMeetingTool() {
             <input type="text" name="title" placeholder="Meeting of minds for Joyful Responsible Abundance">
           </label>
           <label>
-            <span>Host or steward</span>
-            <input type="text" name="host" placeholder="Name, group or project">
-          </label>
-          <label>
             <span>Place or link</span>
             <input type="text" name="location" placeholder="Room, town, island or call link">
           </label>
@@ -510,12 +520,12 @@ function renderMeetingTool() {
             <input type="time" name="time">
           </label>
           <label>
-            <span>People to invite</span>
-            <input type="text" name="invitees" placeholder="Builders, artists, neighbours, researchers">
+            <span>End time (optional)</span>
+            <input type="time" name="end">
           </label>
           <label class="full-field">
             <span>The question</span>
-            <textarea name="question" rows="4" placeholder="What should self-alignment and AI alignment protect, recognise and help grow here?"></textarea>
+            <textarea name="question" rows="4" placeholder="What might self-alignment and AI alignment recognise, protect and help grow here?"></textarea>
           </label>
           <label class="full-field">
             <span>Access and shared trace</span>
@@ -546,7 +556,7 @@ function renderEventTool() {
         <h2 id="field-kit-builder-title">Shape one gathering from invitation to return.</h2>
         <p>Build it on a phone or computer. The preview grows beside your answers and stays here until you copy, download or share it.</p>
       </div>
-      <p class="planner-status" data-planner-status role="status" aria-live="polite" aria-atomic="true">Ready. This page can work without an account.</p>
+      <p class="planner-status" data-planner-status role="status" aria-live="polite" aria-atomic="true">Ready in this browser.</p>
     </header>
     <div class="planner-grid">
       <form class="planner-form" data-planner-form>
@@ -566,10 +576,6 @@ function renderEventTool() {
             </select>
           </label>
           <label>
-            <span>Host or group</span>
-            <input type="text" name="host" placeholder="Who is holding the table?">
-          </label>
-          <label>
             <span>Place</span>
             <input type="text" name="location" placeholder="Market, library, hall, island, town">
           </label>
@@ -582,12 +588,8 @@ function renderEventTool() {
             <input type="time" name="time">
           </label>
           <label>
-            <span>Length</span>
-            <input type="text" name="duration" placeholder="2 hours">
-          </label>
-          <label>
-            <span>Who may wander up?</span>
-            <input type="text" name="invitees" placeholder="Neighbours, families, builders, visitors">
+            <span>End time (optional)</span>
+            <input type="time" name="end">
           </label>
           <label class="full-field">
             <span>Question on the table</span>
@@ -600,14 +602,6 @@ function renderEventTool() {
           <label>
             <span>Care and consent</span>
             <textarea name="responsibility" rows="4" placeholder="No hard sell, no hidden capture, named or anonymous by choice"></textarea>
-          </label>
-          <label>
-            <span>Materials</span>
-            <textarea name="abundance" rows="4" placeholder="Chairs, shade, paper, pens, water, signs, charger, quiet corner"></textarea>
-          </label>
-          <label>
-            <span>Trace to carry home</span>
-            <textarea name="trace" rows="4" placeholder="Themes only, named lines, anonymous lines, photos only with consent"></textarea>
           </label>
           <label class="full-field">
             <span>Return path</span>
@@ -624,6 +618,139 @@ function renderEventTool() {
           <button type="button" class="button secondary" data-planner-ics>Download calendar file</button>
           <button type="button" class="button secondary" data-planner-email>Open email draft</button>
           <button type="button" class="button secondary" data-planner-whatsapp>Open WhatsApp draft</button>
+        </div>
+      </aside>
+    </div>
+  </section>`;
+}
+
+function renderCultureTool() {
+  return `<section class="planner-tool" data-culture-tool id="culture-tool" aria-labelledby="culture-tool-title">
+    <header class="planner-intro">
+      <div>
+        <span class="eyebrow">Conversation starter</span>
+        <h2 id="culture-tool-title">Make a conversation card.</h2>
+        <p>Choose a lens, make a short card and share it through a channel you already use.</p>
+      </div>
+      <p class="planner-status" data-culture-status role="status" aria-live="polite" aria-atomic="true">Private until you choose an action.</p>
+    </header>
+    <div class="planner-grid">
+      <form class="planner-form" data-culture-form>
+        <div class="lab-fields two-column">
+          <fieldset class="full-field choice-field">
+            <legend>Conversation lens</legend>
+            <input type="hidden" name="lens" value="joy">
+            <div role="group" aria-label="Choose a conversation lens">
+              <button type="button" data-culture-lens="joy" aria-pressed="true">Joy</button>
+              <button type="button" data-culture-lens="responsibility" aria-pressed="false">Responsibility</button>
+              <button type="button" data-culture-lens="abundance" aria-pressed="false">Abundance</button>
+              <button type="button" data-culture-lens="bridge" aria-pressed="false">Every border a bridge</button>
+            </div>
+          </fieldset>
+          <label class="full-field">
+            <span>Card title</span>
+            <input type="text" name="title" placeholder="A question worth carrying">
+          </label>
+          <label class="full-field">
+            <span>What have you noticed?</span>
+            <textarea name="notes" rows="4" placeholder="A story, tension, lyric, place or possibility"></textarea>
+          </label>
+          <label class="full-field">
+            <span>Question to open</span>
+            <textarea name="question" rows="3" placeholder="What would you like another mind to explore with you?"></textarea>
+          </label>
+          <label class="full-field">
+            <span>Possible next step</span>
+            <textarea name="next" rows="3" placeholder="A conversation, listening station, song, gathering or shared experiment"></textarea>
+          </label>
+        </div>
+      </form>
+      <aside class="planner-preview" aria-labelledby="culture-preview-title">
+        <h3 id="culture-preview-title">Conversation card preview</h3>
+        <pre data-culture-output tabindex="0"></pre>
+        <div class="planner-actions">
+          <button type="button" class="button primary" data-culture-copy>Copy card</button>
+          <button type="button" class="button secondary" data-culture-download>Download Markdown</button>
+          <button type="button" class="button secondary" data-culture-email>Open email draft</button>
+          <button type="button" class="button secondary" data-culture-whatsapp>Open WhatsApp draft</button>
+          <button type="button" class="button secondary" data-culture-sms>Open SMS draft</button>
+        </div>
+      </aside>
+    </div>
+  </section>`;
+}
+
+function renderContributionTool() {
+  return `<section class="planner-tool" data-contribution-tool id="contribution-tool" aria-labelledby="contribution-tool-title">
+    <header class="planner-intro">
+      <div>
+        <span class="eyebrow">Draft a trace</span>
+        <h2 id="contribution-tool-title">Prepare a contribution you control.</h2>
+        <p>The preview gathers the source, broad location, consent and correction route into one reviewable packet.</p>
+      </div>
+      <p class="planner-status" data-contribution-status role="status" aria-live="polite" aria-atomic="true">Private draft.</p>
+    </header>
+    <div class="planner-grid">
+      <form class="planner-form" data-contribution-form>
+        <div class="lab-fields two-column">
+          <label class="full-field">
+            <span>Trace title</span>
+            <input type="text" name="title" placeholder="A name a reviewer will recognise">
+          </label>
+          <label>
+            <span>Contribution type</span>
+            <select name="contribution_type">
+              <option value="group">Group or working circle</option>
+              <option value="event">Event or future watch lead</option>
+              <option value="atlas">Atlas trace</option>
+              <option value="field-kit">Field kit</option>
+              <option value="source">Source or research lead</option>
+              <option value="correction">Correction</option>
+            </select>
+          </label>
+          <label>
+            <span>Contributor or group</span>
+            <input type="text" name="contributor" placeholder="A name, group name or anonymous">
+          </label>
+          <label class="full-field">
+            <span>Broad location</span>
+            <input type="text" name="broad_location" placeholder="Town, island, region, country scale or online">
+          </label>
+          <label class="full-field">
+            <span>Source link</span>
+            <input type="url" name="source" inputmode="url" placeholder="https://">
+          </label>
+          <label class="full-field">
+            <span>Public summary</span>
+            <textarea name="summary" rows="5" placeholder="What is useful, who it may serve and why it belongs in the shared field"></textarea>
+          </label>
+          <label>
+            <span>Consent for review</span>
+            <select name="consent">
+              <option value="private-review">Private review only</option>
+              <option value="contact-first">Contact me before publication</option>
+              <option value="public-candidate">Public candidate after review</option>
+            </select>
+          </label>
+          <label>
+            <span>Contact route</span>
+            <input type="text" name="contact" placeholder="Email, phone or another route you choose">
+          </label>
+          <label class="full-field">
+            <span>Correction or return path</span>
+            <textarea name="correction" rows="3" placeholder="How can this trace be corrected, updated or withdrawn?"></textarea>
+          </label>
+        </div>
+      </form>
+      <aside class="planner-preview" aria-labelledby="contribution-preview-title">
+        <h3 id="contribution-preview-title">Contribution package preview</h3>
+        <pre data-contribution-output tabindex="0"></pre>
+        <div class="planner-actions">
+          <button type="button" class="button primary" data-contribution-copy>Copy package</button>
+          <button type="button" class="button secondary" data-contribution-download>Download Markdown</button>
+          <button type="button" class="button secondary" data-contribution-email>Open email draft</button>
+          <button type="button" class="button secondary" data-contribution-whatsapp>Open WhatsApp draft</button>
+          <button type="button" class="button secondary" data-contribution-sms>Open SMS draft</button>
         </div>
       </aside>
     </div>
@@ -665,26 +792,26 @@ function renderUpcomingWatch(data) {
             ${record.routes.map((route) => `<span>${escapeHtml(route)}</span>`).join("")}
           </div>
           <h3>${escapeHtml(record.title)}</h3>
-          <p class="approaching-meta">${escapeHtml(record.organiser)} · ${escapeHtml(record.location)}</p>
+          <p class="approaching-meta">${escapeHtml(record.organiser)} &middot; ${escapeHtml(record.location)}</p>
           <p>${escapeHtml(record.summary)}</p>
           <p class="approaching-question"><strong>A question to carry:</strong> ${escapeHtml(record.jraQuestion)}</p>
           <p class="approaching-time">${escapeHtml(record.timeLabel)}</p>
           <div class="approaching-actions">
-            <a class="button primary" href="${escapeHtml(record.actionUrl)}" rel="noopener">${escapeHtml(record.actionLabel)}</a>
-            <button class="button secondary" type="button" data-watch-calendar="${escapeHtml(record.id)}">Add to calendar</button>
+            <a class="button primary" href="${escapeHtml(record.actionUrl)}"${externalAttributes(record.actionUrl)}>${escapeHtml(record.actionLabel)}${externalCue(record.actionUrl)}</a>
+            ${record.datePrecision === "month" ? "" : `<button class="button secondary" type="button" data-watch-calendar="${escapeHtml(record.id)}">Add to calendar</button>`}
           </div>
-          <p class="approaching-source">Checked ${escapeHtml(record.checked)} · <a href="${escapeHtml(record.sourceUrl)}" rel="noopener">${escapeHtml(record.sourceLabel)}</a></p>
+          <p class="approaching-source">Checked ${escapeHtml(record.checked)}${record.sourceUrl === record.actionUrl ? "" : ` &middot; <a href="${escapeHtml(record.sourceUrl)}"${externalAttributes(record.sourceUrl)}>${escapeHtml(record.sourceLabel)}${externalCue(record.sourceUrl)}</a>`}</p>
         </div>
       </article>`,
     )
     .join("");
 
-  return `<section class="approaching-watch" id="approaching" aria-labelledby="approaching-title">
+  return `<section class="approaching-watch" data-upcoming-watch id="approaching" aria-labelledby="approaching-title">
     <header class="approaching-intro">
       <div>
         <span class="eyebrow">What is approaching</span>
-        <h2 id="approaching-title">Rooms you can still enter.</h2>
-        <p>Upcoming events, consultations and broadcasts with a visible participation route. Follow the organiser's page before making plans because programmes and access can change.</p>
+        <h2 id="approaching-title">Upcoming routes into live work.</h2>
+        <p>Upcoming events, consultations and broadcasts with a visible participation route. Each organiser's page carries the latest programme and access details.</p>
       </div>
       <p><strong>${records.length}</strong> source-linked opportunities<br><small>Last checked ${escapeHtml(data.updated)}</small></p>
     </header>
@@ -759,9 +886,9 @@ function renderMarkdown(markdown) {
 }
 
 function renderPageSequence(currentSlug) {
-  const index = activePages.findIndex((page) => page.slug === currentSlug);
-  const previous = index > 0 ? activePages[index - 1] : null;
-  const next = index >= 0 && index < activePages.length - 1 ? activePages[index + 1] : null;
+  const index = sequencePages.findIndex((page) => page.slug === currentSlug);
+  const previous = index > 0 ? sequencePages[index - 1] : null;
+  const next = index >= 0 && index < sequencePages.length - 1 ? sequencePages[index + 1] : null;
   return `<nav class="page-sequence" aria-label="Page sequence">
     ${
       previous
@@ -800,7 +927,7 @@ function renderWorldMapDisclosure() {
     <summary aria-label="Show map source acknowledgement" title="Map source acknowledgement"><span aria-hidden="true">i</span></summary>
     <div class="source-disclosure-panel">
       <strong>Map sources</strong>
-      <p>Base imagery is Sentinel-2 cloudless by EOX IT Services GmbH, containing modified Copernicus Sentinel data 2016. The engine is MapLibre GL JS. The atlas begins from satellite imagery and chosen public traces, without OpenStreetMap tiles or nation-flag map chrome.</p>
+      <p>Base imagery is Sentinel-2 cloudless by EOX IT Services GmbH, containing modified Copernicus Sentinel data 2016. The map engine is MapLibre GL JS.</p>
       <a href="docs/ASSET_PROVENANCE.md">Read map source notes<span aria-hidden="true">&#8599;</span></a>
     </div>
   </details>`;
@@ -810,10 +937,51 @@ function serialiseJsonForHtml(data) {
   return JSON.stringify(data).replaceAll("</", "<\\/");
 }
 
+function heroImageFor(page, fallbackSrc, fallbackWidth = 1920, fallbackHeight = 720) {
+  if (typeof page.heroImage === "string") {
+    return {
+      src: page.heroImage,
+      width: fallbackWidth,
+      height: fallbackHeight,
+      alt: "",
+    };
+  }
+  if (page.heroImage && typeof page.heroImage === "object") {
+    return {
+      src: page.heroImage.src || fallbackSrc,
+      width: page.heroImage.width || fallbackWidth,
+      height: page.heroImage.height || fallbackHeight,
+      alt: page.heroImage.alt || "",
+    };
+  }
+  return {
+    src: fallbackSrc,
+    width: fallbackWidth,
+    height: fallbackHeight,
+    alt: "",
+  };
+}
+
+function renderDecorativeHeroImage(page, fallbackSrc, fallbackWidth, fallbackHeight) {
+  const image = heroImageFor(page, fallbackSrc, fallbackWidth, fallbackHeight);
+  return `<img src="${escapeHtml(image.src)}" width="${escapeHtml(image.width)}" height="${escapeHtml(image.height)}" alt="${escapeHtml(image.alt)}">`;
+}
+
 function renderWorldMapVisualHero(page) {
-  return `<header class="page-hero world-map-visual-hero">
+  const sourceDisclosure = page.heroImage
+    ? ""
+    : renderSourceDisclosure(
+        {
+          label: "Earth image source",
+          caption: "The Earth image uses NASA's 2012 Blue Marble raster. The interactive atlas opens below.",
+          sourceUrl: "https://svs.gsfc.nasa.gov/30002/",
+          credit: "Source and full credits: NASA SVS 30002",
+        },
+        "world-map-hero-source",
+      );
+  return `<header class="page-hero world-map-visual-hero${page.compactHero ? " compact-hero" : ""}">
     <figure class="page-hero-media" aria-hidden="true">
-      <img src="assets/media/nasa-blue-marble-2012.jpg" width="2048" height="2048" alt="">
+      ${renderDecorativeHeroImage(page, "assets/media/nasa-blue-marble-2012.jpg", 2048, 2048)}
     </figure>
     <div class="page-hero-copy">
       <span class="status-chip">${escapeHtml(page.status)}</span>
@@ -821,38 +989,25 @@ function renderWorldMapVisualHero(page) {
       <h1>${escapeHtml(page.title)}</h1>
       <p class="page-intro">${escapeHtml(page.intro)}</p>
     </div>
-    ${renderSourceDisclosure(
-      {
-        label: "Earth-view hero source",
-        caption: "The Earth-view image uses NASA's 2012 Blue Marble raster. The atlas workbench begins below.",
-        sourceUrl: "https://svs.gsfc.nasa.gov/30002/",
-        credit: "Source and full credits: NASA SVS 30002",
-      },
-      "world-map-hero-source",
-    )}
+    ${sourceDisclosure}
   </header>`;
 }
 
 function renderWorldMapTool(mapRecordsData) {
-  const records = mapRecordsData.records || [];
-  const joinedRecords = records.filter((record) => record.kind !== "project-origin");
   return `<section class="world-map-tool" aria-labelledby="world-map-tool-title">
     <header class="world-map-tool-head">
       <div>
         <p class="eyebrow">Bridge atlas</p>
         <h2 id="world-map-tool-title">Where the next trace appears.</h2>
-        <p id="world-map-description" class="page-intro">Sphere and flat views let travellers read the same public traces at different scales. Broad first records keep place visible while people remain sovereign.</p>
+        <p id="world-map-description" class="page-intro">Move between sphere and flat views, open a public trace and follow its source. Each record begins at the location scale chosen by its contributor.</p>
       </div>
-      <div class="world-map-tool-panel" aria-label="Map controls and current records">
-        <dl>
-          <div><dt>Records</dt><dd>${records.length}</dd></div>
-          <div><dt>Joined groups</dt><dd>${joinedRecords.length}</dd></div>
-        </dl>
+      <div class="world-map-tool-panel" aria-label="Map controls">
         <div class="world-map-controls" aria-label="Map view controls">
           <button type="button" data-map-projection="globe" aria-pressed="true">Sphere</button>
           <button type="button" data-map-projection="mercator" aria-pressed="false">Flat</button>
           <button type="button" data-map-reset>Reset view</button>
         </div>
+        <a class="button secondary" href="contribute.html#contribution-tool">Draft a trace</a>
       </div>
     </header>
     <div class="world-map-frame">
@@ -860,8 +1015,7 @@ function renderWorldMapTool(mapRecordsData) {
         id="gajra-world-map"
         class="world-map-canvas"
         data-world-map
-        role="application"
-        tabindex="0"
+        role="region"
         aria-describedby="world-map-description world-map-status"
         aria-label="Borderless satellite atlas of public GAJRA Earth records"
       >
@@ -883,9 +1037,10 @@ function renderWorldMapLedger(mapRecordsData) {
         <button type="button" data-map-record-button="${escapeHtml(record.id)}">
           <span>${escapeHtml(record.kind.replaceAll("-", " "))}</span>
           <strong>${escapeHtml(record.name)}</strong>
-          <small>${escapeHtml(record.locationLabel)} Â· ${escapeHtml(record.precision)}</small>
+          <small>${escapeHtml(record.locationLabel)} &middot; ${escapeHtml(record.precision)}</small>
         </button>
         <p>${escapeHtml(record.publicNote)}</p>
+        ${record.url ? `<a href="${escapeHtml(record.url)}"${externalAttributes(record.url)}>Open source${externalCue(record.url)}</a>` : ""}
       </li>`,
     )
     .join("");
@@ -897,12 +1052,7 @@ function renderWorldMapLedger(mapRecordsData) {
     </div>
     <div class="world-map-ledger-grid">
       <div>
-        <p class="section-lead">The atlas is ready for chosen group traces, bridges and starter field-kit locations. It begins with one broad public origin marker and waits for the first joined-group trace.</p>
-        <dl class="world-map-counts">
-          <div><dt>Published records</dt><dd>${records.length}</dd></div>
-          <div><dt>Joined groups</dt><dd>${joinedRecords.length}</dd></div>
-          <div><dt>Bridge lines</dt><dd>${(mapRecordsData.bridges || []).length}</dd></div>
-        </dl>
+        <p class="section-lead">Select a public record to open its story, broad location and source.</p>
       </div>
       <div class="world-map-records" data-map-record-list>
         <h3>Records in view</h3>
@@ -910,7 +1060,7 @@ function renderWorldMapLedger(mapRecordsData) {
         ${
           joinedRecords.length
             ? ""
-            : `<p class="quiet-note">The public joined-groups layer is still waiting for its first chosen trace. Each new marker can carry consent, place precision, source notes and a way back for correction.</p>`
+            : `<p class="quiet-note">The first group invitation is open. Each new marker can carry consent, place precision, source notes and a way back for correction.</p>`
         }
       </div>
     </div>
@@ -947,9 +1097,9 @@ function renderHero(page, mapRecordsData) {
       )}
     </section>`;
   }
-  return `<header class="page-hero">
+  return `<header class="page-hero${page.compactHero ? " compact-hero" : ""}">
     <figure class="page-hero-media" aria-hidden="true">
-      <img src="assets/heroes/${escapeHtml(page.slug)}.webp" width="1920" height="720" alt="">
+      ${renderDecorativeHeroImage(page, `assets/heroes/${page.slug}.webp`, 1920, 720)}
     </figure>
     <div class="page-hero-copy">
       <span class="status-chip">${escapeHtml(page.status)}</span>
@@ -961,7 +1111,13 @@ function renderHero(page, mapRecordsData) {
 }
 
 function renderPage(page, buildLogMarkdown, mapRecordsData, upcomingEventsData) {
-  const actionTools = `${page.meetingTool ? renderMeetingTool() : ""}${page.upcomingWatch ? renderUpcomingWatch(upcomingEventsData) : ""}${page.eventTool ? renderEventTool() : ""}`;
+  const actionTools = [
+    page.meetingTool ? renderMeetingTool() : "",
+    page.upcomingWatch ? renderUpcomingWatch(upcomingEventsData) : "",
+    page.eventTool ? renderEventTool() : "",
+    page.cultureTool ? renderCultureTool() : "",
+    page.contributionTool ? renderContributionTool() : "",
+  ].join("");
   const pageContent = page.sitemap
     ? renderSitemap()
     : page.buildLog
@@ -971,9 +1127,9 @@ function renderPage(page, buildLogMarkdown, mapRecordsData, upcomingEventsData) 
         : page.alignmentLab
           ? `${renderAlignmentLab()}${renderSections(page)}`
           : `${actionTools}${renderSections(page)}`;
-  const question = page.question && !page.home
+  const question = page.showQuestion === true && page.question && !page.home
     ? `<aside class="question-pause" aria-labelledby="reflection-question-${page.slug}">
-        <h2 id="reflection-question-${page.slug}">Pause here</h2>
+        <h2 id="reflection-question-${page.slug}">Question to carry</h2>
         <p>${escapeHtml(page.question)}</p>
         <a href="${page.alignmentLab ? "#lab-workbench" : "alignment-lab.html"}">${page.alignmentLab ? "Open the first instrument" : "Carry this question into the Lab"}</a>
       </aside>`
@@ -1002,6 +1158,8 @@ function renderPage(page, buildLogMarkdown, mapRecordsData, upcomingEventsData) 
   ${page.alignmentLab ? `<script defer src="assets/alignment-lab.js?v=${site.assetVersion}"></script>` : ""}
   ${page.meetingTool || page.eventTool ? `<script defer src="assets/meeting-tools.js?v=${site.assetVersion}"></script>` : ""}
   ${page.upcomingWatch ? `<script defer src="assets/upcoming-watch.js?v=${site.assetVersion}"></script>` : ""}
+  ${page.cultureTool ? `<script defer src="assets/culture-tool.js?v=${site.assetVersion}"></script>` : ""}
+  ${page.contributionTool ? `<script defer src="assets/contribution-tool.js?v=${site.assetVersion}"></script>` : ""}
   ${page.worldMap ? `<script type="module" src="assets/world-map.js?v=${site.assetVersion}"></script>` : ""}
 </head>
 <body id="top" data-page="${page.slug}">
@@ -1020,27 +1178,22 @@ function renderPage(page, buildLogMarkdown, mapRecordsData, upcomingEventsData) 
 
   <main id="main">
     ${renderHero(page, mapRecordsData)}
-    ${renderTicker()}
+    ${page.showTicker === true ? renderTicker() : ""}
     ${page.home ? renderBelowTicker(page) : ""}
     <div class="page-shell">
-      ${page.home ? `<div class="opening-statement"><p>${escapeHtml(page.question)}</p></div>` : ""}
+      ${page.home && page.showQuestion === true && page.question ? `<div class="opening-statement"><p>${escapeHtml(page.question)}</p></div>` : ""}
       ${pageContent}
       ${question}
-      ${renderPageSequence(page.slug)}
+      ${page.showSequence === true ? renderPageSequence(page.slug) : ""}
     </div>
   </main>
 
-  ${renderKintsugiSeam("footer", 1)}
+  ${page.showSeams === true ? renderKintsugiSeam("footer", 1) : ""}
   <footer class="site-footer">
-    <div class="footer-intro">
-      <span class="eyebrow">${site.buildLabel}</span>
-      <h2>A living public doorway.</h2>
-      <p>This doorway is a public experiment, practice space and research invitation. The formal association and global event layers remain open territory.</p>
-    </div>
-    <div class="footer-map">${renderFooter()}</div>
+    <nav class="footer-map" aria-label="Footer">${renderFooter()}</nav>
     <div class="colophon">
       <p>Built on Minjerribah, Quandamooka Country, Australia. Analytics-free, cookie-free and quiet unless you choose an export.</p>
-      <p><a href="site-map.html">Site map</a>. <a href="build-log.html">Build log</a>. <a href="LICENSE">Strange But True Public Source Licence</a>: non-commercial use with credit; all commercial rights reserved. <a href="${site.repositoryUrl}" target="_blank" rel="noopener noreferrer">Source repository</a>.</p>
+      <p><a href="site-map.html">Site map</a>. <a href="build-log.html">Build log</a>. <a href="LICENSE">Strange But True Public Source Licence</a>: non-commercial use with credit; all commercial rights reserved. <a href="${site.repositoryUrl}"${externalAttributes(site.repositoryUrl)}>Source repository${externalCue(site.repositoryUrl)}</a>.</p>
     </div>
   </footer>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>

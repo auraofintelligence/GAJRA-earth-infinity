@@ -32,7 +32,7 @@ Do not depict the real Earth with vector art, CSS gradients, procedural canvas c
 - Treatment: original symbolic project work. It does not imitate a named artist, copy an identifiable historic photo or present generated symbolism as documentary evidence.
 - Commercial boundary: the project licence reserves commercial rights, but the generated asset remains subject to any applicable OpenAI service terms.
 
-### Page hero field maps
+### Active page heroes
 
 Every non-home public page has its own 1920 by 720 raster hero in
 `assets/heroes/`.
@@ -43,13 +43,22 @@ Every non-home public page has its own 1920 by 720 raster hero in
   2026 as a cinematic, tactile flower-garland threshold with the left side kept
   calm for readable page copy. The prompt explicitly excluded Earth, globes,
   vector art, text, logos and watermarks.
+- `alignment-lab.webp` was generated on 28 July 2026 as a tactile observatory
+  workbench with maps, stones, plants, Earth in view and subtle RGB seams.
+- `events.webp` was generated on 28 July 2026 as an empty coastal listening
+  station prepared with practical tools, open chairs and a return path.
+- `frontier-labs.webp` was generated on 28 July 2026 as a future-watch
+  observatory with several distinct rooms still open to enter.
+- `contribute.webp` was generated on 28 July 2026 as a source packet and chosen
+  trace travelling from a local desk towards the shared atlas.
+- These four images were generated with OpenAI's built-in image-generation
+  tool from project-specific prompts. Each prompt requested photorealistic,
+  cinematic raster art with a calm left field for readable copy and explicitly
+  excluded text, logos, watermarks, vector art, infographics and UI mock-ups.
+- `culture.html` uses the original flower-force artwork already documented
+  above.
 - `earth-time.webp` is a crop of the real ISS aurora photograph listed below.
-- The remaining abstract images are temporary deterministic field maps
-  generated locally by `tools/build-hero-images.py`. They are queued for
-  replacement only after the smaller functional page architecture is settled.
-- They are original code-generated project assets. They depict paths, networks,
-  instruments, waves and other abstract ideas. They are not depictions of
-  Earth.
+- Procedural field maps remain on redirect and utility pages only.
 - The page places each hero beneath its own scrim at 50 percent media opacity.
 
 ### NASA SVS 31281

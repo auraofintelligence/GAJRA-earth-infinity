@@ -18,7 +18,7 @@
   var createdAt = new Date().toISOString();
   var dirty = false;
 
-  var progressNames = [
+  var coreNames = [
     "record_title",
     "context_domain",
     "place_culture",
@@ -27,22 +27,11 @@
     "abundance",
     "balance",
     "stakeholders",
-    "path_a",
-    "path_b",
-    "preference",
-    "preference_reasoning",
-    "commitment",
-    "baseline",
-    "action_boundary",
-    "observed_outcome",
-    "unexpected_effects",
-    "externalities",
-    "next_move",
-    "revision",
-    "assistance",
-    "intended_uses",
-    "use_boundaries",
-    "blind_spots",
+  ];
+  var optionalGroups = [
+    ["path_a", "path_b", "preference", "preference_reasoning"],
+    ["commitment", "baseline", "action_boundary", "observed_outcome", "unexpected_effects", "externalities", "next_move", "revision"],
+    ["assistance", "intended_uses", "use_boundaries", "blind_spots"],
   ];
 
   function makeRecordId() {
@@ -101,13 +90,38 @@
   }
 
   function updateProgress() {
-    var complete = progressNames.filter(function (name) {
+    var coreAnswered = coreNames.filter(function (name) {
       return fieldValue(name).trim().length > 0;
     }).length;
-    var percent = Math.round((complete / progressNames.length) * 100);
-    progressOutput.value = String(percent);
-    progressOutput.textContent = String(percent);
-    progressBar.style.width = percent + "%";
+    var optionalAnswered = optionalGroups.reduce(function (total, names) {
+      return total + names.filter(function (name) {
+        return fieldValue(name).trim().length > 0;
+      }).length;
+    }, 0);
+    var optionalInstruments = optionalGroups.filter(function (names) {
+      return names.some(function (name) {
+        return fieldValue(name).trim().length > 0;
+      });
+    }).length;
+    var answerLabel = coreAnswered + " core answer" + (coreAnswered === 1 ? "" : "s");
+    if (optionalAnswered) {
+      answerLabel +=
+        ", " +
+        optionalAnswered +
+        " optional answer" +
+        (optionalAnswered === 1 ? "" : "s") +
+        " across " +
+        optionalInstruments +
+        " optional instrument" +
+        (optionalInstruments === 1 ? "" : "s");
+    }
+    progressOutput.value = answerLabel;
+    progressOutput.textContent = answerLabel;
+    progressOutput.setAttribute(
+      "aria-label",
+      answerLabel + ". Optional instruments can be used independently.",
+    );
+    progressBar.style.width = Math.round((coreAnswered / coreNames.length) * 100) + "%";
   }
 
   function updateUncertainty() {
@@ -123,7 +137,9 @@
       if (active && focusTab) tab.focus();
     });
     panels.forEach(function (panel) {
-      panel.hidden = panel.dataset.labPanel !== name;
+      var active = panel.dataset.labPanel === name;
+      panel.hidden = !active;
+      panel.tabIndex = active ? 0 : -1;
     });
   }
 
@@ -175,7 +191,7 @@
         known_blind_spots: fieldValue("blind_spots"),
       },
       export_note:
-        "Personal record or raw contribution material. Not automatically a valid training dataset.",
+        "Personal record or raw contribution material until deliberately reviewed for context and permissions.",
     };
   }
 
@@ -312,8 +328,8 @@
     });
     tab.addEventListener("keydown", function (event) {
       var nextIndex = null;
-      if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = (index + 1) % tabs.length;
-      if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+      if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
       if (event.key === "Home") nextIndex = 0;
       if (event.key === "End") nextIndex = tabs.length - 1;
       if (nextIndex === null) return;
@@ -324,7 +340,7 @@
 
   form.addEventListener("input", function () {
     dirty = true;
-    setState("Unsaved changes remain in this tab only.", "quiet");
+    setState("Unsaved changes remain on this browser page only.", "quiet");
     updateProgress();
     updateUncertainty();
   });
@@ -345,7 +361,7 @@
         download(JSON.stringify(record) + "\n", safeFilename(record, "jsonl"), "application/x-ndjson");
       }
       dirty = false;
-      setState("Downloaded a " + format.toUpperCase() + " copy. Nothing was transmitted.", "saved");
+      setState("Downloaded a " + format.toUpperCase() + " copy created in this browser.", "saved");
     });
   });
 

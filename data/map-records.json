@@ -1,6 +1,6 @@
 {
   "format": "gajra-earth-public-map-v1",
-  "updated": "2026-07-27",
+  "updated": "2026-07-28",
   "policy": {
     "surface": "Neutral satellite imagery with no political boundary layer.",
     "flags": "No national flags, campaign marks or country badges belong on the map surface.",
@@ -34,7 +34,7 @@
       "precision": "broad-area",
       "categories": ["public-source", "field-kit", "build-origin"],
       "url": "https://github.com/auraofintelligence/GAJRA-earth-infinity",
-      "publicNote": "A broad origin marker for this public site build. It opens the atlas at origin scale while keeping venue, membership and endorsement claims separate.",
+      "publicNote": "A broad origin marker for this public site build, honouring place while leaving room for future venue and member traces.",
       "bridgeOffer": "Browser-first tools, starter field kits, public source trails and a path for future groups to carry chosen traces into the repo."
     }
   ],

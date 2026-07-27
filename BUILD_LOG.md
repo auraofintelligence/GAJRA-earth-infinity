@@ -110,8 +110,37 @@
 - Removed the future-events watch, explanatory sequence and secondary cards from the Field Kit journey.
 - Unified the promise, builder, preview and exports around one Field Kit instead of mixing rooms, listening stations and run sheets.
 
+## Build 9 - One door, one useful job - 28 July 2026
+
+- Rebuilt the public journey around eight active doors: Home, Alignment Lab,
+  Meeting Circle, Field Kit, Bridge Atlas, Future Watch, Culture Compass and
+  Join or Build.
+- Gave every door a private page contract naming its visitor, task and useful
+  outcome.
+- Removed automatic essays, repeated questions, generic sequence panels and
+  unrelated onward cards from the active pages.
+- Rebuilt the layout around one centred frame, one editorial width and one
+  reading measure, with compact heroes and content-sized cards.
+- Repaired the missing prompt grid, laptop header conflicts, mobile no-script
+  navigation, anchor offsets and footer flow.
+- Added the browser-local Culture Compass and contribution packet with copy,
+  download and explicit message handoffs.
+- Made the Alignment Lab instruments optional and changed its state summary
+  from a completion percentage to an answered-field count.
+- Strengthened Meeting Circle and Field Kit calendar exports with validation,
+  end times and blank-recipient email drafts.
+- Moved Future Watch into its own useful door and retained source, date,
+  participation filters and calendar export.
+- Rechecked all six Future Watch records against official organiser pages,
+  added direct event links and removed calendar export where only a month is known.
+- Replaced the weakest procedural hero fields with original cinematic raster
+  scenes for Alignment Lab, Field Kit, Future Watch and Join or Build.
+- Kept the home aurora immediately below the ticker and kept the functional
+  Bridge Atlas separate from its Earth-view hero.
+
 ## Next builds
 
-- Build 9: useful map layers for festivals, working groups, labs, data centres, grant labs, tender labs and starter field kits.
-- Build 10: an offline listening ledger and browser-first group join package with deliberate SMS, WhatsApp or email handoff for human review.
-- Build 11: final accessibility, motion, mobile, performance and overstatement review.
+- Build 10: useful map layers for festivals, working groups, labs, data centres,
+  grant labs, tender labs and starter field kits.
+- Build 11: expand the static review workflow from local contribution packets
+  into vetted Atlas records.

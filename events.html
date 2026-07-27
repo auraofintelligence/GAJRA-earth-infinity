@@ -14,12 +14,14 @@
   <link rel="icon" href="assets/aura-heart-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="assets/aura-heart-180.png">
 
-  <link rel="stylesheet" href="assets/site.css?v=20260728e">
+  <link rel="stylesheet" href="assets/site.css?v=20260728r2">
   <script>document.documentElement.classList.add("js");</script>
-  <script defer src="assets/site.js?v=20260728e"></script>
+  <script defer src="assets/site.js?v=20260728r2"></script>
 
 
-  <script defer src="assets/meeting-tools.js?v=20260728e"></script>
+  <script defer src="assets/meeting-tools.js?v=20260728r2"></script>
+
+
 
 
 </head>
@@ -33,17 +35,17 @@
     <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation">Menu</button>
     <nav id="primary-navigation" class="primary-navigation" aria-label="Primary" data-primary-nav>
       <details class="nav-world">
-        <summary>Choose</summary>
-        <div class="nav-world-links"><a href="index.html">Home</a><a href="about.html">The meeting space</a></div>
+        <summary>Begin</summary>
+        <div class="nav-world-links"><a href="index.html">Home</a><a href="alignment-lab.html">Alignment Lab</a></div>
       </details><details class="nav-world" data-current-group>
-        <summary>Practise</summary>
-        <div class="nav-world-links"><a href="alignment-lab.html">Alignment Lab</a><a href="events.html" aria-current="page">Events &amp; gatherings</a></div>
+        <summary>Gather</summary>
+        <div class="nav-world-links"><a href="about.html">Meeting Circle</a><a href="events.html" aria-current="page">Field Kit</a></div>
       </details><details class="nav-world">
-        <summary>Atlas</summary>
-        <div class="nav-world-links"><a href="ecosystem.html">Ecosystem map</a><a href="frontier-labs.html">For frontier labs</a></div>
+        <summary>Explore</summary>
+        <div class="nav-world-links"><a href="ecosystem.html">Bridge Atlas</a><a href="frontier-labs.html">Future Watch</a></div>
       </details><details class="nav-world">
-        <summary>Culture</summary>
-        <div class="nav-world-links"><a href="culture.html">Culture, music &amp; art</a><a href="contribute.html">Contribute</a></div>
+        <summary>Carry</summary>
+        <div class="nav-world-links"><a href="culture.html">Culture Compass</a><a href="contribute.html">Join or Build</a></div>
       </details>
     </nav>
     <details class="motion-control">
@@ -65,22 +67,18 @@
   </header>
 
   <main id="main">
-    <header class="page-hero">
+    <header class="page-hero compact-hero">
     <figure class="page-hero-media" aria-hidden="true">
       <img src="assets/heroes/events.webp" width="1920" height="720" alt="">
     </figure>
     <div class="page-hero-copy">
-      <span class="status-chip">Field Kit builder</span>
-      <p class="eyebrow">Events and gatherings</p>
+      <span class="status-chip">Kit builder</span>
+      <p class="eyebrow">Field kit</p>
       <h1>Build a GAJRA field kit.</h1>
-      <p class="page-intro">Shape the invitation, question, useful help, materials, consent and return path. Your finished field kit stays in your browser until you choose how to carry it onward.</p>
+      <p class="page-intro">Prepare one listening station or practical help table. Choose the question, useful offer, essentials and return path, then carry the kit onward.</p>
     </div>
   </header>
-    <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <span class="ticker-group"><span class="ticker-word">Joy</span><span class="ticker-word">Responsibility</span><span class="ticker-word">Abundance</span><span class="ticker-word">Balance</span><span class="ticker-word">Care</span><span class="ticker-word">Play</span><span class="ticker-word">Consent</span><span class="ticker-word">Truth</span><span class="ticker-word">Repair</span><span class="ticker-word">Courage</span></span><span class="ticker-group"><span class="ticker-word">Joy</span><span class="ticker-word">Responsibility</span><span class="ticker-word">Abundance</span><span class="ticker-word">Balance</span><span class="ticker-word">Care</span><span class="ticker-word">Play</span><span class="ticker-word">Consent</span><span class="ticker-word">Truth</span><span class="ticker-word">Repair</span><span class="ticker-word">Courage</span></span>
-    </div>
-  </div>
+
 
     <div class="page-shell">
 
@@ -91,7 +89,7 @@
         <h2 id="field-kit-builder-title">Shape one gathering from invitation to return.</h2>
         <p>Build it on a phone or computer. The preview grows beside your answers and stays here until you copy, download or share it.</p>
       </div>
-      <p class="planner-status" data-planner-status role="status" aria-live="polite" aria-atomic="true">Ready. This page can work without an account.</p>
+      <p class="planner-status" data-planner-status role="status" aria-live="polite" aria-atomic="true">Ready in this browser.</p>
     </header>
     <div class="planner-grid">
       <form class="planner-form" data-planner-form>
@@ -111,10 +109,6 @@
             </select>
           </label>
           <label>
-            <span>Host or group</span>
-            <input type="text" name="host" placeholder="Who is holding the table?">
-          </label>
-          <label>
             <span>Place</span>
             <input type="text" name="location" placeholder="Market, library, hall, island, town">
           </label>
@@ -127,12 +121,8 @@
             <input type="time" name="time">
           </label>
           <label>
-            <span>Length</span>
-            <input type="text" name="duration" placeholder="2 hours">
-          </label>
-          <label>
-            <span>Who may wander up?</span>
-            <input type="text" name="invitees" placeholder="Neighbours, families, builders, visitors">
+            <span>End time (optional)</span>
+            <input type="time" name="end">
           </label>
           <label class="full-field">
             <span>Question on the table</span>
@@ -145,14 +135,6 @@
           <label>
             <span>Care and consent</span>
             <textarea name="responsibility" rows="4" placeholder="No hard sell, no hidden capture, named or anonymous by choice"></textarea>
-          </label>
-          <label>
-            <span>Materials</span>
-            <textarea name="abundance" rows="4" placeholder="Chairs, shade, paper, pens, water, signs, charger, quiet corner"></textarea>
-          </label>
-          <label>
-            <span>Trace to carry home</span>
-            <textarea name="trace" rows="4" placeholder="Themes only, named lines, anonymous lines, photos only with consent"></textarea>
           </label>
           <label class="full-field">
             <span>Return path</span>
@@ -174,52 +156,28 @@
     </div>
   </section>
 
-      <nav class="page-sequence" aria-label="Page sequence">
-    <a class="sequence-link previous" href="alignment-lab.html"><span>Previous</span><strong>Alignment Lab</strong></a>
-    <a class="sequence-link next" href="culture.html"><span>Next</span><strong>Culture, music &amp; art</strong></a>
-  </nav>
+
     </div>
   </main>
 
-  <div class="kintsugi-seam" data-kintsugi aria-hidden="true">
-    <svg viewBox="0 0 1200 46" preserveAspectRatio="none" focusable="false">
-      <defs>
-        <linearGradient class="seam-gradient" id="rgb-footer" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#ff4654"/>
-          <stop offset=".17" stop-color="#ffbf52"/>
-          <stop offset=".35" stop-color="#73f4df"/>
-          <stop offset=".54" stop-color="#236bff"/>
-          <stop offset=".72" stop-color="#b194ff"/>
-          <stop offset=".87" stop-color="#ff5ba3"/>
-          <stop offset="1" stop-color="#ff4654"/>
-        </linearGradient>
-      </defs>
-      <path class="seam-path" pathLength="1" stroke="url(#rgb-footer)" d="M0 22 L110 26 L190 14 L275 28 L370 18 L440 30 L560 16 L650 24 L760 12 L850 26 L940 18 L1050 28 L1130 20 L1200 24"/>
-      <path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-footer)" d="M190 14 L176 4"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-footer)" d="M440 30 L452 42"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-footer)" d="M760 12 L774 3"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-footer)" d="M1050 28 L1037 41"/>
-    </svg>
-  </div>
+
   <footer class="site-footer">
-    <div class="footer-intro">
-      <span class="eyebrow">Live public experiment · Earth in view</span>
-      <h2>A living public doorway.</h2>
-      <p>This doorway is a public experiment, practice space and research invitation. The formal association and global event layers remain open territory.</p>
-    </div>
-    <div class="footer-map"><div class="footer-group">
-        <h2>Choose</h2>
-        <ul><li><a href="index.html">Home</a></li><li><a href="about.html">The meeting space</a></li></ul>
+    <nav class="footer-map" aria-label="Footer"><div class="footer-group">
+        <h2>Begin</h2>
+        <ul><li><a href="index.html">Home</a></li><li><a href="alignment-lab.html">Alignment Lab</a></li></ul>
       </div><div class="footer-group">
-        <h2>Practise</h2>
-        <ul><li><a href="alignment-lab.html">Alignment Lab</a></li><li><a href="events.html">Events &amp; gatherings</a></li></ul>
+        <h2>Gather</h2>
+        <ul><li><a href="about.html">Meeting Circle</a></li><li><a href="events.html">Field Kit</a></li></ul>
       </div><div class="footer-group">
-        <h2>Atlas</h2>
-        <ul><li><a href="ecosystem.html">Ecosystem map</a></li><li><a href="frontier-labs.html">For frontier labs</a></li></ul>
+        <h2>Explore</h2>
+        <ul><li><a href="ecosystem.html">Bridge Atlas</a></li><li><a href="frontier-labs.html">Future Watch</a></li></ul>
       </div><div class="footer-group">
-        <h2>Culture</h2>
-        <ul><li><a href="culture.html">Culture, music &amp; art</a></li><li><a href="contribute.html">Contribute</a></li></ul>
-      </div></div>
+        <h2>Carry</h2>
+        <ul><li><a href="culture.html">Culture Compass</a></li><li><a href="contribute.html">Join or Build</a></li></ul>
+      </div></nav>
     <div class="colophon">
       <p>Built on Minjerribah, Quandamooka Country, Australia. Analytics-free, cookie-free and quiet unless you choose an export.</p>
-      <p><a href="site-map.html">Site map</a>. <a href="build-log.html">Build log</a>. <a href="LICENSE">Strange But True Public Source Licence</a>: non-commercial use with credit; all commercial rights reserved. <a href="https://github.com/auraofintelligence/GAJRA-earth-infinity" target="_blank" rel="noopener noreferrer">Source repository</a>.</p>
+      <p><a href="site-map.html">Site map</a>. <a href="build-log.html">Build log</a>. <a href="LICENSE">Strange But True Public Source Licence</a>: non-commercial use with credit; all commercial rights reserved. <a href="https://github.com/auraofintelligence/GAJRA-earth-infinity" target="_blank" rel="noopener noreferrer">Source repository<span class="sr-only"> (opens in a new tab)</span></a>.</p>
     </div>
   </footer>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>

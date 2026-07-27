@@ -1,8 +1,6 @@
 (function () {
   "use strict";
 
-  const email = "auraofintelligence@gmail.com";
-
   const labels = {
     meeting: {
       heading: "GAJRA EARTH MEETING CIRCLE",
@@ -57,7 +55,36 @@
 
   function line(label, value) {
     const text = clean(value);
-    return text ? `- ${label}: ${text}` : `- ${label}: `;
+    return text ? `- ${label}: ${text}` : null;
+  }
+
+  const essentialFields = {
+    meeting: [
+      ["title", "a meeting title"],
+      ["location", "a place or call link"],
+      ["date", "a date"],
+      ["time", "a start time"],
+      ["question", "the question"],
+    ],
+    event: [
+      ["title", "a kit name"],
+      ["location", "a place"],
+      ["date", "a date"],
+      ["time", "a start time"],
+      ["question", "the question on the table"],
+    ],
+  };
+
+  function listWords(items) {
+    if (items.length < 2) return items[0] || "";
+    if (items.length === 2) return `${items[0]} and ${items[1]}`;
+    return `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+  }
+
+  function missingEssentials(type, data) {
+    return (essentialFields[type] || [])
+      .filter(([name]) => !clean(data[name]))
+      .map(([, label]) => label);
   }
 
   function compose(type, data) {
@@ -66,12 +93,18 @@
     const date = clean(data.date);
     const time = clean(data.time);
     const duration = clean(data.duration);
-    const when = [date, time, duration].filter(Boolean).join(", ");
+    const end = clean(data.end || data.end_time || data.finish);
+    const timing = end ? `${time || "Start time not set"} to ${end}` : [time, duration].filter(Boolean).join(", ");
+    const when = [date, timing].filter(Boolean).join(", ");
+    const missing = missingEssentials(type, data);
+    const check = missing.length ? `> Draft check: ${listWords(missing)} still open.` : "";
     if (type === "meeting") {
       return [
         `# ${title}`,
         "",
         "A GAJRA EARTH MEETING CIRCLE",
+        check ? "" : null,
+        check || null,
         "",
         line(l.host, data.host),
         line(l.location, data.location),
@@ -84,12 +117,14 @@
         line("Access and shared trace", data.trace),
         "",
         "A meeting of minds about self-alignment and AI alignment within Joyful Responsible Abundance."
-      ].join("\n");
+      ].filter((part) => part !== null).join("\n");
     }
     return [
       `# ${title}`,
       "",
       l.heading,
+      check ? "" : null,
+      check || null,
       "",
       line(l.kind, data.kind),
       line(l.host, data.host),
@@ -110,7 +145,7 @@
       line(l.next, data.next),
       "",
       "Drafted locally in the browser. Nothing was sent by the page."
-    ].join("\n");
+    ].filter((part) => part !== null).join("\n");
   }
 
   function download(filename, text, mime) {
@@ -125,26 +160,129 @@
     setTimeout(() => URL.revokeObjectURL(url), 1200);
   }
 
+  function calendarEscape(value) {
+    return String(value || "")
+      .replace(/\\/g, "\\\\")
+      .replace(/\r?\n/g, "\\n")
+      .replace(/,/g, "\\,")
+      .replace(/;/g, "\\;");
+  }
+
+  function parseDurationMinutes(value) {
+    const text = clean(value).toLowerCase();
+    if (!text) return null;
+    if (/^\d{1,2}:\d{2}$/.test(text)) {
+      const [hours, minutes] = text.split(":").map(Number);
+      return hours * 60 + minutes;
+    }
+    if (/^\d+(?:\.\d+)?$/.test(text)) return Math.round(Number(text));
+    if (text === "half an hour" || text === "half hour") return 30;
+    const hours = [...text.matchAll(/(\d+(?:\.\d+)?)\s*(?:hours?|hrs?|h)\b/g)]
+      .reduce((total, match) => total + Number(match[1]) * 60, 0);
+    const minutes = [...text.matchAll(/(\d+(?:\.\d+)?)\s*(?:minutes?|mins?|m)\b/g)]
+      .reduce((total, match) => total + Number(match[1]), 0);
+    const total = Math.round(hours + minutes);
+    return total > 0 ? total : NaN;
+  }
+
+  function parseClock(value) {
+    const match = clean(value).match(/^(\d{1,2}):(\d{2})$/);
+    if (!match) return null;
+    const hour = Number(match[1]);
+    const minute = Number(match[2]);
+    if (hour > 23 || minute > 59) return null;
+    return hour * 60 + minute;
+  }
+
+  function addMinutes(dateValue, timeValue, minutes) {
+    const dateParts = String(dateValue).split("-").map(Number);
+    const timeParts = String(timeValue).split(":").map(Number);
+    const instant = new Date(Date.UTC(
+      dateParts[0],
+      dateParts[1] - 1,
+      dateParts[2],
+      timeParts[0],
+      timeParts[1] + minutes,
+      0,
+    ));
+    return {
+      date: [
+        instant.getUTCFullYear(),
+        String(instant.getUTCMonth() + 1).padStart(2, "0"),
+        String(instant.getUTCDate()).padStart(2, "0"),
+      ].join(""),
+      time: [
+        String(instant.getUTCHours()).padStart(2, "0"),
+        String(instant.getUTCMinutes()).padStart(2, "0"),
+        "00",
+      ].join(""),
+    };
+  }
+
   function calendarText(type, data, body) {
-    if (!data.date || !data.time) return "";
+    const missing = [
+      !clean(data.title) ? (type === "meeting" ? "a meeting title" : "a kit name") : "",
+      !clean(data.date) ? "a date" : "",
+      !clean(data.time) ? "a start time" : "",
+    ].filter(Boolean);
+    if (missing.length) {
+      return { error: `Calendar file unavailable: ${listWords(missing)} not entered.` };
+    }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(data.date) || parseClock(data.time) === null) {
+      return { error: "Check the date and start time before downloading a calendar file." };
+    }
+
     const title = clean(data.title) || labels[type].subject;
     const location = clean(data.location);
     const start = data.date.replaceAll("-", "") + "T" + data.time.replace(":", "") + "00";
-    const safeBody = body.replace(/\r?\n/g, "\\n").replace(/,/g, "\\,").replace(/;/g, "\\;");
-    return [
+    const enteredEnd = clean(data.end || data.end_time || data.finish);
+    const enteredDuration = clean(data.duration);
+    let end;
+    let durationNote = "";
+
+    if (enteredEnd) {
+      const startMinutes = parseClock(data.time);
+      const endMinutes = parseClock(enteredEnd);
+      if (endMinutes === null) {
+        return { error: "Check the end time before downloading a calendar file." };
+      }
+      let delta = endMinutes - startMinutes;
+      if (delta === 0) {
+        return { error: "Choose an end time that differs from the start time." };
+      }
+      if (delta < 0) delta += 24 * 60;
+      end = addMinutes(data.date, data.time, delta);
+    } else if (enteredDuration) {
+      const durationMinutes = parseDurationMinutes(enteredDuration);
+      if (!Number.isFinite(durationMinutes) || durationMinutes <= 0) {
+        return { error: "Write the length as, for example, 90 minutes or 2 hours." };
+      }
+      end = addMinutes(data.date, data.time, durationMinutes);
+    } else {
+      end = addMinutes(data.date, data.time, 60);
+      durationNote = " No length was entered, so the calendar file uses one hour.";
+    }
+
+    return {
+      text: [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
       "PRODID:-//GAJRA Earth//Meeting Tools//EN",
+      "CALSCALE:GREGORIAN",
       "BEGIN:VEVENT",
       `UID:${Date.now()}@gajra-earth`,
       `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "")}`,
       `DTSTART:${start}`,
-      `SUMMARY:${title}`,
-      location ? `LOCATION:${location}` : "",
-      `DESCRIPTION:${safeBody}`,
+      `DTEND:${end.date}T${end.time}`,
+      `SUMMARY:${calendarEscape(title)}`,
+      location ? `LOCATION:${calendarEscape(location)}` : "",
+      `DESCRIPTION:${calendarEscape(body)}`,
       "END:VEVENT",
-      "END:VCALENDAR"
-    ].filter(Boolean).join("\r\n");
+      "END:VCALENDAR",
+      "",
+      ].filter(Boolean).join("\r\n"),
+      note: durationNote,
+    };
   }
 
   function setStatus(root, message, tone) {
@@ -162,6 +300,19 @@
     const text = compose(type, data);
     output.textContent = text;
     return { type, data, text };
+  }
+
+  function flagDraft(root, state, successMessage) {
+    const missing = missingEssentials(state.type, state.data);
+    if (missing.length) {
+      setStatus(
+        root,
+        `${successMessage} Open draft fields: ${listWords(missing)}.`,
+        "warning",
+      );
+      return;
+    }
+    setStatus(root, successMessage);
   }
 
   async function copyText(text) {
@@ -182,8 +333,13 @@
   }
 
   function openShare(url) {
-    const win = window.open(url, "_blank", "noopener,noreferrer");
-    if (!win) window.location.href = url;
+    const link = document.createElement("a");
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
   }
 
   function initPlanner(root) {
@@ -192,41 +348,43 @@
     form.addEventListener("input", () => update(root));
     form.addEventListener("change", () => update(root));
 
-    root.querySelector("[data-planner-copy]").addEventListener("click", async () => {
+    root.querySelector("[data-planner-copy]")?.addEventListener("click", async () => {
       const state = update(root);
       try {
         await copyText(state.text);
-        setStatus(root, labels[type].copied);
+        flagDraft(root, state, labels[type].copied);
       } catch (error) {
         setStatus(root, "Copy did not work. Select the preview text and copy it by hand.", "warning");
       }
     });
 
-    root.querySelector("[data-planner-download]").addEventListener("click", () => {
+    root.querySelector("[data-planner-download]")?.addEventListener("click", () => {
       const state = update(root);
       download(`${labels[type].file}-${slug(state.data.title)}.md`, state.text, "text/markdown;charset=utf-8");
-      setStatus(root, labels[type].downloaded);
+      flagDraft(root, state, labels[type].downloaded);
     });
 
-    root.querySelector("[data-planner-ics]").addEventListener("click", () => {
+    root.querySelector("[data-planner-ics]")?.addEventListener("click", () => {
       const state = update(root);
-      const ics = calendarText(type, state.data, state.text);
-      if (!ics) {
-        setStatus(root, "Add a date and start time to make a calendar file.", "warning");
+      const calendar = calendarText(type, state.data, state.text);
+      if (calendar.error) {
+        setStatus(root, calendar.error, "warning");
         return;
       }
-      download(`${labels[type].file}-${slug(state.data.title)}.ics`, ics, "text/calendar;charset=utf-8");
-      setStatus(root, "Calendar file downloaded.");
+      download(`${labels[type].file}-${slug(state.data.title)}.ics`, calendar.text, "text/calendar;charset=utf-8");
+      setStatus(root, `Calendar file downloaded.${calendar.note}`);
     });
 
-    root.querySelector("[data-planner-email]").addEventListener("click", () => {
+    root.querySelector("[data-planner-email]")?.addEventListener("click", () => {
       const state = update(root);
       const subject = clean(state.data.title) || labels[type].subject;
-      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(state.text)}`;
+      flagDraft(root, state, "Email draft opened. Choose the recipient in your email app.");
+      window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(state.text)}`;
     });
 
-    root.querySelector("[data-planner-whatsapp]").addEventListener("click", () => {
+    root.querySelector("[data-planner-whatsapp]")?.addEventListener("click", () => {
       const state = update(root);
+      flagDraft(root, state, "WhatsApp draft opened.");
       openShare(`https://wa.me/?text=${encodeURIComponent(state.text)}`);
     });
 

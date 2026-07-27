@@ -23,9 +23,10 @@ The site is being built in visible layers so the Git history and [public build l
 - Build 3: local-first Alignment Lab builders and exports.
 - Build 4: borderless world map with satellite, flat and sphere views.
 - Build 5: pruned the early 22-page spine into eight main visitor doors with old URLs preserved as redirects.
-- Build 6: add useful atlas layers and map workbenches where location does real work.
-- Build 7: browser-first group join package and human review path.
-- Build 8: final accessibility, motion, mobile, performance and overstatement review.
+- Build 6: stated the core purpose and public stakes in plain language.
+- Build 7: added working Meeting Circle and Field Kit builders.
+- Build 8: added the source-led Future Watch.
+- Build 9: rebuilt all eight doors around one visitor, one task and one useful outcome.
 
 ## Architecture
 
@@ -38,6 +39,9 @@ The site uses a small dependency-free Node generator:
 - `assets/cosmos.js` owns the first canvas solar-system treatment.
 - `assets/alignment-lab.js` owns the browser-local Alignment Lab, explicit local save and Markdown, JSON and JSONL exports.
 - `assets/world-map.js` owns the borderless satellite atlas and `data/map-records.json` owns public map records.
+- `assets/upcoming-watch.js` owns source-led event filtering and calendar exports.
+- `assets/culture-tool.js` owns the browser-local Culture Compass.
+- `assets/contribution-tool.js` owns the local contribution packet and explicit handoff choices.
 - `tools/check-site.mjs` checks generated pages, local links and superseded launch language.
 - `docs/RECONNAISSANCE.md` records the source decisions and public boundaries.
 - `docs/ASSET_PROVENANCE.md` records media sources and rights treatment.
@@ -49,11 +53,13 @@ Generated HTML is committed so GitHub Pages can serve the site without a server 
 ## Build locally
 
 ```powershell
-npm.cmd run build:heroes
 npm.cmd run build
 npm.cmd run check
 python -m http.server 4179
 ```
+
+`npm.cmd run build:heroes` is not part of a normal release because it rebuilds
+procedural art used only by utility and redirect pages.
 
 Then open `http://localhost:4179/`.
 

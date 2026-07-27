@@ -29,9 +29,10 @@
   }
 
   function initialValue() {
+    if (reducedMotion && reducedMotion.matches) return 0;
     var stored = storedValue();
     if (Number.isFinite(stored)) return Math.max(0, Math.min(100, stored));
-    return reducedMotion && reducedMotion.matches ? 0 : 50;
+    return 50;
   }
 
   function setMotion(value, persist) {
@@ -74,16 +75,28 @@
     }
   }
 
+  setMotion(initialValue(), false);
+
   if (slider) {
-    setMotion(initialValue(), false);
     slider.addEventListener("input", function () {
       setMotion(slider.value, true);
     });
   }
   if (reset) {
     reset.addEventListener("click", function () {
-      setMotion(50, true);
+      setMotion(reducedMotion && reducedMotion.matches ? 0 : 50, true);
     });
+  }
+
+  if (reducedMotion) {
+    var respectReducedMotion = function (event) {
+      if (event.matches) setMotion(0, false);
+    };
+    if (reducedMotion.addEventListener) {
+      reducedMotion.addEventListener("change", respectReducedMotion);
+    } else if (reducedMotion.addListener) {
+      reducedMotion.addListener(respectReducedMotion);
+    }
   }
 
   document.querySelectorAll("[data-motion-video]").forEach(function (video) {
@@ -228,12 +241,34 @@
 
   document.addEventListener("keydown", function (event) {
     if (event.key !== "Escape") return;
-    document.querySelectorAll("details[open]").forEach(function (detail) {
+    var activeElement = document.activeElement;
+    var openDetails = Array.from(document.querySelectorAll("details[open]"));
+    var activeDetail =
+      activeElement && activeElement.closest
+        ? activeElement.closest("details[open]")
+        : null;
+    var detailToRestore =
+      activeDetail ||
+      (!menuWasOpen ? openDetails[openDetails.length - 1] : null) ||
+      null;
+    var detailOpener = detailToRestore
+      ? detailToRestore.querySelector(":scope > summary")
+      : null;
+    var menuWasOpen = Boolean(primaryNav && primaryNav.classList.contains("is-open"));
+
+    openDetails.forEach(function (detail) {
       detail.removeAttribute("open");
     });
     if (primaryNav && menuButton) {
       primaryNav.classList.remove("is-open");
       menuButton.setAttribute("aria-expanded", "false");
+    }
+    if (!openDetails.length && !menuWasOpen) return;
+    event.preventDefault();
+    if (detailOpener) {
+      detailOpener.focus();
+    } else if (menuWasOpen && menuButton) {
+      menuButton.focus();
     }
   });
 })();

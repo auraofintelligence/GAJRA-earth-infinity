@@ -10,6 +10,10 @@ import * as maplibregl from "./vendor/maplibre-gl.mjs";
 
   if (!container || !dataElement) return;
 
+  container.setAttribute("role", "region");
+  if (statusElement) statusElement.setAttribute("aria-atomic", "true");
+
+  var lastStatus = "";
   var recordsData;
   try {
     recordsData = JSON.parse(dataElement.textContent || "{}");
@@ -25,7 +29,9 @@ import * as maplibregl from "./vendor/maplibre-gl.mjs";
   }));
 
   function setStatus(message) {
-    if (statusElement) statusElement.textContent = message;
+    if (!statusElement || message === lastStatus) return;
+    lastStatus = message;
+    statusElement.textContent = message;
   }
 
   function escapeText(value) {
@@ -106,7 +112,7 @@ import * as maplibregl from "./vendor/maplibre-gl.mjs";
       link.href = record.url;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
-      link.textContent = "Open source";
+      link.textContent = "Open source in a new tab";
       root.append(link);
     }
 
@@ -119,7 +125,9 @@ import * as maplibregl from "./vendor/maplibre-gl.mjs";
     projectionButtons.forEach(function (button) {
       button.setAttribute("aria-pressed", String(button.dataset.mapProjection === next));
     });
-    setStatus(next === "globe" ? "Sphere view active. No political boundary layer is loaded." : "Flat view active. No political boundary layer is loaded.");
+    setStatus(next === "globe"
+      ? "Sphere view active. Choose a public record below the map to explore a place."
+      : "Flat view active. Choose a public record below the map to explore a place.");
   }
 
   function focusRecord(map, record) {
@@ -214,7 +222,13 @@ import * as maplibregl from "./vendor/maplibre-gl.mjs";
     if (mapInitialised) return;
     mapInitialised = true;
     container.dataset.mapReady = "true";
-    setStatus("Neutral satellite atlas ready. " + records.length + " public record" + (records.length === 1 ? "" : "s") + " in view.");
+    setStatus(
+      "Satellite atlas ready. " +
+      records.length +
+      " public record" +
+      (records.length === 1 ? "" : "s") +
+      " available. Use the view controls or choose a record below the map.",
+    );
 
     map.addSource("gajra-records", {
       type: "geojson",
@@ -296,8 +310,15 @@ import * as maplibregl from "./vendor/maplibre-gl.mjs";
     }
   }, 2500);
 
+  var imageryErrorTimer;
+  var imageryErrorAnnounced = false;
   map.on("error", function () {
-    setStatus("Some imagery tiles are unavailable. Public records remain listed below.");
+    if (imageryErrorAnnounced) return;
+    window.clearTimeout(imageryErrorTimer);
+    imageryErrorTimer = window.setTimeout(function () {
+      imageryErrorAnnounced = true;
+      setStatus("Some satellite imagery is unavailable. The public record list below remains available.");
+    }, 800);
   });
 
   projectionButtons.forEach(function (button) {
