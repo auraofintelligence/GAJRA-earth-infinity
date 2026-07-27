@@ -3,7 +3,7 @@ export const site = {
   longName: "Global Association for Joyful Responsible Abundance on Earth",
   baseUrl: "https://auraofintelligence.github.io/GAJRA-earth-infinity/",
   repositoryUrl: "https://github.com/auraofintelligence/GAJRA-earth-infinity",
-  assetVersion: "20260728d",
+  assetVersion: "20260728e",
   buildLabel: "Live public experiment · Earth in view",
   description:
     "A meeting of minds for self-alignment and AI alignment within Joyful Responsible Abundance.",
@@ -77,7 +77,7 @@ export const pages = [
           {
             label: "Gather",
             title: "Prepare a field kit",
-            text: "Build a practical run sheet for a listening station, tech-help table or public question circle.",
+            text: "Shape one practical field kit for a listening station, tech-help table or public question circle.",
             href: "events.html#field-kit-builder",
           },
         ],
@@ -375,39 +375,13 @@ export const pages = [
     navLabel: "Events & gatherings",
     title: "Build a GAJRA field kit.",
     eyebrow: "Events and gatherings",
-    status: "Run-sheet builder",
+    status: "Field Kit builder",
     description:
-      "A browser-first way to prepare listening stations, tech-help tables, public question circles and festival traces.",
+      "Build one practical, shareable field kit for a gathering.",
     intro:
-      "Use this room to turn a proposed gathering into something a host can actually run: time, place, people, question, access, materials, consent and a return path.",
+      "Shape the invitation, question, useful help, materials, consent and return path. Your finished field kit stays in your browser until you choose how to carry it onward.",
     eventTool: true,
-    upcomingWatch: true,
-    question: "Which gathering changed you, and what made it work?",
-    sections: [
-      {
-        title: "A gathering can keep its own name.",
-        steps: [
-          { title: "Invite and orient", text: "Name the question, access needs, privacy choices and the kind of trace people may keep or share." },
-          { title: "Create and compare", text: "Ask, imagine, play, perform, simulate and notice where different maps disagree." },
-          { title: "Reflect and revise", text: "Keep the useful pattern, name the gaps and let the next host adapt it without pretending it fits everywhere." },
-        ],
-        links: [
-          { label: "Build a field kit run sheet", href: "#field-kit-builder" },
-        ],
-      },
-      {
-        title: "Field kits and gathering tools.",
-        paragraphs: [
-          "Starter field kits are practical, low-pressure ways to meet people where they are: tech help, public awareness, listening stations, simple questions and useful next steps.",
-          "No hard sell. A kit helps a host ask what Joyful Responsible Abundance means in their terrain, then carry back a trace only if people choose that path.",
-        ],
-        cards: [
-          { label: "Listen", title: "Public awareness station", text: "A table, poster, question deck and quiet way for people to leave or keep a private answer.", href: "alignment-lab.html#lab-workbench" },
-          { label: "Help", title: "Tech help corner", text: "Practical support with exports, accessibility, device basics and source notes before anything public.", href: "contribute.html#join-the-bridge-atlas" },
-          { label: "Map", title: "Festival host marker", text: "A broad public location can appear on the atlas after consent and review.", href: "ecosystem.html#world-map-tool-title" },
-        ],
-      },
-    ],
+    sections: [],
   },
   {
     slug: "event-system",

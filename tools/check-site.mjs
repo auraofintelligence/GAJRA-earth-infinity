@@ -191,7 +191,7 @@ const upcomingWatchScript = await readFile(resolve(root, "assets/upcoming-watch.
 const upcomingWatchData = JSON.parse(await readFile(resolve(root, "data/upcoming-events.json"), "utf8"));
 const plannerRequirements = [
   [meetingHtml, "about.html", ['data-planner="meeting"', 'id="meeting-circle-builder"', "Copy invitation", "Download calendar file", "Open WhatsApp draft"]],
-  [eventsHtml, "events.html", ['data-planner="event"', 'id="field-kit-builder"', "Copy run sheet", "Download calendar file", "Open WhatsApp draft"]],
+  [eventsHtml, "events.html", ['data-planner="event"', 'id="field-kit-builder"', "Copy field kit", "Field kit preview", "Download calendar file", "Open WhatsApp draft"]],
 ];
 for (const [html, file, requirements] of plannerRequirements) {
   if (!html.includes("assets/meeting-tools.js?v=")) missing.push(`${file}: assets/meeting-tools.js?v=`);
@@ -213,16 +213,8 @@ if (/\bfetch\s*\(|XMLHttpRequest|sendBeacon\s*\(/.test(meetingToolsScript)) {
 if (!meetingToolsScript.includes("mailto:") || !meetingToolsScript.includes("wa.me")) {
   missing.push("assets/meeting-tools.js: missing human-sent handoff channels");
 }
-for (const requirement of [
-  'id="approaching"',
-  'data-watch-filter="attend"',
-  'data-watch-filter="influence"',
-  'data-watch-filter="watch"',
-  "Add to calendar",
-  "assets/upcoming-watch.js?v=",
-  'id="gajra-upcoming-watch-data"',
-]) {
-  if (!eventsHtml.includes(requirement)) missing.push(`events.html: ${requirement}`);
+for (const unwanted of ['id="approaching"', "Rooms you can still enter.", "A gathering can keep its own name.", "Field kits and gathering tools."]) {
+  if (eventsHtml.includes(unwanted)) missing.push(`events.html: competing journey remains: ${unwanted}`);
 }
 if (!Array.isArray(upcomingWatchData.records) || upcomingWatchData.records.length < 1) {
   missing.push("data/upcoming-events.json: no source-linked opportunities");

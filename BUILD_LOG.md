@@ -106,6 +106,9 @@
 - Cut the Meeting Space from six explanatory sections to one invitation builder and two useful onward paths.
 - Reduced the meeting form to the details required to invite people, hold the question and name the shared trace.
 - Centred editorial sections in a calmer reading column and brought section numbers back beside their headings.
+- Reduced Gather to one job: build a GAJRA Field Kit.
+- Removed the future-events watch, explanatory sequence and secondary cards from the Field Kit journey.
+- Unified the promise, builder, preview and exports around one Field Kit instead of mixing rooms, listening stations and run sheets.
 
 ## Next builds
 

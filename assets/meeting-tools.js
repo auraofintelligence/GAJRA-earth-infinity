@@ -37,8 +37,8 @@
       next: "Return path",
       file: "gajra-field-kit",
       subject: "GAJRA Earth field kit",
-      copied: "Run sheet copied.",
-      downloaded: "Run sheet downloaded."
+      copied: "Field kit copied.",
+      downloaded: "Field kit downloaded."
     }
   };
 

@@ -542,9 +542,9 @@ function renderEventTool() {
   return `<section class="planner-tool" data-planner="event" id="field-kit-builder" aria-labelledby="field-kit-builder-title">
     <header class="planner-intro">
       <div>
-        <span class="eyebrow">Starter field kit</span>
-        <h2 id="field-kit-builder-title">Prepare a listening station or run sheet.</h2>
-        <p>Designed for a phone at a table. Draft the kit before the gathering, or collect lines afterwards and send the bundle when you are back in signal.</p>
+        <span class="eyebrow">Your field kit</span>
+        <h2 id="field-kit-builder-title">Shape one gathering from invitation to return.</h2>
+        <p>Build it on a phone or computer. The preview grows beside your answers and stays here until you copy, download or share it.</p>
       </div>
       <p class="planner-status" data-planner-status role="status" aria-live="polite" aria-atomic="true">Ready. This page can work without an account.</p>
     </header>
@@ -616,10 +616,10 @@ function renderEventTool() {
         </div>
       </form>
       <aside class="planner-preview" aria-labelledby="field-kit-preview-title">
-        <h3 id="field-kit-preview-title">Run sheet preview</h3>
+        <h3 id="field-kit-preview-title">Field kit preview</h3>
         <pre data-planner-output tabindex="0"></pre>
         <div class="planner-actions">
-          <button type="button" class="button primary" data-planner-copy>Copy run sheet</button>
+          <button type="button" class="button primary" data-planner-copy>Copy field kit</button>
           <button type="button" class="button secondary" data-planner-download>Download Markdown</button>
           <button type="button" class="button secondary" data-planner-ics>Download calendar file</button>
           <button type="button" class="button secondary" data-planner-email>Open email draft</button>
