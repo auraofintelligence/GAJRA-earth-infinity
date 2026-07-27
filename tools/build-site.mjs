@@ -77,6 +77,17 @@ function renderLinks(links = []) {
     .join("")}</div>`;
 }
 
+function renderSourceDisclosure(source, extraClass = "") {
+  return `<details class="source-disclosure${extraClass ? ` ${extraClass}` : ""}">
+    <summary aria-label="Show source acknowledgement" title="Source acknowledgement"><span aria-hidden="true">i</span></summary>
+    <div class="source-disclosure-panel">
+      <span>${escapeHtml(source.label)}</span>
+      <p>${escapeHtml(source.caption)}</p>
+      <a href="${source.sourceUrl}"${externalAttributes(source.sourceUrl)}>${escapeHtml(source.credit)}<span aria-hidden="true">↗</span></a>
+    </div>
+  </details>`;
+}
+
 function renderMedia(media) {
   if (!media) return "";
 
@@ -92,12 +103,8 @@ function renderMedia(media) {
         </picture>`;
 
   return `<figure class="media-feature media-feature--${media.type}">
-    <div class="media-frame">${visual}<span class="media-halo" aria-hidden="true"></span></div>
-    <figcaption>
-      <span>${escapeHtml(media.label)}</span>
-      <p>${escapeHtml(media.caption)}</p>
-      <a href="${media.sourceUrl}"${externalAttributes(media.sourceUrl)}>${escapeHtml(media.credit)}<span aria-hidden="true">↗</span></a>
-    </figcaption>
+    <div class="media-frame">${visual}</div>
+    ${renderSourceDisclosure(media)}
   </figure>`;
 }
 
@@ -118,7 +125,7 @@ function renderKintsugiSeam(id, variant = 0) {
   return `<div class="kintsugi-seam" data-kintsugi aria-hidden="true">
     <svg viewBox="0 0 1200 46" preserveAspectRatio="none" focusable="false">
       <defs>
-        <linearGradient id="${gradientId}" x1="0" y1="0" x2="1" y2="0">
+        <linearGradient class="seam-gradient" id="${gradientId}" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stop-color="#ff4654"/>
           <stop offset=".17" stop-color="#ffbf52"/>
           <stop offset=".35" stop-color="#73f4df"/>
@@ -135,24 +142,25 @@ function renderKintsugiSeam(id, variant = 0) {
             `<path class="seam-path seam-branch" pathLength="1" stroke="url(#${gradientId})" d="${branch}"/>`,
         )
         .join("")}
-      <path class="seam-light" pathLength="1" stroke="url(#${gradientId})" d="${shape.path}"/>
     </svg>
   </div>`;
 }
 
 function renderTicker() {
-  const words = "JOY · RESPONSIBILITY · ABUNDANCE · BALANCE · CARE · PLAY · CONSENT · TRUTH · REPAIR · COURAGE ·";
-  const loop = `${words} ${words}`;
+  const words = ["Joy", "Responsibility", "Abundance", "Balance", "Care", "Play", "Consent", "Truth", "Repair", "Courage"];
+  const loop = words
+    .map((word) => `<span class="ticker-word">${escapeHtml(word)}</span>`)
+    .join("");
   return `<div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span class="ticker-group">${loop}</span>
-      <span class="ticker-group">${loop}</span>
+      <span class="ticker-group">${loop}</span><span class="ticker-group">${loop}</span>
     </div>
   </div>`;
 }
 
 function renderSections(page) {
   return page.sections
+    .filter((section) => section.placement !== "below-ticker")
     .map(
       (section, index) => `
       ${index ? renderKintsugiSeam(`section-${page.slug}-${index}`, index) : ""}
@@ -169,6 +177,14 @@ function renderSections(page) {
       </section>`,
     )
     .join("");
+}
+
+function renderBelowTicker(page) {
+  const section = page.sections.find((candidate) => candidate.placement === "below-ticker");
+  if (!section?.media) return "";
+  return `<section class="home-observation" aria-label="${escapeHtml(section.title)}">
+    ${renderMedia(section.media)}
+  </section>`;
 }
 
 function renderSitemap() {
@@ -274,9 +290,15 @@ function renderHero(page) {
           <a class="button secondary" href="alignment-lab.html">Enter the Alignment Lab</a>
         </div>
       </div>
-      <figure class="earth-threshold" aria-hidden="true">
-        <img src="assets/media/nasa-iss-aurora-2025.webp" width="1920" height="1080" alt="">
-      </figure>
+      ${renderSourceDisclosure(
+        {
+          label: "Earth image in our Sol system",
+          caption: "The orbital model shows Sol and the eight named planets. Earth is drawn from the 2012 Suomi NPP Blue Marble raster. The diagram is not to scale.",
+          sourceUrl: "https://svs.gsfc.nasa.gov/30002/",
+          credit: "Source and full credits · NASA SVS 30002",
+        },
+        "sol-source-disclosure",
+      )}
     </section>`;
   }
   return `<header class="page-hero">
@@ -343,6 +365,7 @@ function renderPage(page, buildLogMarkdown) {
   <main id="main">
     ${renderHero(page)}
     ${renderTicker()}
+    ${page.home ? renderBelowTicker(page) : ""}
     <div class="page-shell">
       ${page.home ? `<div class="opening-statement"><p>${escapeHtml(page.question)}</p></div>` : ""}
       ${pageContent}

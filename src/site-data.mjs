@@ -3,7 +3,7 @@ export const site = {
   longName: "Global Association for Joyful Responsible Abundance on Earth",
   baseUrl: "https://auraofintelligence.github.io/GAJRA-earth-infinity/",
   repositoryUrl: "https://github.com/auraofintelligence/GAJRA-earth-infinity",
-  assetVersion: "20260727b",
+  assetVersion: "20260727c",
   buildLabel: "Live public experiment · Earth in view",
   description:
     "A public field guide for new and seasoned explorers mapping Joyful Responsible Abundance across life, culture, events and AI alignment.",
@@ -78,6 +78,7 @@ export const pages = [
       },
       {
         title: "Earth already wears a garland.",
+        placement: "below-ticker",
         lead:
           "From orbit, aurora folds around the planet as light made visible by relationship: solar weather, atmosphere and a magnetic field meeting in motion.",
         media: {

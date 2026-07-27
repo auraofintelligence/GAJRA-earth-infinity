@@ -56,4 +56,15 @@ Every non-home public page has its own 1920 by 720 raster hero in
 - Treatment: factual and educational Earth imagery with NASA credited and no
   endorsement claim.
 
+### NASA SVS 30002, Suomi NPP Blue Marble
+
+- Source page: <https://svs.gsfc.nasa.gov/30002/>
+- Local raster: `assets/media/nasa-blue-marble-2012.jpg`.
+- Subject: a composite full-Earth view using Suomi NPP VIIRS observations from
+  4 January 2012.
+- Credit: NASA/NOAA/GSFC/Suomi NPP/VIIRS/Norman Kuring.
+- Treatment: the only depiction of Earth inside the home-page Sol system
+  diagram. It is drawn into the canvas as a raster crop, never reconstructed as
+  vector or procedural planet art.
+
 No historic protest photograph will be copied into the site without appropriate rights.

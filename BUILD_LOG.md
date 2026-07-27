@@ -28,6 +28,12 @@
 - Reframed the site around new and seasoned explorers mapping infinity.
 - Added a unique full-width hero image to every room.
 - Added a punctuation check that rejects em dashes.
+- Clarified the home diagram as our Sol system with Sol, eight named planets and a real NASA raster for Earth.
+- Gave ticker words wider spacing and RGB accents, with slower counter-moving colour rails.
+- Replaced the moving seam slug with colour flowing through the full kintsugi line.
+- Added motion-aware pointer light and centre-balanced card tilt for mouse and touch, following the Right Place Right Time interaction.
+- Removed permanent media credit panels. Full-width imagery now carries reusable hover, focus and tap acknowledgements behind small information icons.
+- Moved the Earth aurora film directly below the ticker, removed the linear planet key and slightly quickened the labelled Sol model.
 - Left `gajra.earth` unchanged while this dedicated Pages site remains the public build preview.
 
 ## Next builds
