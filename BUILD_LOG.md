@@ -82,8 +82,18 @@
 - Added a source-backed homepage section on why this matters now: money, current AI safety rooms, frontier-industry coordination, AI-for-good spaces and the missing middle.
 - Framed the stakes as practical and lived: work, education, health, media, culture, trust, ecology, security, agency and ordinary days.
 
+## Build 7 - Meeting and field-kit handles - 27 July 2026
+
+- Reworked the Meeting Space so it begins with a browser-local meeting-circle builder instead of only a metaphor.
+- Added copy, Markdown download, calendar file, email draft and WhatsApp draft actions for meeting invitations.
+- Reworked Gather so it begins with a practical starter field-kit builder for listening stations, tech-help tables, public circles and festival tables.
+- Added the same local handoff actions for field-kit run sheets.
+- Pointed the homepage primary action and cards at the new functional anchors.
+- Kept the pattern browser-first: nothing is sent by the page, and the visitor chooses any email or messaging handoff.
+- Added validation checks so the meeting builder, field-kit builder, local handoff script and no-network rule remain present after future builds.
+
 ## Next builds
 
-- Build 7: useful map layers for festivals, working groups, labs, data centres, grant labs, tender labs and starter field kits.
-- Build 8: a browser-first group join package with local drafting, readable exports and deliberate SMS, WhatsApp or email handoff for human review.
-- Build 9: final accessibility, motion, mobile, performance and overstatement review.
+- Build 8: useful map layers for festivals, working groups, labs, data centres, grant labs, tender labs and starter field kits.
+- Build 9: a browser-first group join package with local drafting, readable exports and deliberate SMS, WhatsApp or email handoff for human review.
+- Build 10: final accessibility, motion, mobile, performance and overstatement review.

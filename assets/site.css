@@ -1447,6 +1447,8 @@ html[data-motion="off"] .signal-card.is-touch-balanced {
 }
 
 .lab-fields input[type="text"],
+.lab-fields input[type="date"],
+.lab-fields input[type="time"],
 .lab-fields textarea,
 .lab-fields select {
   width: 100%;
@@ -1609,6 +1611,119 @@ html[data-motion="off"] .signal-card.is-touch-balanced {
   margin: 0;
   color: var(--paper-dim);
   font-size: 0.86rem;
+}
+
+.planner-tool {
+  width: var(--viewport-width);
+  margin: clamp(2.5rem, 6vw, 5rem) 0 clamp(3rem, 7vw, 6rem) calc(50% - var(--viewport-half-width));
+  border-block: 1px solid var(--line);
+  background:
+    radial-gradient(circle at var(--cursor-x, 50%) var(--cursor-y, 50%), rgba(115, 244, 223, 0.12), transparent 18rem),
+    linear-gradient(135deg, rgba(255, 189, 74, 0.05), transparent 40%),
+    linear-gradient(230deg, rgba(87, 168, 255, 0.06), transparent 42%),
+    #090a0f;
+}
+
+.planner-intro,
+.planner-grid {
+  width: min(calc(100% - 2rem), var(--max-wide));
+  margin-inline: auto;
+}
+
+.planner-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+  gap: clamp(1.5rem, 5vw, 5rem);
+  align-items: end;
+  padding: clamp(3rem, 7vw, 6rem) 0 clamp(1.5rem, 4vw, 3rem);
+}
+
+.planner-intro h2 {
+  max-width: 58rem;
+  margin: 0 0 1rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.5rem, 5.5vw, 5rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+.planner-intro p {
+  max-width: 52rem;
+  margin: 0;
+  color: var(--paper-dim);
+}
+
+.planner-status {
+  border-left: 1px solid var(--responsibility);
+  padding: 0.2rem 0 0.2rem 1rem;
+  color: var(--paper-dim);
+}
+
+.planner-status[data-tone="warning"] {
+  border-left-color: var(--joy);
+  color: var(--joy);
+}
+
+.planner-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.95fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+  padding-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.planner-form,
+.planner-preview {
+  min-width: 0;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.planner-preview {
+  position: sticky;
+  top: calc(var(--header-height, 7rem) + 1rem);
+  border-radius: 1.6rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.25);
+}
+
+.planner-preview h3 {
+  margin: 0 0 1rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.65rem, 3vw, 2.45rem);
+  font-weight: 400;
+}
+
+.planner-preview pre {
+  max-height: 30rem;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.32);
+  color: var(--paper);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.planner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.planner-actions .button {
+  border: 1px solid var(--line-strong);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.planner-actions .button.primary {
+  border-color: transparent;
 }
 
 .kintsugi-seam {
@@ -2163,6 +2278,15 @@ html[data-motion="off"] *::after {
     grid-template-columns: 1fr;
   }
 
+  .planner-intro,
+  .planner-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .planner-preview {
+    position: static;
+  }
+
   .lab-tabs {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2339,6 +2463,14 @@ html[data-motion="off"] *::after {
 
   .lab-action-buttons .button,
   .lab-action-buttons .quiet-button {
+    width: 100%;
+  }
+
+  .planner-actions {
+    flex-direction: column;
+  }
+
+  .planner-actions .button {
     width: 100%;
   }
 

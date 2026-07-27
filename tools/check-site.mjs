@@ -184,6 +184,34 @@ for (const control of formControls) {
   }
 }
 
+const meetingHtml = await readFile(resolve(root, "about.html"), "utf8");
+const eventsHtml = await readFile(resolve(root, "events.html"), "utf8");
+const meetingToolsScript = await readFile(resolve(root, "assets/meeting-tools.js"), "utf8");
+const plannerRequirements = [
+  [meetingHtml, "about.html", ['data-planner="meeting"', 'id="meeting-circle-builder"', "Copy invitation", "Download calendar file", "Open WhatsApp draft"]],
+  [eventsHtml, "events.html", ['data-planner="event"', 'id="field-kit-builder"', "Copy run sheet", "Download calendar file", "Open WhatsApp draft"]],
+];
+for (const [html, file, requirements] of plannerRequirements) {
+  if (!html.includes("assets/meeting-tools.js?v=")) missing.push(`${file}: assets/meeting-tools.js?v=`);
+  for (const requirement of requirements) {
+    if (!html.includes(requirement)) missing.push(`${file}: ${requirement}`);
+  }
+  const controls = [...html.matchAll(/<(input|select|textarea)\b[^>]*>/g)];
+  for (const control of controls) {
+    const before = html.slice(Math.max(0, control.index - 250), control.index);
+    const tag = control[0];
+    if (!before.includes("<label") && !/aria-label=|aria-labelledby=/.test(tag)) {
+      missing.push(`${file}: unlabelled ${control[1]} control`);
+    }
+  }
+}
+if (/\bfetch\s*\(|XMLHttpRequest|sendBeacon\s*\(/.test(meetingToolsScript)) {
+  missing.push("assets/meeting-tools.js: unexpected network transmission API");
+}
+if (!meetingToolsScript.includes("mailto:") || !meetingToolsScript.includes("wa.me")) {
+  missing.push("assets/meeting-tools.js: missing human-sent handoff channels");
+}
+
 const mapHtml = await readFile(resolve(root, "ecosystem.html"), "utf8");
 const mapScript = await readFile(resolve(root, "assets/world-map.js"), "utf8");
 const mapData = JSON.parse(await readFile(resolve(root, "data/map-records.json"), "utf8"));

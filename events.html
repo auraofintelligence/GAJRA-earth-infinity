@@ -3,22 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Where proposed values meet bodies, weather and time. · GAJRA Earth</title>
-  <meta name="description" content="Events as practical alignment environments for culture, logistics, consent, consequence and collective reflection.">
+  <title>Build a GAJRA field kit. · GAJRA Earth</title>
+  <meta name="description" content="A browser-first way to prepare listening stations, tech-help tables, public question circles and festival traces.">
   <meta name="theme-color" content="#07070a">
-  <meta property="og:title" content="Where proposed values meet bodies, weather and time. · GAJRA Earth">
-  <meta property="og:description" content="Events as practical alignment environments for culture, logistics, consent, consequence and collective reflection.">
+  <meta property="og:title" content="Build a GAJRA field kit. · GAJRA Earth">
+  <meta property="og:description" content="A browser-first way to prepare listening stations, tech-help tables, public question circles and festival traces.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://auraofintelligence.github.io/GAJRA-earth-infinity/events.html">
   <link rel="icon" href="assets/aura-heart-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="assets/aura-heart-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="assets/aura-heart-180.png">
 
-  <link rel="stylesheet" href="assets/site.css?v=20260727i">
+  <link rel="stylesheet" href="assets/site.css?v=20260727j">
   <script>document.documentElement.classList.add("js");</script>
-  <script defer src="assets/site.js?v=20260727i"></script>
+  <script defer src="assets/site.js?v=20260727j"></script>
 
 
+  <script defer src="assets/meeting-tools.js?v=20260727j"></script>
 
 </head>
 <body id="top" data-page="events">
@@ -68,10 +69,10 @@
       <img src="assets/heroes/events.webp" width="1920" height="720" alt="">
     </figure>
     <div class="page-hero-copy">
-      <span class="status-chip">Gathering path</span>
+      <span class="status-chip">Run-sheet builder</span>
       <p class="eyebrow">Events and gatherings</p>
-      <h1>Where proposed values meet bodies, weather and time.</h1>
-      <p class="page-intro">A gathering can host a small GAJRA layer without surrendering its identity: one shared question, simulation, artwork, commitment or reflection with local context intact.</p>
+      <h1>Build a GAJRA field kit.</h1>
+      <p class="page-intro">Use this room to turn a proposed gathering into something a host can actually run: time, place, people, question, access, materials, consent and a return path.</p>
     </div>
   </header>
     <div class="ticker" aria-hidden="true">
@@ -82,12 +83,100 @@
 
     <div class="page-shell">
 
+      <section class="planner-tool" data-planner="event" id="field-kit-builder" aria-labelledby="field-kit-builder-title">
+    <header class="planner-intro">
+      <div>
+        <span class="eyebrow">Starter field kit</span>
+        <h2 id="field-kit-builder-title">Prepare a listening station or run sheet.</h2>
+        <p>Designed for a phone at a table. Draft the kit before the gathering, or collect lines afterwards and send the bundle when you are back in signal.</p>
+      </div>
+      <p class="planner-status" data-planner-status role="status" aria-live="polite" aria-atomic="true">Ready. This page can work without an account.</p>
+    </header>
+    <div class="planner-grid">
+      <form class="planner-form" data-planner-form>
+        <div class="lab-fields two-column">
+          <label class="full-field">
+            <span>Kit name</span>
+            <input type="text" name="title" placeholder="Saturday market listening station">
+          </label>
+          <label>
+            <span>Gathering type</span>
+            <select name="kind">
+              <option>Listening station</option>
+              <option>Tech help corner</option>
+              <option>Public question circle</option>
+              <option>Festival table</option>
+              <option>Workshop</option>
+            </select>
+          </label>
+          <label>
+            <span>Host or group</span>
+            <input type="text" name="host" placeholder="Who is holding the table?">
+          </label>
+          <label>
+            <span>Place</span>
+            <input type="text" name="location" placeholder="Market, library, hall, island, town">
+          </label>
+          <label>
+            <span>Date</span>
+            <input type="date" name="date">
+          </label>
+          <label>
+            <span>Start time</span>
+            <input type="time" name="time">
+          </label>
+          <label>
+            <span>Length</span>
+            <input type="text" name="duration" placeholder="2 hours">
+          </label>
+          <label>
+            <span>Who may wander up?</span>
+            <input type="text" name="invitees" placeholder="Neighbours, families, builders, visitors">
+          </label>
+          <label class="full-field">
+            <span>Question on the table</span>
+            <textarea name="question" rows="4" placeholder="What does Joyful Responsible Abundance mean in ordinary life here?"></textarea>
+          </label>
+          <label>
+            <span>Useful help offered</span>
+            <textarea name="joy" rows="4" placeholder="Phones, forms, printing, setup, translation, listening, directions"></textarea>
+          </label>
+          <label>
+            <span>Care and consent</span>
+            <textarea name="responsibility" rows="4" placeholder="No hard sell, no hidden capture, named or anonymous by choice"></textarea>
+          </label>
+          <label>
+            <span>Materials</span>
+            <textarea name="abundance" rows="4" placeholder="Chairs, shade, paper, pens, water, signs, charger, quiet corner"></textarea>
+          </label>
+          <label>
+            <span>Trace to carry home</span>
+            <textarea name="trace" rows="4" placeholder="Themes only, named lines, anonymous lines, photos only with consent"></textarea>
+          </label>
+          <label class="full-field">
+            <span>Return path</span>
+            <textarea name="next" rows="3" placeholder="How can someone correct, remove or follow up on anything they shared?"></textarea>
+          </label>
+        </div>
+      </form>
+      <aside class="planner-preview" aria-labelledby="field-kit-preview-title">
+        <h3 id="field-kit-preview-title">Run sheet preview</h3>
+        <pre data-planner-output tabindex="0"></pre>
+        <div class="planner-actions">
+          <button type="button" class="button primary" data-planner-copy>Copy run sheet</button>
+          <button type="button" class="button secondary" data-planner-download>Download Markdown</button>
+          <button type="button" class="button secondary" data-planner-ics>Download calendar file</button>
+          <button type="button" class="button secondary" data-planner-email>Open email draft</button>
+          <button type="button" class="button secondary" data-planner-whatsapp>Open WhatsApp draft</button>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-
-      <section class="content-section" id="a-gathering-can-keep-its-own-identity">
+      <section class="content-section" id="a-gathering-can-keep-its-own-name">
         <div class="section-heading">
           <span class="section-number">01</span>
-          <h2>A gathering can keep its own identity.</h2>
+          <h2>A gathering can keep its own name.</h2>
         </div>
 
 
@@ -96,24 +185,24 @@
         <span>01</span>
         <div>
           <h3>Invite and orient</h3>
-          <p>Explain purpose, consent, access, privacy and what participation does not imply.</p>
+          <p>Name the question, access needs, privacy choices and the kind of trace people may keep or share.</p>
         </div>
       </li><li>
         <span>02</span>
         <div>
           <h3>Create and compare</h3>
-          <p>Ask, imagine, play, perform, simulate and notice disagreement.</p>
+          <p>Ask, imagine, play, perform, simulate and notice where different maps disagree.</p>
         </div>
       </li><li>
         <span>03</span>
         <div>
           <h3>Reflect and revise</h3>
-          <p>Publish only safe traces, document failures and let useful patterns travel.</p>
+          <p>Keep the useful pattern, name the gaps and let the next host adapt it without pretending it fits everywhere.</p>
         </div>
       </li></ol>
 
 
-        <div class="link-field"><a href="event-system.html">Explore the event operating system<span aria-hidden="true">↗</span></a></div>
+        <div class="link-field"><a href="#field-kit-builder">Build a field kit run sheet<span aria-hidden="true">↗</span></a></div>
       </section>
       <div class="kintsugi-seam" data-kintsugi aria-hidden="true">
     <svg viewBox="0 0 1200 46" preserveAspectRatio="none" focusable="false">

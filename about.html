@@ -3,22 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A flower garland, scaled to a living planet. · GAJRA Earth</title>
-  <meta name="description" content="GAJRA Earth is a meeting space before the AI frontier, with a public experiment now open and the formal association layer still ahead.">
+  <title>Host a meeting of minds. · GAJRA Earth</title>
+  <meta name="description" content="A practical room for setting up a GAJRA circle before the AI frontier reaches further.">
   <meta name="theme-color" content="#07070a">
-  <meta property="og:title" content="A flower garland, scaled to a living planet. · GAJRA Earth">
-  <meta property="og:description" content="GAJRA Earth is a meeting space before the AI frontier, with a public experiment now open and the formal association layer still ahead.">
+  <meta property="og:title" content="Host a meeting of minds. · GAJRA Earth">
+  <meta property="og:description" content="A practical room for setting up a GAJRA circle before the AI frontier reaches further.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://auraofintelligence.github.io/GAJRA-earth-infinity/about.html">
   <link rel="icon" href="assets/aura-heart-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="assets/aura-heart-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="assets/aura-heart-180.png">
 
-  <link rel="stylesheet" href="assets/site.css?v=20260727i">
+  <link rel="stylesheet" href="assets/site.css?v=20260727j">
   <script>document.documentElement.classList.add("js");</script>
-  <script defer src="assets/site.js?v=20260727i"></script>
+  <script defer src="assets/site.js?v=20260727j"></script>
 
 
+  <script defer src="assets/meeting-tools.js?v=20260727j"></script>
 
 </head>
 <body id="top" data-page="about">
@@ -68,10 +69,10 @@
       <img src="assets/heroes/about.webp" width="1920" height="720" alt="">
     </figure>
     <div class="page-hero-copy">
-      <span class="status-chip">Living threshold</span>
+      <span class="status-chip">Circle builder</span>
       <p class="eyebrow">Meeting space</p>
-      <h1>A flower garland, scaled to a living planet.</h1>
-      <p class="page-intro">A gajra is made one flower at a time. At planetary scale, the aurora becomes Earth’s luminous garland. Each person, culture and model may carry one flower in the circle.</p>
+      <h1>Host a meeting of minds.</h1>
+      <p class="page-intro">Use this room to shape a small meeting: who is coming, why they are meeting, which question travels into the room and what trace may return.</p>
     </div>
   </header>
     <div class="ticker" aria-hidden="true">
@@ -82,15 +83,103 @@
 
     <div class="page-shell">
 
+      <section class="planner-tool" data-planner="meeting" id="meeting-circle-builder" aria-labelledby="meeting-circle-builder-title">
+    <header class="planner-intro">
+      <div>
+        <span class="eyebrow">Meeting circle builder</span>
+        <h2 id="meeting-circle-builder-title">Turn the idea into an invitation.</h2>
+        <p>This tool composes a meeting note in your browser. Copy it, download it, turn it into a calendar file, or open it in your own email or WhatsApp when you choose.</p>
+      </div>
+      <p class="planner-status" data-planner-status role="status" aria-live="polite" aria-atomic="true">Ready. Nothing leaves this page by itself.</p>
+    </header>
+    <div class="planner-grid">
+      <form class="planner-form" data-planner-form>
+        <div class="lab-fields two-column">
+          <label class="full-field">
+            <span>Meeting title</span>
+            <input type="text" name="title" placeholder="Meeting of minds for Joyful Responsible Abundance">
+          </label>
+          <label>
+            <span>Circle type</span>
+            <select name="kind">
+              <option>Small table</option>
+              <option>Builder lab</option>
+              <option>Public listening circle</option>
+              <option>Online call</option>
+              <option>Festival table</option>
+            </select>
+          </label>
+          <label>
+            <span>Host or steward</span>
+            <input type="text" name="host" placeholder="Name, group or project">
+          </label>
+          <label>
+            <span>Place or link</span>
+            <input type="text" name="location" placeholder="Room, town, island or call link">
+          </label>
+          <label>
+            <span>Date</span>
+            <input type="date" name="date">
+          </label>
+          <label>
+            <span>Start time</span>
+            <input type="time" name="time">
+          </label>
+          <label>
+            <span>Length</span>
+            <input type="text" name="duration" placeholder="90 minutes">
+          </label>
+          <label>
+            <span>People to invite</span>
+            <input type="text" name="invitees" placeholder="Builders, artists, neighbours, researchers">
+          </label>
+          <label class="full-field">
+            <span>Core question</span>
+            <textarea name="question" rows="4" placeholder="What should self-alignment and AI alignment protect, recognise and help grow here?"></textarea>
+          </label>
+          <label>
+            <span>Joy to notice</span>
+            <textarea name="joy" rows="4" placeholder="What makes the room worth entering?"></textarea>
+          </label>
+          <label>
+            <span>Responsibility to protect</span>
+            <textarea name="responsibility" rows="4" placeholder="Consent, limits, people not in the room, return path"></textarea>
+          </label>
+          <label>
+            <span>Abundance to grow</span>
+            <textarea name="abundance" rows="4" placeholder="Time, capability, knowledge, care, access, shared benefit"></textarea>
+          </label>
+          <label>
+            <span>Trace and consent</span>
+            <textarea name="trace" rows="4" placeholder="Private notes, anonymous themes, named public line, or no public trace"></textarea>
+          </label>
+          <label class="full-field">
+            <span>Next step after the circle</span>
+            <textarea name="next" rows="3" placeholder="Who carries the map home, and how will the room know what changed?"></textarea>
+          </label>
+        </div>
+      </form>
+      <aside class="planner-preview" aria-labelledby="meeting-preview-title">
+        <h3 id="meeting-preview-title">Invitation preview</h3>
+        <pre data-planner-output tabindex="0"></pre>
+        <div class="planner-actions">
+          <button type="button" class="button primary" data-planner-copy>Copy invitation</button>
+          <button type="button" class="button secondary" data-planner-download>Download Markdown</button>
+          <button type="button" class="button secondary" data-planner-ics>Download calendar file</button>
+          <button type="button" class="button secondary" data-planner-email>Open email draft</button>
+          <button type="button" class="button secondary" data-planner-whatsapp>Open WhatsApp draft</button>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-
-      <section class="content-section" id="meet-before-setting-out">
+      <section class="content-section" id="what-this-room-is-for">
         <div class="section-heading">
           <span class="section-number">01</span>
-          <h2>Meet before setting out.</h2>
+          <h2>What this room is for.</h2>
         </div>
 
-        <p>GAJRA Earth offers a safer meeting space before exploring infinity: somewhere to compare headings, surface possible consequences, choose boundaries and decide what should travel.</p><p>It is also a threshold where maps can be bought and shared, journeys prepared, and returning wanderers welcomed home to celebration, story and new knowledge.</p><p>The hedge creates layered room to pause, test, disagree, contain failure and keep a return path before capability reaches further.</p>
+        <p>GAJRA Earth exists to convene a meeting of minds about self-alignment and AI alignment within Joyful Responsible Abundance.</p><p>A useful circle makes room for builders, sceptics, artists, scientists, families, founders, elders, organisers and everyday people to compare maps before any single map pretends to be the territory.</p><p>The room is a threshold: maps are shared, journeys are prepared, and returning wanderers bring back stories, questions, corrections and celebrations.</p>
 
 
 
@@ -114,18 +203,18 @@
       <path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-1)" d="M190 14 L176 4"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-1)" d="M440 30 L452 42"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-1)" d="M760 12 L774 3"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-1)" d="M1050 28 L1037 41"/>
     </svg>
   </div>
-      <section class="content-section" id="make-a-map-test-it-bring-it-home">
+      <section class="content-section" id="who-belongs-in-the-room">
         <div class="section-heading">
           <span class="section-number">02</span>
-          <h2>Make a map, test it, bring it home.</h2>
+          <h2>Who belongs in the room.</h2>
         </div>
 
-        <p>Define Joyful Responsible Abundance in your own terrain, compare possible paths, try one lived experiment and redraw the map after seeing what happened.</p>
+        <p>Invite people who carry different kinds of sight: technical, lived, cultural, ecological, artistic, spiritual, economic and practical.</p><p>The meeting does not ask everyone to agree. It asks the room to notice what each path lights up, what it protects, what it gives and what it may ask someone else to carry.</p>
 
 
 
 
-        <div class="link-field"><a href="alignment-lab.html#lab-workbench">Make a private map in the Alignment Lab<span aria-hidden="true">↗</span></a><a href="commitment.html">Choose a one-week commitment<span aria-hidden="true">↗</span></a></div>
+        <div class="link-field"><a href="alignment-lab.html#lab-workbench">Make a private map in the Alignment Lab<span aria-hidden="true">↗</span></a><a href="events.html#field-kit-builder">Prepare a field kit<span aria-hidden="true">↗</span></a></div>
       </section>
       <div class="kintsugi-seam" data-kintsugi aria-hidden="true">
     <svg viewBox="0 0 1200 46" preserveAspectRatio="none" focusable="false">
@@ -144,23 +233,23 @@
       <path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-2)" d="M305 14 L320 4"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-2)" d="M530 30 L545 42"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-2)" d="M810 10 L796 2"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-2)" d="M1000 18 L1016 35"/>
     </svg>
   </div>
-      <section class="content-section" id="choose-a-first-move">
+      <section class="content-section" id="choose-a-first-meeting-type">
         <div class="section-heading">
           <span class="section-number">03</span>
-          <h2>Choose a first move.</h2>
+          <h2>Choose a first meeting type.</h2>
         </div>
 
 
 
 
 
-        <div class="card-grid"><a class="signal-card" href="alignment-lab.html#lab-workbench"><span class="card-label">Map</span>
-        <h3>Name what matters here</h3>
-        <p>Create a private, revisable record and export a copy you control.</p><span class="card-arrow" aria-hidden="true">↗</span></a><a class="signal-card" href="events.html"><span class="card-label">Gather</span>
-        <h3>Prepare a useful conversation</h3>
-        <p>Take one question into a gathering with consent and context intact.</p><span class="card-arrow" aria-hidden="true">↗</span></a><a class="signal-card" href="research.html"><span class="card-label">Check</span>
-        <h3>Inspect sources and open claims</h3>
-        <p>Separate evidence, project hypotheses and unresolved questions.</p><span class="card-arrow" aria-hidden="true">↗</span></a></div>
+        <div class="card-grid"><a class="signal-card" href="#meeting-circle-builder"><span class="card-label">Table</span>
+        <h3>Four to eight people</h3>
+        <p>A quiet room, one question, one shared note and a next invitation.</p><span class="card-arrow" aria-hidden="true">↗</span></a><a class="signal-card" href="frontier-labs.html"><span class="card-label">Lab</span>
+        <h3>Builders and researchers</h3>
+        <p>A technical circle that compares self-alignment, AI alignment and lived consequences.</p><span class="card-arrow" aria-hidden="true">↗</span></a><a class="signal-card" href="events.html#field-kit-builder"><span class="card-label">Public</span>
+        <h3>Listening station</h3>
+        <p>A low-pressure place where people can define Joyful Responsible Abundance in their own words.</p><span class="card-arrow" aria-hidden="true">↗</span></a></div>
 
       </section>
       <div class="kintsugi-seam" data-kintsugi aria-hidden="true">
@@ -180,9 +269,39 @@
       <path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-3)" d="M190 14 L176 4"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-3)" d="M440 30 L452 42"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-3)" d="M760 12 L774 3"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-3)" d="M1050 28 L1037 41"/>
     </svg>
   </div>
-      <section class="content-section" id="joyful-responsible-abundance">
+      <section class="content-section" id="the-flower-belongs-here-too">
         <div class="section-heading">
           <span class="section-number">04</span>
+          <h2>The flower belongs here too.</h2>
+        </div>
+
+        <p>A gajra is made one flower at a time. At planetary scale, the aurora becomes Earth’s luminous garland. Each person, culture and model may carry one flower in the circle.</p><p>The metaphor belongs after the invitation becomes useful: beauty helps people remember why the meeting is worth having.</p>
+
+
+
+
+
+      </section>
+      <div class="kintsugi-seam" data-kintsugi aria-hidden="true">
+    <svg viewBox="0 0 1200 46" preserveAspectRatio="none" focusable="false">
+      <defs>
+        <linearGradient class="seam-gradient" id="rgb-section-about-4" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#ff4654"/>
+          <stop offset=".17" stop-color="#ffbf52"/>
+          <stop offset=".35" stop-color="#73f4df"/>
+          <stop offset=".54" stop-color="#236bff"/>
+          <stop offset=".72" stop-color="#b194ff"/>
+          <stop offset=".87" stop-color="#ff5ba3"/>
+          <stop offset="1" stop-color="#ff4654"/>
+        </linearGradient>
+      </defs>
+      <path class="seam-path" pathLength="1" stroke="url(#rgb-section-about-4)" d="M0 24 L130 20 L215 28 L305 14 L360 26 L475 18 L530 30 L645 16 L740 24 L810 10 L890 26 L1000 18 L1090 26 L1200 22"/>
+      <path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-4)" d="M305 14 L320 4"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-4)" d="M530 30 L545 42"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-4)" d="M810 10 L796 2"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-4)" d="M1000 18 L1016 35"/>
+    </svg>
+  </div>
+      <section class="content-section" id="joyful-responsible-abundance">
+        <div class="section-heading">
+          <span class="section-number">05</span>
           <h2>Joyful Responsible Abundance.</h2>
         </div>
 
@@ -208,7 +327,7 @@
       <div class="kintsugi-seam" data-kintsugi aria-hidden="true">
     <svg viewBox="0 0 1200 46" preserveAspectRatio="none" focusable="false">
       <defs>
-        <linearGradient class="seam-gradient" id="rgb-section-about-4" x1="0" y1="0" x2="1" y2="0">
+        <linearGradient class="seam-gradient" id="rgb-section-about-5" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stop-color="#ff4654"/>
           <stop offset=".17" stop-color="#ffbf52"/>
           <stop offset=".35" stop-color="#73f4df"/>
@@ -218,13 +337,13 @@
           <stop offset="1" stop-color="#ff4654"/>
         </linearGradient>
       </defs>
-      <path class="seam-path" pathLength="1" stroke="url(#rgb-section-about-4)" d="M0 24 L130 20 L215 28 L305 14 L360 26 L475 18 L530 30 L645 16 L740 24 L810 10 L890 26 L1000 18 L1090 26 L1200 22"/>
-      <path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-4)" d="M305 14 L320 4"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-4)" d="M530 30 L545 42"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-4)" d="M810 10 L796 2"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-4)" d="M1000 18 L1016 35"/>
+      <path class="seam-path" pathLength="1" stroke="url(#rgb-section-about-5)" d="M0 22 L110 26 L190 14 L275 28 L370 18 L440 30 L560 16 L650 24 L760 12 L850 26 L940 18 L1050 28 L1130 20 L1200 24"/>
+      <path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-5)" d="M190 14 L176 4"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-5)" d="M440 30 L452 42"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-5)" d="M760 12 L774 3"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-about-5)" d="M1050 28 L1037 41"/>
     </svg>
   </div>
       <section class="content-section" id="the-small-crossing-loop">
         <div class="section-heading">
-          <span class="section-number">05</span>
+          <span class="section-number">06</span>
           <h2>The small crossing loop.</h2>
         </div>
 
@@ -255,7 +374,7 @@
       </section>
       <aside class="question-pause" aria-labelledby="reflection-question-about">
         <h2 id="reflection-question-about">Pause here</h2>
-        <p>What remains plural even when coordination becomes global?</p>
+        <p>Who would you invite into a meeting where the goal is clarity, not agreement?</p>
         <a href="alignment-lab.html">Carry this question into the Lab</a>
       </aside>
       <nav class="page-sequence" aria-label="Page sequence">

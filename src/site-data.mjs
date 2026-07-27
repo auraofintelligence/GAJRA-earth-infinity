@@ -3,7 +3,7 @@ export const site = {
   longName: "Global Association for Joyful Responsible Abundance on Earth",
   baseUrl: "https://auraofintelligence.github.io/GAJRA-earth-infinity/",
   repositoryUrl: "https://github.com/auraofintelligence/GAJRA-earth-infinity",
-  assetVersion: "20260727i",
+  assetVersion: "20260727j",
   buildLabel: "Live public experiment · Earth in view",
   description:
     "A meeting of minds for self-alignment and AI alignment within Joyful Responsible Abundance.",
@@ -54,7 +54,7 @@ export const pages = [
         ],
         links: [
           { label: "Open the private Alignment Lab", href: "alignment-lab.html#lab-workbench" },
-          { label: "Read the meeting-space frame", href: "about.html" },
+          { label: "Plan a meeting circle", href: "about.html#meeting-circle-builder" },
         ],
       },
       {
@@ -66,19 +66,19 @@ export const pages = [
             label: "Define",
             title: "Name what matters here",
             text: "Describe joy, responsibility, abundance and balance in your own place, culture and circumstances.",
-            href: "jra.html",
+            href: "alignment-lab.html#lab-workbench",
           },
           {
-            label: "Commit",
-            title: "Choose one practice",
-            text: "Turn a value into a small, revisable experiment you can actually live and observe.",
-            href: "commitment.html",
+            label: "Meet",
+            title: "Host a small circle",
+            text: "Turn the core question into an invitation, a time, a place and a return path.",
+            href: "about.html#meeting-circle-builder",
           },
           {
-            label: "Learn",
-            title: "Leave a trace with context",
-            text: "Export a private record with provenance, uncertainty, consent and what changed.",
-            href: "alignment-lab.html",
+            label: "Gather",
+            title: "Prepare a field kit",
+            text: "Build a practical run sheet for a listening station, tech-help table or public question circle.",
+            href: "events.html#field-kit-builder",
           },
         ],
       },
@@ -174,39 +174,48 @@ export const pages = [
     slug: "about",
     file: "about.html",
     navLabel: "The meeting space",
-    title: "A flower garland, scaled to a living planet.",
+    title: "Host a meeting of minds.",
     eyebrow: "Meeting space",
-    status: "Living threshold",
+    status: "Circle builder",
     description:
-      "GAJRA Earth is a meeting space before the AI frontier, with a public experiment now open and the formal association layer still ahead.",
+      "A practical room for setting up a GAJRA circle before the AI frontier reaches further.",
     intro:
-      "A gajra is made one flower at a time. At planetary scale, the aurora becomes Earth’s luminous garland. Each person, culture and model may carry one flower in the circle.",
-    question: "What remains plural even when coordination becomes global?",
+      "Use this room to shape a small meeting: who is coming, why they are meeting, which question travels into the room and what trace may return.",
+    meetingTool: true,
+    question: "Who would you invite into a meeting where the goal is clarity, not agreement?",
     sections: [
       {
-        title: "Meet before setting out.",
+        title: "What this room is for.",
         paragraphs: [
-          "GAJRA Earth offers a safer meeting space before exploring infinity: somewhere to compare headings, surface possible consequences, choose boundaries and decide what should travel.",
-          "It is also a threshold where maps can be bought and shared, journeys prepared, and returning wanderers welcomed home to celebration, story and new knowledge.",
-          "The hedge creates layered room to pause, test, disagree, contain failure and keep a return path before capability reaches further.",
+          "GAJRA Earth exists to convene a meeting of minds about self-alignment and AI alignment within Joyful Responsible Abundance.",
+          "A useful circle makes room for builders, sceptics, artists, scientists, families, founders, elders, organisers and everyday people to compare maps before any single map pretends to be the territory.",
+          "The room is a threshold: maps are shared, journeys are prepared, and returning wanderers bring back stories, questions, corrections and celebrations.",
         ],
       },
       {
-        title: "Make a map, test it, bring it home.",
+        title: "Who belongs in the room.",
         paragraphs: [
-          "Define Joyful Responsible Abundance in your own terrain, compare possible paths, try one lived experiment and redraw the map after seeing what happened.",
+          "Invite people who carry different kinds of sight: technical, lived, cultural, ecological, artistic, spiritual, economic and practical.",
+          "The meeting does not ask everyone to agree. It asks the room to notice what each path lights up, what it protects, what it gives and what it may ask someone else to carry.",
         ],
         links: [
           { label: "Make a private map in the Alignment Lab", href: "alignment-lab.html#lab-workbench" },
-          { label: "Choose a one-week commitment", href: "commitment.html" },
+          { label: "Prepare a field kit", href: "events.html#field-kit-builder" },
         ],
       },
       {
-        title: "Choose a first move.",
+        title: "Choose a first meeting type.",
         cards: [
-          { label: "Map", title: "Name what matters here", text: "Create a private, revisable record and export a copy you control.", href: "alignment-lab.html#lab-workbench" },
-          { label: "Gather", title: "Prepare a useful conversation", text: "Take one question into a gathering with consent and context intact.", href: "events.html" },
-          { label: "Check", title: "Inspect sources and open claims", text: "Separate evidence, project hypotheses and unresolved questions.", href: "research.html" },
+          { label: "Table", title: "Four to eight people", text: "A quiet room, one question, one shared note and a next invitation.", href: "#meeting-circle-builder" },
+          { label: "Lab", title: "Builders and researchers", text: "A technical circle that compares self-alignment, AI alignment and lived consequences.", href: "frontier-labs.html" },
+          { label: "Public", title: "Listening station", text: "A low-pressure place where people can define Joyful Responsible Abundance in their own words.", href: "events.html#field-kit-builder" },
+        ],
+      },
+      {
+        title: "The flower belongs here too.",
+        paragraphs: [
+          "A gajra is made one flower at a time. At planetary scale, the aurora becomes Earth’s luminous garland. Each person, culture and model may carry one flower in the circle.",
+          "The metaphor belongs after the invitation becomes useful: beauty helps people remember why the meeting is worth having.",
         ],
       },
       {
@@ -410,24 +419,25 @@ export const pages = [
     slug: "events",
     file: "events.html",
     navLabel: "Events & gatherings",
-    title: "Where proposed values meet bodies, weather and time.",
+    title: "Build a GAJRA field kit.",
     eyebrow: "Events and gatherings",
-    status: "Gathering path",
+    status: "Run-sheet builder",
     description:
-      "Events as practical alignment environments for culture, logistics, consent, consequence and collective reflection.",
+      "A browser-first way to prepare listening stations, tech-help tables, public question circles and festival traces.",
     intro:
-      "A gathering can host a small GAJRA layer without surrendering its identity: one shared question, simulation, artwork, commitment or reflection with local context intact.",
+      "Use this room to turn a proposed gathering into something a host can actually run: time, place, people, question, access, materials, consent and a return path.",
+    eventTool: true,
     question: "Which gathering changed you, and what made it work?",
     sections: [
       {
-        title: "A gathering can keep its own identity.",
+        title: "A gathering can keep its own name.",
         steps: [
-          { title: "Invite and orient", text: "Explain purpose, consent, access, privacy and what participation does not imply." },
-          { title: "Create and compare", text: "Ask, imagine, play, perform, simulate and notice disagreement." },
-          { title: "Reflect and revise", text: "Publish only safe traces, document failures and let useful patterns travel." },
+          { title: "Invite and orient", text: "Name the question, access needs, privacy choices and the kind of trace people may keep or share." },
+          { title: "Create and compare", text: "Ask, imagine, play, perform, simulate and notice where different maps disagree." },
+          { title: "Reflect and revise", text: "Keep the useful pattern, name the gaps and let the next host adapt it without pretending it fits everywhere." },
         ],
         links: [
-          { label: "Explore the event operating system", href: "event-system.html" },
+          { label: "Build a field kit run sheet", href: "#field-kit-builder" },
         ],
       },
       {
@@ -447,7 +457,7 @@ export const pages = [
   {
     slug: "event-system",
     file: "event-system.html",
-    redirectTo: "events.html#field-kits-and-gathering-tools",
+    redirectTo: "events.html#field-kit-builder",
     navLabel: "Event operating system",
     title: "Tools owned and evolved around the gathering.",
     eyebrow: "Modern event operating system",

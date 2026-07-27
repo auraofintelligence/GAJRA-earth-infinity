@@ -476,6 +476,190 @@ function renderAlignmentLab() {
   </section>`;
 }
 
+function renderMeetingTool() {
+  return `<section class="planner-tool" data-planner="meeting" id="meeting-circle-builder" aria-labelledby="meeting-circle-builder-title">
+    <header class="planner-intro">
+      <div>
+        <span class="eyebrow">Meeting circle builder</span>
+        <h2 id="meeting-circle-builder-title">Turn the idea into an invitation.</h2>
+        <p>This tool composes a meeting note in your browser. Copy it, download it, turn it into a calendar file, or open it in your own email or WhatsApp when you choose.</p>
+      </div>
+      <p class="planner-status" data-planner-status role="status" aria-live="polite" aria-atomic="true">Ready. Nothing leaves this page by itself.</p>
+    </header>
+    <div class="planner-grid">
+      <form class="planner-form" data-planner-form>
+        <div class="lab-fields two-column">
+          <label class="full-field">
+            <span>Meeting title</span>
+            <input type="text" name="title" placeholder="Meeting of minds for Joyful Responsible Abundance">
+          </label>
+          <label>
+            <span>Circle type</span>
+            <select name="kind">
+              <option>Small table</option>
+              <option>Builder lab</option>
+              <option>Public listening circle</option>
+              <option>Online call</option>
+              <option>Festival table</option>
+            </select>
+          </label>
+          <label>
+            <span>Host or steward</span>
+            <input type="text" name="host" placeholder="Name, group or project">
+          </label>
+          <label>
+            <span>Place or link</span>
+            <input type="text" name="location" placeholder="Room, town, island or call link">
+          </label>
+          <label>
+            <span>Date</span>
+            <input type="date" name="date">
+          </label>
+          <label>
+            <span>Start time</span>
+            <input type="time" name="time">
+          </label>
+          <label>
+            <span>Length</span>
+            <input type="text" name="duration" placeholder="90 minutes">
+          </label>
+          <label>
+            <span>People to invite</span>
+            <input type="text" name="invitees" placeholder="Builders, artists, neighbours, researchers">
+          </label>
+          <label class="full-field">
+            <span>Core question</span>
+            <textarea name="question" rows="4" placeholder="What should self-alignment and AI alignment protect, recognise and help grow here?"></textarea>
+          </label>
+          <label>
+            <span>Joy to notice</span>
+            <textarea name="joy" rows="4" placeholder="What makes the room worth entering?"></textarea>
+          </label>
+          <label>
+            <span>Responsibility to protect</span>
+            <textarea name="responsibility" rows="4" placeholder="Consent, limits, people not in the room, return path"></textarea>
+          </label>
+          <label>
+            <span>Abundance to grow</span>
+            <textarea name="abundance" rows="4" placeholder="Time, capability, knowledge, care, access, shared benefit"></textarea>
+          </label>
+          <label>
+            <span>Trace and consent</span>
+            <textarea name="trace" rows="4" placeholder="Private notes, anonymous themes, named public line, or no public trace"></textarea>
+          </label>
+          <label class="full-field">
+            <span>Next step after the circle</span>
+            <textarea name="next" rows="3" placeholder="Who carries the map home, and how will the room know what changed?"></textarea>
+          </label>
+        </div>
+      </form>
+      <aside class="planner-preview" aria-labelledby="meeting-preview-title">
+        <h3 id="meeting-preview-title">Invitation preview</h3>
+        <pre data-planner-output tabindex="0"></pre>
+        <div class="planner-actions">
+          <button type="button" class="button primary" data-planner-copy>Copy invitation</button>
+          <button type="button" class="button secondary" data-planner-download>Download Markdown</button>
+          <button type="button" class="button secondary" data-planner-ics>Download calendar file</button>
+          <button type="button" class="button secondary" data-planner-email>Open email draft</button>
+          <button type="button" class="button secondary" data-planner-whatsapp>Open WhatsApp draft</button>
+        </div>
+      </aside>
+    </div>
+  </section>`;
+}
+
+function renderEventTool() {
+  return `<section class="planner-tool" data-planner="event" id="field-kit-builder" aria-labelledby="field-kit-builder-title">
+    <header class="planner-intro">
+      <div>
+        <span class="eyebrow">Starter field kit</span>
+        <h2 id="field-kit-builder-title">Prepare a listening station or run sheet.</h2>
+        <p>Designed for a phone at a table. Draft the kit before the gathering, or collect lines afterwards and send the bundle when you are back in signal.</p>
+      </div>
+      <p class="planner-status" data-planner-status role="status" aria-live="polite" aria-atomic="true">Ready. This page can work without an account.</p>
+    </header>
+    <div class="planner-grid">
+      <form class="planner-form" data-planner-form>
+        <div class="lab-fields two-column">
+          <label class="full-field">
+            <span>Kit name</span>
+            <input type="text" name="title" placeholder="Saturday market listening station">
+          </label>
+          <label>
+            <span>Gathering type</span>
+            <select name="kind">
+              <option>Listening station</option>
+              <option>Tech help corner</option>
+              <option>Public question circle</option>
+              <option>Festival table</option>
+              <option>Workshop</option>
+            </select>
+          </label>
+          <label>
+            <span>Host or group</span>
+            <input type="text" name="host" placeholder="Who is holding the table?">
+          </label>
+          <label>
+            <span>Place</span>
+            <input type="text" name="location" placeholder="Market, library, hall, island, town">
+          </label>
+          <label>
+            <span>Date</span>
+            <input type="date" name="date">
+          </label>
+          <label>
+            <span>Start time</span>
+            <input type="time" name="time">
+          </label>
+          <label>
+            <span>Length</span>
+            <input type="text" name="duration" placeholder="2 hours">
+          </label>
+          <label>
+            <span>Who may wander up?</span>
+            <input type="text" name="invitees" placeholder="Neighbours, families, builders, visitors">
+          </label>
+          <label class="full-field">
+            <span>Question on the table</span>
+            <textarea name="question" rows="4" placeholder="What does Joyful Responsible Abundance mean in ordinary life here?"></textarea>
+          </label>
+          <label>
+            <span>Useful help offered</span>
+            <textarea name="joy" rows="4" placeholder="Phones, forms, printing, setup, translation, listening, directions"></textarea>
+          </label>
+          <label>
+            <span>Care and consent</span>
+            <textarea name="responsibility" rows="4" placeholder="No hard sell, no hidden capture, named or anonymous by choice"></textarea>
+          </label>
+          <label>
+            <span>Materials</span>
+            <textarea name="abundance" rows="4" placeholder="Chairs, shade, paper, pens, water, signs, charger, quiet corner"></textarea>
+          </label>
+          <label>
+            <span>Trace to carry home</span>
+            <textarea name="trace" rows="4" placeholder="Themes only, named lines, anonymous lines, photos only with consent"></textarea>
+          </label>
+          <label class="full-field">
+            <span>Return path</span>
+            <textarea name="next" rows="3" placeholder="How can someone correct, remove or follow up on anything they shared?"></textarea>
+          </label>
+        </div>
+      </form>
+      <aside class="planner-preview" aria-labelledby="field-kit-preview-title">
+        <h3 id="field-kit-preview-title">Run sheet preview</h3>
+        <pre data-planner-output tabindex="0"></pre>
+        <div class="planner-actions">
+          <button type="button" class="button primary" data-planner-copy>Copy run sheet</button>
+          <button type="button" class="button secondary" data-planner-download>Download Markdown</button>
+          <button type="button" class="button secondary" data-planner-ics>Download calendar file</button>
+          <button type="button" class="button secondary" data-planner-email>Open email draft</button>
+          <button type="button" class="button secondary" data-planner-whatsapp>Open WhatsApp draft</button>
+        </div>
+      </aside>
+    </div>
+  </section>`;
+}
+
 function renderSitemap() {
   return `<div class="map-grid">${navGroups
     .map(
@@ -701,7 +885,7 @@ function renderHero(page, mapRecordsData) {
         <h1 id="home-choice-title">I see infinity.<br><em>I choose infinity.</em></h1>
         <p>${escapeHtml(page.intro)}</p>
         <div class="hero-actions">
-          <a class="button primary" href="commitment.html">Make the choice</a>
+          <a class="button primary" href="about.html#meeting-circle-builder">Plan a meeting circle</a>
           <a class="button secondary" href="alignment-lab.html">Enter the Alignment Lab</a>
         </div>
       </div>
@@ -730,6 +914,7 @@ function renderHero(page, mapRecordsData) {
 }
 
 function renderPage(page, buildLogMarkdown, mapRecordsData) {
+  const actionTools = `${page.meetingTool ? renderMeetingTool() : ""}${page.eventTool ? renderEventTool() : ""}`;
   const pageContent = page.sitemap
     ? renderSitemap()
     : page.buildLog
@@ -738,7 +923,7 @@ function renderPage(page, buildLogMarkdown, mapRecordsData) {
         ? `${renderWorldMapTool(mapRecordsData)}${renderWorldMapLedger(mapRecordsData)}${renderSections(page)}`
         : page.alignmentLab
           ? `${renderAlignmentLab()}${renderSections(page)}`
-          : renderSections(page);
+          : `${actionTools}${renderSections(page)}`;
   const question = page.question && !page.home
     ? `<aside class="question-pause" aria-labelledby="reflection-question-${page.slug}">
         <h2 id="reflection-question-${page.slug}">Pause here</h2>
@@ -768,6 +953,7 @@ function renderPage(page, buildLogMarkdown, mapRecordsData) {
   <script defer src="assets/site.js?v=${site.assetVersion}"></script>
   ${page.home ? `<script defer src="assets/cosmos.js?v=${site.assetVersion}"></script>` : ""}
   ${page.alignmentLab ? `<script defer src="assets/alignment-lab.js?v=${site.assetVersion}"></script>` : ""}
+  ${page.meetingTool || page.eventTool ? `<script defer src="assets/meeting-tools.js?v=${site.assetVersion}"></script>` : ""}
   ${page.worldMap ? `<script type="module" src="assets/world-map.js?v=${site.assetVersion}"></script>` : ""}
 </head>
 <body id="top" data-page="${page.slug}">
