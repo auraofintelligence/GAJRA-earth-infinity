@@ -3,7 +3,7 @@ export const site = {
   longName: "Global Association for Joyful Responsible Abundance on Earth",
   baseUrl: "https://auraofintelligence.github.io/GAJRA-earth-infinity/",
   repositoryUrl: "https://github.com/auraofintelligence/GAJRA-earth-infinity",
-  assetVersion: "20260727f",
+  assetVersion: "20260727g",
   buildLabel: "Live public experiment · Earth in view",
   description:
     "A public field guide for new and seasoned explorers mapping Joyful Responsible Abundance across life, culture, events and AI alignment.",

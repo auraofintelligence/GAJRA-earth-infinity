@@ -208,7 +208,11 @@ import * as maplibregl from "./vendor/maplibre-gl.mjs";
     });
   }
 
-  map.on("load", function () {
+  var mapInitialised = false;
+
+  function initialiseMapLayers() {
+    if (mapInitialised) return;
+    mapInitialised = true;
     container.dataset.mapReady = "true";
     setStatus("Neutral satellite atlas ready. " + records.length + " public record" + (records.length === 1 ? "" : "s") + " in view.");
 
@@ -275,7 +279,22 @@ import * as maplibregl from "./vendor/maplibre-gl.mjs";
       if (!feature) return;
       focusRecord(map, recordsById.get(feature.properties.id));
     });
+  }
+
+  map.on("load", initialiseMapLayers);
+  map.on("style.load", initialiseMapLayers);
+  map.on("idle", initialiseMapLayers);
+  map.on("render", function () {
+    if (!mapInitialised && typeof map.isStyleLoaded === "function" && map.isStyleLoaded()) {
+      initialiseMapLayers();
+    }
   });
+
+  window.setTimeout(function () {
+    if (!mapInitialised && typeof map.isStyleLoaded === "function" && map.isStyleLoaded()) {
+      initialiseMapLayers();
+    }
+  }, 2500);
 
   map.on("error", function () {
     setStatus("Some imagery tiles are unavailable. Public records remain listed below.");
