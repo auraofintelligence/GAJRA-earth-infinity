@@ -92,8 +92,19 @@
 - Kept the pattern browser-first: nothing is sent by the page, and the visitor chooses any email or messaging handoff.
 - Added validation checks so the meeting builder, field-kit builder, local handoff script and no-network rule remain present after future builds.
 
+## Build 8 - What is approaching - 28 July 2026
+
+- Added a source-led future watch inside Gather for events people may attend, influence or watch.
+- Kept the watch separate from the page hero and from reports about events that have already happened.
+- Added filters for participation routes, plain search and a visible count of matching opportunities.
+- Added calendar downloads that preserve the organiser's live page as the place to confirm current details.
+- Seeded the first watch with official ITU, AI for Good and UN sources, with the date each record was checked.
+- Added a question to carry into each room so an event listing can become preparation rather than passive promotion.
+- Labelled listings as invitations to inspect, not GAJRA Earth endorsements.
+- Added automated checks for source links, participation routes, calendar support and accidental network transmission.
+
 ## Next builds
 
-- Build 8: useful map layers for festivals, working groups, labs, data centres, grant labs, tender labs and starter field kits.
-- Build 9: a browser-first group join package with local drafting, readable exports and deliberate SMS, WhatsApp or email handoff for human review.
-- Build 10: final accessibility, motion, mobile, performance and overstatement review.
+- Build 9: useful map layers for festivals, working groups, labs, data centres, grant labs, tender labs and starter field kits.
+- Build 10: an offline listening ledger and browser-first group join package with deliberate SMS, WhatsApp or email handoff for human review.
+- Build 11: final accessibility, motion, mobile, performance and overstatement review.

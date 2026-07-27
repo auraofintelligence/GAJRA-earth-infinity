@@ -3,7 +3,7 @@ export const site = {
   longName: "Global Association for Joyful Responsible Abundance on Earth",
   baseUrl: "https://auraofintelligence.github.io/GAJRA-earth-infinity/",
   repositoryUrl: "https://github.com/auraofintelligence/GAJRA-earth-infinity",
-  assetVersion: "20260727j",
+  assetVersion: "20260728a",
   buildLabel: "Live public experiment · Earth in view",
   description:
     "A meeting of minds for self-alignment and AI alignment within Joyful Responsible Abundance.",
@@ -427,6 +427,7 @@ export const pages = [
     intro:
       "Use this room to turn a proposed gathering into something a host can actually run: time, place, people, question, access, materials, consent and a return path.",
     eventTool: true,
+    upcomingWatch: true,
     question: "Which gathering changed you, and what made it work?",
     sections: [
       {

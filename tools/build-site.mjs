@@ -660,6 +660,83 @@ function renderEventTool() {
   </section>`;
 }
 
+function formatWatchDate(record) {
+  const start = new Date(`${record.dateStart}T12:00:00Z`);
+  if (record.datePrecision === "month") {
+    return new Intl.DateTimeFormat("en-AU", {
+      month: "long",
+      year: "numeric",
+      timeZone: "UTC",
+    }).format(start);
+  }
+  const format = new Intl.DateTimeFormat("en-AU", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+  if (!record.dateEnd || record.dateEnd === record.dateStart) return format.format(start);
+  return `${format.format(start)} to ${format.format(new Date(`${record.dateEnd}T12:00:00Z`))}`;
+}
+
+function renderUpcomingWatch(data) {
+  const records = [...data.records].sort((a, b) => a.dateStart.localeCompare(b.dateStart));
+  const cards = records
+    .map(
+      (record) => `<article class="approaching-card" data-watch-record data-routes="${escapeHtml(record.routes.join(" "))}" data-search="${escapeHtml(
+        [record.title, record.organiser, record.location, record.summary, record.jraQuestion, ...record.routes].join(" ").toLowerCase(),
+      )}">
+        <div class="approaching-date">
+          <time datetime="${escapeHtml(record.dateStart)}">${escapeHtml(formatWatchDate(record))}</time>
+          <span>${escapeHtml(record.access)}</span>
+        </div>
+        <div class="approaching-body">
+          <div class="approaching-routes" aria-label="Ways to take part">
+            ${record.routes.map((route) => `<span>${escapeHtml(route)}</span>`).join("")}
+          </div>
+          <h3>${escapeHtml(record.title)}</h3>
+          <p class="approaching-meta">${escapeHtml(record.organiser)} · ${escapeHtml(record.location)}</p>
+          <p>${escapeHtml(record.summary)}</p>
+          <p class="approaching-question"><strong>A question to carry:</strong> ${escapeHtml(record.jraQuestion)}</p>
+          <p class="approaching-time">${escapeHtml(record.timeLabel)}</p>
+          <div class="approaching-actions">
+            <a class="button primary" href="${escapeHtml(record.actionUrl)}" rel="noopener">${escapeHtml(record.actionLabel)}</a>
+            <button class="button secondary" type="button" data-watch-calendar="${escapeHtml(record.id)}">Add to calendar</button>
+          </div>
+          <p class="approaching-source">Checked ${escapeHtml(record.checked)} · <a href="${escapeHtml(record.sourceUrl)}" rel="noopener">${escapeHtml(record.sourceLabel)}</a></p>
+        </div>
+      </article>`,
+    )
+    .join("");
+
+  return `<section class="approaching-watch" id="approaching" aria-labelledby="approaching-title">
+    <header class="approaching-intro">
+      <div>
+        <span class="eyebrow">What is approaching</span>
+        <h2 id="approaching-title">Rooms you can still enter.</h2>
+        <p>Upcoming events, consultations and broadcasts with a visible participation route. Follow the organiser's page before making plans because programmes and access can change.</p>
+      </div>
+      <p><strong>${records.length}</strong> source-linked opportunities<br><small>Last checked ${escapeHtml(data.updated)}</small></p>
+    </header>
+    <div class="approaching-controls" aria-label="Filter upcoming opportunities">
+      <div class="approaching-filter" role="group" aria-label="Participation route">
+        <button type="button" data-watch-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-watch-filter="attend" aria-pressed="false">Attend</button>
+        <button type="button" data-watch-filter="influence" aria-pressed="false">Influence</button>
+        <button type="button" data-watch-filter="watch" aria-pressed="false">Watch</button>
+      </div>
+      <label>
+        <span>Search the watch</span>
+        <input type="search" data-watch-search placeholder="Climate, cities, online, UN">
+      </label>
+      <p data-watch-status role="status" aria-live="polite">${records.length} opportunities shown.</p>
+    </div>
+    <div class="approaching-list" data-watch-list>${cards}</div>
+    <p class="approaching-note">${escapeHtml(data.purpose)}</p>
+    <script type="application/json" id="gajra-upcoming-watch-data">${serialiseJsonForHtml(data)}</script>
+  </section>`;
+}
+
 function renderSitemap() {
   return `<div class="map-grid">${navGroups
     .map(
@@ -913,8 +990,8 @@ function renderHero(page, mapRecordsData) {
   </header>`;
 }
 
-function renderPage(page, buildLogMarkdown, mapRecordsData) {
-  const actionTools = `${page.meetingTool ? renderMeetingTool() : ""}${page.eventTool ? renderEventTool() : ""}`;
+function renderPage(page, buildLogMarkdown, mapRecordsData, upcomingEventsData) {
+  const actionTools = `${page.meetingTool ? renderMeetingTool() : ""}${page.upcomingWatch ? renderUpcomingWatch(upcomingEventsData) : ""}${page.eventTool ? renderEventTool() : ""}`;
   const pageContent = page.sitemap
     ? renderSitemap()
     : page.buildLog
@@ -954,6 +1031,7 @@ function renderPage(page, buildLogMarkdown, mapRecordsData) {
   ${page.home ? `<script defer src="assets/cosmos.js?v=${site.assetVersion}"></script>` : ""}
   ${page.alignmentLab ? `<script defer src="assets/alignment-lab.js?v=${site.assetVersion}"></script>` : ""}
   ${page.meetingTool || page.eventTool ? `<script defer src="assets/meeting-tools.js?v=${site.assetVersion}"></script>` : ""}
+  ${page.upcomingWatch ? `<script defer src="assets/upcoming-watch.js?v=${site.assetVersion}"></script>` : ""}
   ${page.worldMap ? `<script type="module" src="assets/world-map.js?v=${site.assetVersion}"></script>` : ""}
 </head>
 <body id="top" data-page="${page.slug}">
@@ -1077,11 +1155,12 @@ ${urls}
 
 const buildLogMarkdown = await readFile(new URL("../BUILD_LOG.md", import.meta.url), "utf8");
 const mapRecordsData = JSON.parse(await readFile(new URL("../data/map-records.json", import.meta.url), "utf8"));
+const upcomingEventsData = JSON.parse(await readFile(new URL("../data/upcoming-events.json", import.meta.url), "utf8"));
 
 for (const page of pages) {
   const html = (page.redirectTo
     ? renderRedirectPage(page)
-    : renderPage(page, buildLogMarkdown, mapRecordsData)).replace(/^[\t ]+$/gm, "");
+    : renderPage(page, buildLogMarkdown, mapRecordsData, upcomingEventsData)).replace(/^[\t ]+$/gm, "");
   await writeFile(
     new URL(`../${page.file}`, import.meta.url),
     html,

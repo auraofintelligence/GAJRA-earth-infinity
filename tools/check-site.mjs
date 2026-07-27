@@ -187,6 +187,8 @@ for (const control of formControls) {
 const meetingHtml = await readFile(resolve(root, "about.html"), "utf8");
 const eventsHtml = await readFile(resolve(root, "events.html"), "utf8");
 const meetingToolsScript = await readFile(resolve(root, "assets/meeting-tools.js"), "utf8");
+const upcomingWatchScript = await readFile(resolve(root, "assets/upcoming-watch.js"), "utf8");
+const upcomingWatchData = JSON.parse(await readFile(resolve(root, "data/upcoming-events.json"), "utf8"));
 const plannerRequirements = [
   [meetingHtml, "about.html", ['data-planner="meeting"', 'id="meeting-circle-builder"', "Copy invitation", "Download calendar file", "Open WhatsApp draft"]],
   [eventsHtml, "events.html", ['data-planner="event"', 'id="field-kit-builder"', "Copy run sheet", "Download calendar file", "Open WhatsApp draft"]],
@@ -210,6 +212,33 @@ if (/\bfetch\s*\(|XMLHttpRequest|sendBeacon\s*\(/.test(meetingToolsScript)) {
 }
 if (!meetingToolsScript.includes("mailto:") || !meetingToolsScript.includes("wa.me")) {
   missing.push("assets/meeting-tools.js: missing human-sent handoff channels");
+}
+for (const requirement of [
+  'id="approaching"',
+  'data-watch-filter="attend"',
+  'data-watch-filter="influence"',
+  'data-watch-filter="watch"',
+  "Add to calendar",
+  "assets/upcoming-watch.js?v=",
+  'id="gajra-upcoming-watch-data"',
+]) {
+  if (!eventsHtml.includes(requirement)) missing.push(`events.html: ${requirement}`);
+}
+if (!Array.isArray(upcomingWatchData.records) || upcomingWatchData.records.length < 1) {
+  missing.push("data/upcoming-events.json: no source-linked opportunities");
+}
+for (const record of upcomingWatchData.records || []) {
+  for (const field of ["id", "title", "dateStart", "routes", "actionUrl", "sourceUrl", "checked"]) {
+    if (!record[field] || (Array.isArray(record[field]) && !record[field].length)) {
+      missing.push(`data/upcoming-events.json: ${record.id || "unknown record"} missing ${field}`);
+    }
+  }
+}
+if (/\bfetch\s*\(|XMLHttpRequest|sendBeacon\s*\(/.test(upcomingWatchScript)) {
+  missing.push("assets/upcoming-watch.js: unexpected network transmission API");
+}
+if (!upcomingWatchScript.includes("text/calendar") || !upcomingWatchScript.includes("data-watch-filter")) {
+  missing.push("assets/upcoming-watch.js: missing calendar or participation filters");
 }
 
 const mapHtml = await readFile(resolve(root, "ecosystem.html"), "utf8");

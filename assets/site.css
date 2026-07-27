@@ -1726,6 +1726,197 @@ html[data-motion="off"] .signal-card.is-touch-balanced {
   border-color: transparent;
 }
 
+.approaching-watch {
+  width: var(--viewport-width);
+  margin: clamp(2.5rem, 6vw, 5rem) 0 clamp(3rem, 7vw, 6rem) calc(50% - var(--viewport-half-width));
+  border-block: 1px solid var(--line);
+  padding: clamp(3rem, 7vw, 6rem) max(1rem, calc((100vw - var(--max-wide)) / 2));
+  background:
+    radial-gradient(circle at 18% 12%, rgba(87, 168, 255, 0.1), transparent 28rem),
+    radial-gradient(circle at 82% 70%, rgba(255, 189, 74, 0.08), transparent 32rem),
+    #08090d;
+}
+
+.approaching-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(1.5rem, 5vw, 5rem);
+  align-items: end;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.approaching-intro h2 {
+  max-width: 60rem;
+  margin: 0.35rem 0 1rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 0.96;
+}
+
+.approaching-intro p {
+  max-width: 56rem;
+  margin: 0;
+  color: var(--paper-dim);
+}
+
+.approaching-intro > p {
+  border-left: 1px solid var(--abundance);
+  padding-left: 1rem;
+  font-size: 1.05rem;
+}
+
+.approaching-intro > p strong {
+  color: var(--responsibility);
+  font-size: 2rem;
+}
+
+.approaching-controls {
+  display: grid;
+  grid-template-columns: auto minmax(16rem, 28rem) 1fr;
+  gap: 1rem;
+  align-items: end;
+  margin-bottom: 1.5rem;
+}
+
+.approaching-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.approaching-filter button {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  background: transparent;
+  color: var(--paper-dim);
+  cursor: pointer;
+}
+
+.approaching-filter button[aria-pressed="true"],
+.approaching-filter button:hover {
+  border-color: var(--responsibility);
+  background: rgba(115, 244, 223, 0.09);
+  color: var(--responsibility);
+}
+
+.approaching-controls label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--paper-dim);
+  font-size: 0.85rem;
+}
+
+.approaching-controls input {
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: 0.7rem;
+  padding: 0.72rem 0.85rem;
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--paper);
+  font: inherit;
+}
+
+.approaching-controls > p {
+  justify-self: end;
+  margin: 0 0 0.72rem;
+  color: var(--paper-dim);
+}
+
+.approaching-list {
+  border-top: 1px solid var(--line);
+}
+
+.approaching-card {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.3fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 5vw, 5rem);
+  padding: clamp(2rem, 5vw, 4rem) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.approaching-card[hidden] {
+  display: none;
+}
+
+.approaching-date {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.approaching-date time {
+  color: var(--joy);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.approaching-date span,
+.approaching-time,
+.approaching-source {
+  color: var(--paper-dim);
+  font-size: 0.9rem;
+}
+
+.approaching-body h3 {
+  max-width: 60rem;
+  margin: 0.6rem 0 0.45rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 3.7rem);
+  font-weight: 400;
+  line-height: 1.02;
+}
+
+.approaching-body > p {
+  max-width: 64rem;
+}
+
+.approaching-routes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.approaching-routes span {
+  border: 1px solid rgba(115, 244, 223, 0.4);
+  border-radius: 999px;
+  padding: 0.24rem 0.55rem;
+  color: var(--responsibility);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.approaching-meta {
+  color: var(--paper-dim);
+}
+
+.approaching-question {
+  border-left: 1px solid var(--abundance);
+  padding-left: 1rem;
+}
+
+.approaching-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1.2rem 0;
+}
+
+.approaching-actions .button {
+  border: 1px solid var(--line-strong);
+  cursor: pointer;
+}
+
+.approaching-note {
+  max-width: 70rem;
+  margin: 2rem 0 0;
+  color: var(--paper-dim);
+}
+
 .kintsugi-seam {
   position: relative;
   width: var(--viewport-width);
@@ -2302,6 +2493,15 @@ html[data-motion="off"] *::after {
   .world-map-ledger-grid {
     grid-template-columns: 1fr;
   }
+
+  .approaching-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .approaching-controls > p {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
 }
 
 @media (max-width: 45rem) {
@@ -2349,6 +2549,28 @@ html[data-motion="off"] *::after {
     background:
       linear-gradient(180deg, rgba(7, 7, 10, 0.74), rgba(7, 7, 10, 0.9) 68%, var(--ink)),
       linear-gradient(90deg, rgba(7, 7, 10, 0.8), transparent);
+  }
+
+  .approaching-intro,
+  .approaching-card,
+  .approaching-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .approaching-intro > p {
+    max-width: 18rem;
+  }
+
+  .approaching-controls > p {
+    grid-column: auto;
+  }
+
+  .approaching-actions {
+    flex-direction: column;
+  }
+
+  .approaching-actions .button {
+    width: 100%;
   }
 
   .hero-copy {
