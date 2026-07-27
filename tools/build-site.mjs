@@ -18,6 +18,15 @@ function externalAttributes(href) {
     : "";
 }
 
+function toId(value = "") {
+  return String(value)
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function renderNav(currentSlug) {
   return navGroups
     .map((group) => {
@@ -67,6 +76,34 @@ function renderCards(cards = []) {
     .join("")}</div>`;
 }
 
+function renderSteps(steps = []) {
+  if (!steps.length) return "";
+  return `<ol class="action-sequence">${steps
+    .map(
+      (step, index) => `<li>
+        <span>${String(index + 1).padStart(2, "0")}</span>
+        <div>
+          <h3>${escapeHtml(step.title)}</h3>
+          <p>${escapeHtml(step.text)}</p>
+        </div>
+      </li>`,
+    )
+    .join("")}</ol>`;
+}
+
+function renderPrompts(prompts = []) {
+  if (!prompts.length) return "";
+  return `<div class="prompt-grid">${prompts
+    .map(
+      (prompt) => `<article>
+        <span>${escapeHtml(prompt.label)}</span>
+        <h3>${escapeHtml(prompt.title)}</h3>
+        <p>${escapeHtml(prompt.text)}</p>
+      </article>`,
+    )
+    .join("")}</div>`;
+}
+
 function renderLinks(links = []) {
   if (!links.length) return "";
   return `<div class="link-field">${links
@@ -77,12 +114,14 @@ function renderLinks(links = []) {
     .join("")}</div>`;
 }
 
-function renderSourceDisclosure(source, extraClass = "") {
+function renderSourceDisclosure(source, extraClass = "", descriptionId = "") {
+  const labelledSource = escapeHtml(source.label);
+  const descriptionAttribute = descriptionId ? ` id="${descriptionId}"` : "";
   return `<details class="source-disclosure${extraClass ? ` ${extraClass}` : ""}">
-    <summary aria-label="Show source acknowledgement" title="Source acknowledgement"><span aria-hidden="true">i</span></summary>
+    <summary aria-label="Show source acknowledgement: ${labelledSource}" title="Source acknowledgement"><span aria-hidden="true">i</span></summary>
     <div class="source-disclosure-panel">
-      <span>${escapeHtml(source.label)}</span>
-      <p>${escapeHtml(source.caption)}</p>
+      <strong>${labelledSource}</strong>
+      <p${descriptionAttribute}>${escapeHtml(source.caption)}</p>
       <a href="${source.sourceUrl}"${externalAttributes(source.sourceUrl)}>${escapeHtml(source.credit)}<span aria-hidden="true">↗</span></a>
     </div>
   </details>`;
@@ -90,21 +129,22 @@ function renderSourceDisclosure(source, extraClass = "") {
 
 function renderMedia(media) {
   if (!media) return "";
+  const descriptionId = `media-description-${toId(media.label)}`;
 
   const visual =
     media.type === "video"
-      ? `<video data-motion-video muted loop playsinline controls preload="metadata" poster="${media.poster}" aria-label="${escapeHtml(media.alt)}">
+      ? `<video data-motion-video muted loop playsinline controls preload="metadata" poster="${media.poster}" aria-label="${escapeHtml(media.alt)}" aria-describedby="${descriptionId}">
           <source src="${media.src}" type="${media.mime}">
           <p>Your browser cannot play this film. <a href="${media.sourceUrl}"${externalAttributes(media.sourceUrl)}>Open it at the source</a>.</p>
         </video>`
       : `<picture>
           <source srcset="${media.src}" type="image/webp">
-          <img src="${media.fallback}" width="${media.width}" height="${media.height}" loading="lazy" alt="${escapeHtml(media.alt)}">
+          <img src="${media.fallback}" width="${media.width}" height="${media.height}" loading="lazy" alt="${escapeHtml(media.alt)}" aria-describedby="${descriptionId}">
         </picture>`;
 
   return `<figure class="media-feature media-feature--${media.type}">
     <div class="media-frame">${visual}</div>
-    ${renderSourceDisclosure(media)}
+    ${renderSourceDisclosure(media, "", descriptionId)}
   </figure>`;
 }
 
@@ -172,6 +212,8 @@ function renderSections(page) {
         ${section.lead ? `<p class="section-lead">${escapeHtml(section.lead)}</p>` : ""}
         ${(section.paragraphs || []).map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}
         ${renderMedia(section.media)}
+        ${renderSteps(section.steps)}
+        ${renderPrompts(section.prompts)}
         ${renderCards(section.cards)}
         ${renderLinks(section.links)}
       </section>`,
@@ -184,6 +226,252 @@ function renderBelowTicker(page) {
   if (!section?.media) return "";
   return `<section class="home-observation" aria-label="${escapeHtml(section.title)}">
     ${renderMedia(section.media)}
+  </section>`;
+}
+
+function renderAlignmentLab() {
+  return `<section class="alignment-lab" data-alignment-lab id="lab-workbench">
+    <header class="lab-intro">
+      <div>
+        <span class="eyebrow">Private workbench</span>
+        <h2>Make a map you can revise.</h2>
+        <p id="lab-privacy-note">This tool does not send your words anywhere. Save to this browser only when you choose, or download a copy you control.</p>
+      </div>
+      <div class="lab-local-state">
+        <span aria-hidden="true">●</span>
+        <strong>Local only</strong>
+        <small data-lab-state role="status" aria-live="polite" aria-atomic="true">No record saved on this device.</small>
+      </div>
+    </header>
+
+    <nav class="lab-tabs" aria-label="Alignment Lab instruments" role="tablist">
+      <button type="button" role="tab" id="lab-tab-jra" aria-controls="lab-panel-jra" aria-selected="true" data-lab-tab="jra">
+        <span>01</span><strong>My JRA map</strong><small>Name your coordinates.</small>
+      </button>
+      <button type="button" role="tab" id="lab-tab-preference" aria-controls="lab-panel-preference" aria-selected="false" data-lab-tab="preference">
+        <span>02</span><strong>Compare paths</strong><small>Keep more than two doors open.</small>
+      </button>
+      <button type="button" role="tab" id="lab-tab-experiment" aria-controls="lab-panel-experiment" aria-selected="false" data-lab-tab="experiment">
+        <span>03</span><strong>Live and observe</strong><small>Record what reality changed.</small>
+      </button>
+      <button type="button" role="tab" id="lab-tab-source" aria-controls="lab-panel-source" aria-selected="false" data-lab-tab="source">
+        <span>04</span><strong>Source card</strong><small>Choose how the record may travel.</small>
+      </button>
+    </nav>
+
+    <form class="lab-form" data-lab-form aria-describedby="lab-privacy-note">
+      <section class="lab-panel" id="lab-panel-jra" role="tabpanel" aria-labelledby="lab-tab-jra" data-lab-panel="jra">
+        <div class="lab-panel-heading">
+          <span>Instrument 01</span>
+          <h3>My Joyful Responsible Abundance map</h3>
+          <p>There is no final definition hiding here. Name what these ideas mean in the terrain you are actually crossing.</p>
+        </div>
+        <div class="lab-fields two-column">
+          <label class="full-field">
+            <span>Record title</span>
+            <input type="text" name="record_title" data-lab-field placeholder="A short name you will recognise later">
+          </label>
+          <label>
+            <span>Life, project or question</span>
+            <input type="text" name="context_domain" data-lab-field placeholder="Home, work, research, event, community">
+          </label>
+          <label>
+            <span>Place or culture, as broad as you choose</span>
+            <input type="text" name="place_culture" data-lab-field placeholder="Optional">
+          </label>
+          <label class="value-field joy-field">
+            <span>Joy is the light</span>
+            <textarea name="joy" data-lab-field rows="5" placeholder="What makes this life or situation worth illuminating?"></textarea>
+          </label>
+          <label class="value-field responsibility-field">
+            <span>Responsibility is the hedge</span>
+            <textarea name="responsibility" data-lab-field rows="5" placeholder="What needs consent, protection, limits, checking or a safe return path?"></textarea>
+          </label>
+          <label class="value-field abundance-field">
+            <span>Abundance is the gift</span>
+            <textarea name="abundance" data-lab-field rows="5" placeholder="What capability, time, care, knowledge or choice could grow here?"></textarea>
+          </label>
+          <label class="value-field balance-field">
+            <span>Balance is the catalyst</span>
+            <textarea name="balance" data-lab-field rows="5" placeholder="Where do these values pull in different directions, and what may help them move together?"></textarea>
+          </label>
+          <label class="full-field">
+            <span>Who or what could be affected?</span>
+            <textarea name="stakeholders" data-lab-field rows="3" placeholder="People, communities, other species, places, future generations"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="lab-panel" id="lab-panel-preference" role="tabpanel" aria-labelledby="lab-tab-preference" data-lab-panel="preference">
+        <div class="lab-panel-heading">
+          <span>Instrument 02</span>
+          <h3>Compare paths without accepting a false binary.</h3>
+          <p>Two options can reveal a tension. They do not have to imprison the question.</p>
+        </div>
+        <div class="lab-fields two-column">
+          <label>
+            <span>Path A</span>
+            <textarea name="path_a" data-lab-field rows="5" placeholder="One plausible action, policy or future"></textarea>
+          </label>
+          <label>
+            <span>Path B</span>
+            <textarea name="path_b" data-lab-field rows="5" placeholder="Another plausible action, policy or future"></textarea>
+          </label>
+          <fieldset class="full-field choice-field">
+            <legend>Where are you leaning now?</legend>
+            <label><input type="radio" name="preference" value="path_a" data-lab-field> Path A</label>
+            <label><input type="radio" name="preference" value="path_b" data-lab-field> Path B</label>
+            <label><input type="radio" name="preference" value="conditional" data-lab-field> Both, under different conditions</label>
+            <label><input type="radio" name="preference" value="neither" data-lab-field> Neither</label>
+            <label><input type="radio" name="preference" value="another" data-lab-field> I need another path</label>
+          </fieldset>
+          <label class="full-field">
+            <span>Conditions, reasoning and missing options</span>
+            <textarea name="preference_reasoning" data-lab-field rows="5" placeholder="What matters in this context? What would change your leaning?"></textarea>
+          </label>
+          <label class="full-field range-field">
+            <span id="uncertainty-label">Uncertainty <output data-uncertainty-output>50</output>%</span>
+            <input type="range" name="uncertainty" data-lab-field data-uncertainty min="0" max="100" value="50" aria-labelledby="uncertainty-label" aria-describedby="uncertainty-help">
+            <small id="uncertainty-help">0 means your current view feels clear. 100 means the map is mostly fog.</small>
+          </label>
+        </div>
+      </section>
+
+      <section class="lab-panel" id="lab-panel-experiment" role="tabpanel" aria-labelledby="lab-tab-experiment" data-lab-panel="experiment">
+        <div class="lab-panel-heading">
+          <span>Instrument 03</span>
+          <h3>Let reality answer back.</h3>
+          <p>A lived experiment is a small, revisable action. It is not a performance score or proof that the idea is universally right.</p>
+        </div>
+        <div class="lab-fields two-column">
+          <label class="full-field">
+            <span>Commitment</span>
+            <textarea name="commitment" data-lab-field rows="3" placeholder="What small practice will you try?"></textarea>
+          </label>
+          <label>
+            <span>Before: baseline</span>
+            <textarea name="baseline" data-lab-field rows="5" placeholder="What is happening now, before the experiment?"></textarea>
+          </label>
+          <label>
+            <span>Action and boundary</span>
+            <textarea name="action_boundary" data-lab-field rows="5" placeholder="What will you do, for how long, and what limit will you keep?"></textarea>
+          </label>
+          <label>
+            <span>Observed outcome</span>
+            <textarea name="observed_outcome" data-lab-field rows="5" placeholder="What actually changed?"></textarea>
+          </label>
+          <label>
+            <span>Unexpected effects</span>
+            <textarea name="unexpected_effects" data-lab-field rows="5" placeholder="What surprised you, helped elsewhere or created a new cost?"></textarea>
+          </label>
+          <label class="full-field">
+            <span>Externalities and people not in the room</span>
+            <textarea name="externalities" data-lab-field rows="4" placeholder="Who or what carried a cost, risk or benefit that was easy to miss?"></textarea>
+          </label>
+          <label>
+            <span>Next move</span>
+            <select name="next_move" data-lab-field>
+              <option value="">Choose later</option>
+              <option value="repeat">Repeat</option>
+              <option value="change">Change</option>
+              <option value="stop">Stop</option>
+              <option value="share">Share carefully</option>
+              <option value="teach">Teach with context</option>
+            </select>
+          </label>
+          <label>
+            <span>Revision</span>
+            <textarea name="revision" data-lab-field rows="4" placeholder="What would you redraw before the next journey?"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="lab-panel" id="lab-panel-source" role="tabpanel" aria-labelledby="lab-tab-source" data-lab-panel="source">
+        <div class="lab-panel-heading">
+          <span>Instrument 04</span>
+          <h3>Choose how this record may travel.</h3>
+          <p>This source card describes your record. It does not make the record training-ready or grant permission you have not chosen.</p>
+        </div>
+        <div class="lab-fields two-column">
+          <label>
+            <span>Authorship</span>
+            <select name="authorship" data-lab-field>
+              <option value="human">Human-authored</option>
+              <option value="ai_assisted">AI-assisted</option>
+              <option value="synthetic">AI-generated or synthetic</option>
+              <option value="mixed">Mixed</option>
+            </select>
+          </label>
+          <label>
+            <span>Tool, model or seed</span>
+            <input type="text" name="assistance" data-lab-field placeholder="Optional, include what materially shaped the record">
+          </label>
+          <label>
+            <span>Privacy</span>
+            <select name="privacy" data-lab-field>
+              <option value="private_local">Private local draft</option>
+              <option value="anonymous_review">Anonymous review copy</option>
+              <option value="named_review">Named review copy</option>
+              <option value="public_candidate">Possible public contribution</option>
+            </select>
+          </label>
+          <label>
+            <span>Consent</span>
+            <select name="consent" data-lab-field>
+              <option value="no_sharing">Do not share</option>
+              <option value="download_review">Download for my review</option>
+              <option value="explicit_later">Ask me again before any sharing</option>
+            </select>
+          </label>
+          <label>
+            <span>Licence</span>
+            <select name="record_licence" data-lab-field>
+              <option value="undecided">Private draft, undecided</option>
+              <option value="cc_by_4">CC BY 4.0</option>
+              <option value="cc0">CC0 public domain dedication</option>
+              <option value="custom">Custom terms written below</option>
+            </select>
+          </label>
+          <label>
+            <span>Review state</span>
+            <select name="review_state" data-lab-field>
+              <option value="draft">Draft</option>
+              <option value="self_reviewed">Self-reviewed</option>
+              <option value="peer_reviewed">Reviewed with another person</option>
+              <option value="revised">Revised after consequences</option>
+            </select>
+          </label>
+          <label class="full-field">
+            <span>Intended uses</span>
+            <textarea name="intended_uses" data-lab-field rows="3" placeholder="What could this record usefully inform?"></textarea>
+          </label>
+          <label class="full-field">
+            <span>Boundaries and prohibited uses</span>
+            <textarea name="use_boundaries" data-lab-field rows="3" placeholder="Where should this record not travel or be used?"></textarea>
+          </label>
+          <label class="full-field">
+            <span>Known blind spots</span>
+            <textarea name="blind_spots" data-lab-field rows="3" placeholder="Whose view, experience or evidence is missing?"></textarea>
+          </label>
+        </div>
+      </section>
+    </form>
+
+    <footer class="lab-actions">
+      <div class="lab-progress" aria-live="polite">
+        <span>Map filled</span>
+        <strong><output data-lab-progress>0</output>%</strong>
+        <span class="lab-progress-track" aria-hidden="true"><span data-lab-progress-bar></span></span>
+      </div>
+      <div class="lab-action-buttons">
+        <button type="button" class="button primary" data-lab-save>Save to this browser</button>
+        <button type="button" class="button secondary" data-lab-download="markdown" aria-describedby="lab-export-note">Download Markdown</button>
+        <button type="button" class="button secondary" data-lab-download="json" aria-describedby="lab-export-note">Download JSON</button>
+        <button type="button" class="button secondary" data-lab-download="jsonl" aria-describedby="lab-export-note">Download JSONL</button>
+        <button type="button" class="quiet-button" data-lab-clear>Clear local record</button>
+      </div>
+      <p id="lab-export-note">Downloads are personal records or raw contribution material. They are not automatically valid training datasets.</p>
+    </footer>
   </section>`;
 }
 
@@ -277,13 +565,14 @@ function renderMotionControl() {
 
 function renderHero(page) {
   if (page.home) {
-    return `<section class="home-hero">
+    return `<section class="home-hero" aria-labelledby="home-choice-title">
       <canvas class="cosmos-canvas" data-cosmos aria-hidden="true"></canvas>
+      <p class="sr-only">A labelled orbital diagram shows our Sol system with Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune. The diagram is not to scale.</p>
       <div class="home-hero-scrim"></div>
       <div class="hero-copy">
         <span class="status-chip">${escapeHtml(page.status)}</span>
         <p class="eyebrow">${escapeHtml(page.eyebrow)}</p>
-        <h1>I see infinity.<br><em>I choose infinity.</em></h1>
+        <h1 id="home-choice-title">I see infinity.<br><em>I choose infinity.</em></h1>
         <p>${escapeHtml(page.intro)}</p>
         <div class="hero-actions">
           <a class="button primary" href="commitment.html">Make the choice</a>
@@ -319,12 +608,14 @@ function renderPage(page, buildLogMarkdown) {
     ? renderSitemap()
     : page.buildLog
       ? renderMarkdown(buildLogMarkdown)
-      : renderSections(page);
+      : page.alignmentLab
+        ? renderAlignmentLab()
+        : renderSections(page);
   const question = page.question
-    ? `<aside class="question-pause">
-        <span>Pause here</span>
+    ? `<aside class="question-pause" aria-labelledby="reflection-question-${page.slug}">
+        <h2 id="reflection-question-${page.slug}">Pause here</h2>
         <p>${escapeHtml(page.question)}</p>
-        <a href="alignment-lab.html">Carry this question into the Lab</a>
+        <a href="${page.alignmentLab ? "#lab-workbench" : "alignment-lab.html"}">${page.alignmentLab ? "Open the first instrument" : "Carry this question into the Lab"}</a>
       </aside>`
     : "";
 
@@ -347,6 +638,7 @@ function renderPage(page, buildLogMarkdown) {
   <script>document.documentElement.classList.add("js");</script>
   <script defer src="assets/site.js?v=${site.assetVersion}"></script>
   ${page.home ? `<script defer src="assets/cosmos.js?v=${site.assetVersion}"></script>` : ""}
+  ${page.alignmentLab ? `<script defer src="assets/alignment-lab.js?v=${site.assetVersion}"></script>` : ""}
 </head>
 <body id="top" data-page="${page.slug}">
   <a class="skip-link" href="#main">Skip to content</a>

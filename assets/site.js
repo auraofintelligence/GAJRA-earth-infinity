@@ -204,6 +204,16 @@
   var menuButton = document.querySelector("[data-menu-toggle]");
   var primaryNav = document.querySelector("[data-primary-nav]");
   if (menuButton && primaryNav) {
+    var navGroups = Array.from(primaryNav.querySelectorAll(".nav-world"));
+    navGroups.forEach(function (group) {
+      group.addEventListener("toggle", function () {
+        if (!group.open) return;
+        navGroups.forEach(function (otherGroup) {
+          if (otherGroup !== group) otherGroup.removeAttribute("open");
+        });
+      });
+    });
+
     menuButton.addEventListener("click", function () {
       var open = primaryNav.classList.toggle("is-open");
       menuButton.setAttribute("aria-expanded", String(open));

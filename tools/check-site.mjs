@@ -12,10 +12,22 @@ const misplacedHistory = [];
 const emDash = "\u2014";
 
 for (const page of pages) {
+  for (const section of page.sections || []) {
+    for (const card of section.cards || []) {
+      if (!card.href) {
+        missing.push(`${page.file}: dead-end card "${card.title}"`);
+      }
+    }
+  }
+
   const filePath = resolve(root, page.file);
   const html = await readFile(filePath, "utf8");
   if (!html.includes("<!doctype html>")) missing.push(`${page.file}: doctype`);
   if (!html.includes('lang="en-AU"')) missing.push(`${page.file}: language`);
+  if (!html.includes('class="skip-link"')) missing.push(`${page.file}: skip link`);
+  if (!html.includes('<main id="main">')) missing.push(`${page.file}: main landmark`);
+  if (!html.includes("<h1")) missing.push(`${page.file}: level-one heading`);
+  if ((html.match(/<h1\b/g) || []).length !== 1) missing.push(`${page.file}: exactly one level-one heading`);
   if (!html.includes('href="site-map.html"')) missing.push(`${page.file}: site map link`);
   if (/planned to launch|token sale|actively recruiting/i.test(html)) {
     oldClaims.push(page.file);
@@ -89,6 +101,38 @@ if (emDashFiles.length) {
   process.exitCode = 1;
 }
 
+const labHtml = await readFile(resolve(root, "alignment-lab.html"), "utf8");
+const labScript = await readFile(resolve(root, "assets/alignment-lab.js"), "utf8");
+const labRequirements = [
+  'data-alignment-lab',
+  'data-lab-panel="jra"',
+  'data-lab-panel="preference"',
+  'data-lab-panel="experiment"',
+  'data-lab-panel="source"',
+  'data-lab-download="markdown"',
+  'data-lab-download="json"',
+  'data-lab-download="jsonl"',
+  'aria-describedby="lab-privacy-note"',
+  'role="status" aria-live="polite"',
+  'aria-describedby="lab-export-note"',
+  `assets/alignment-lab.js?v=`,
+];
+for (const requirement of labRequirements) {
+  if (!labHtml.includes(requirement)) missing.push(`alignment-lab.html: ${requirement}`);
+}
+if (/\bfetch\s*\(|XMLHttpRequest|sendBeacon\s*\(/.test(labScript)) {
+  missing.push("assets/alignment-lab.js: unexpected network transmission API");
+}
+
+const formControls = [...labHtml.matchAll(/<(input|select|textarea)\b[^>]*>/g)];
+for (const control of formControls) {
+  const before = labHtml.slice(Math.max(0, control.index - 250), control.index);
+  const tag = control[0];
+  if (!before.includes("<label") && !/aria-label=|aria-labelledby=/.test(tag)) {
+    missing.push(`alignment-lab.html: unlabelled ${control[1]} control`);
+  }
+}
+
 const notFoundHtml = await readFile(resolve(root, "404.html"), "utf8");
 if (!notFoundHtml.includes('src="assets/heroes/not-found.webp"')) {
   missing.push("404.html: unique hero assets/heroes/not-found.webp");
@@ -100,5 +144,5 @@ if (missing.length) {
 }
 
 if (!process.exitCode) {
-  console.log(`Checked ${pages.length} generated pages: links, unique heroes, status language and punctuation pass.`);
+  console.log(`Checked ${pages.length} generated pages: links, unique heroes, accessibility structure, status language and punctuation pass.`);
 }

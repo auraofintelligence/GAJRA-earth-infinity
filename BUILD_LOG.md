@@ -36,8 +36,26 @@
 - Moved the Earth aurora film directly below the ticker, removed the linear planet key and slightly quickened the labelled Sol model.
 - Left `gajra.earth` unchanged while this dedicated Pages site remains the public build preview.
 
+## Build 3 - The local Alignment Lab - 27 July 2026
+
+- Turned the Alignment Lab spine into a working browser-local instrument.
+- Connected four revisable parts: a JRA map, preference comparison, lived experiment and source card.
+- Kept local saving explicit. Unsaved words stay only in the open tab, and saved words remain in that browser.
+- Added readable Markdown, structured JSON and single-record JSONL downloads.
+- Labelled downloads as personal records or raw contribution material, not automatically valid training datasets.
+- Added keyboard-operable instrument tabs, visible focus, mobile layouts and a completion trace.
+- Added an automated privacy guard that rejects network transmission APIs in the Lab script.
+- Replaced the darker home film with NASA SVS 31281, a brighter Aurora Australis sequence that ends with Australia and Perth in view.
+- Lifted the base reading size, card headings, labels and supporting text across the site.
+- Added clearer screen-reader descriptions for the Sol model, media, local-save state and download controls.
+- Strengthened heading and landmark structure so the site reads in a meaningful order without its visual layout.
+- Reworked the header and footer at laptop widths so the full organisation name, navigation and page links no longer collide.
+- Changed the grouped navigation into an accordion so opening one section closes the others.
+- Replaced the plain diagram on the first concept hero with a rich original raster artwork.
+
 ## Next builds
 
-- Build 3: working local-first Alignment Lab builders with Markdown, JSON and JSONL exports.
-- Build 4: deeper event system, research source board, ecosystem links and contemporary alignment grounding.
-- Build 5: full accessibility, motion, mobile, performance and overstatement review.
+- Build 4: a borderless world map using neutral satellite imagery, with flat and sphere views, joined groups and bridge connections.
+- Build 5: a browser-first group join package with local drafting, readable exports and deliberate SMS, WhatsApp or email handoff for human review.
+- Build 6: prune the early 22-page spine into eight useful visitor journeys, preserving old links with redirects.
+- Build 7: final accessibility, motion, mobile, performance and overstatement review.

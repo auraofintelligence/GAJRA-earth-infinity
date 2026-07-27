@@ -3,7 +3,7 @@ export const site = {
   longName: "Global Association for Joyful Responsible Abundance on Earth",
   baseUrl: "https://auraofintelligence.github.io/GAJRA-earth-infinity/",
   repositoryUrl: "https://github.com/auraofintelligence/GAJRA-earth-infinity",
-  assetVersion: "20260727c",
+  assetVersion: "20260727d",
   buildLabel: "Live public experiment · Earth in view",
   description:
     "A public field guide for new and seasoned explorers mapping Joyful Responsible Abundance across life, culture, events and AI alignment.",
@@ -83,15 +83,15 @@ export const pages = [
           "From orbit, aurora folds around the planet as light made visible by relationship: solar weather, atmosphere and a magnetic field meeting in motion.",
         media: {
           type: "video",
-          src: "https://svs.gsfc.nasa.gov/vis/a030000/a031300/a031375/ISS_20251112_071350-20251112_073549_1080p30.webm",
+          src: "https://svs.gsfc.nasa.gov/vis/a030000/a031200/a031281/ISS067_20220817_aurora_1080p25.webm",
           mime: "video/webm",
-          poster: "assets/media/nasa-iss-aurora-2025.webp",
-          alt: "Aurora moving above Earth at night, seen from the International Space Station.",
-          label: "Observed from orbit · 12 November 2025",
+          poster: "assets/media/nasa-aurora-australis-2022.jpg",
+          alt: "Green and red Aurora Australis above Earth at night, seen from the International Space Station.",
+          label: "Aurora Australis from orbit · 17 August 2022",
           caption:
-            "This NASA timelapse was assembled from International Space Station photographs taken during the 11–13 November 2025 geomagnetic storm. It is evidence of a real Earth, not a GAJRA simulation.",
-          sourceUrl: "https://svs.gsfc.nasa.gov/31375/",
-          credit: "Source and full credits · NASA SVS 31375",
+            "International Space Station photographs begin above the Southern Ocean between Africa and Antarctica. Green and red Aurora Australis remain visible as Australia and the lights of Perth come into view.",
+          sourceUrl: "https://svs.gsfc.nasa.gov/31281/",
+          credit: "Source and full credits · NASA SVS 31281",
         },
       },
       {
@@ -143,18 +143,21 @@ export const pages = [
         ],
       },
       {
-        title: "A map that stays open to revision.",
+        title: "Make a map, test it, bring it home.",
         paragraphs: [
-          "You can define Joyful Responsible Abundance in your own terrain, compare possible paths, try a lived experiment and redraw the map after seeing what happened.",
-          "No universal reward function is presented as solved here. The workbench keeps disagreement, context, trade-offs and changes of mind visible enough for another explorer to inspect.",
+          "Define Joyful Responsible Abundance in your own terrain, compare possible paths, try one lived experiment and redraw the map after seeing what happened.",
+        ],
+        links: [
+          { label: "Make a private map in the Alignment Lab", href: "alignment-lab.html#lab-workbench" },
+          { label: "Choose a one-week commitment", href: "commitment.html" },
         ],
       },
       {
-        title: "What this site can honestly do.",
+        title: "Choose a first move.",
         cards: [
-          { label: "Prototype", title: "Create local-first builders", text: "Make private records and exportable artefacts in a browser." },
-          { label: "Question", title: "Improve the research invitation", text: "Show how lived signals could complement technical alignment work." },
-          { label: "Connect", title: "Link experiments without absorbing them", text: "Let related projects remain distinct, credited and challengeable." },
+          { label: "Map", title: "Name what matters here", text: "Create a private, revisable record and export a copy you control.", href: "alignment-lab.html#lab-workbench" },
+          { label: "Gather", title: "Prepare a useful conversation", text: "Take one question into a gathering with consent and context intact.", href: "events.html" },
+          { label: "Check", title: "Inspect sources and open claims", text: "Separate evidence, project hypotheses and unresolved questions.", href: "research.html" },
         ],
       },
     ],
@@ -205,12 +208,15 @@ export const pages = [
     sections: [
       {
         title: "The Garland Loop.",
-        cards: [
-          { label: "1", title: "Define", text: "Name what joyful, responsible, abundant and balanced mean in this context." },
-          { label: "2", title: "Choose", text: "Select a possible action and record uncertainty, stakeholders and hidden costs." },
-          { label: "3", title: "Live", text: "Try the action in ordinary life without performing it for a scoreboard." },
-          { label: "4", title: "Observe", text: "Notice outcomes, surprises, trade-offs and who was affected." },
-          { label: "5", title: "Revise", text: "Keep, change, stop, share or teach, with provenance intact." },
+        steps: [
+          { title: "Define", text: "Name what joyful, responsible, abundant and balanced mean in this context." },
+          { title: "Choose", text: "Select a possible action and record uncertainty, stakeholders and hidden costs." },
+          { title: "Live", text: "Try the action in ordinary life without performing it for a scoreboard." },
+          { title: "Observe", text: "Notice outcomes, surprises, trade-offs and who was affected." },
+          { title: "Revise", text: "Keep, change, stop, share or teach, with provenance intact." },
+        ],
+        links: [
+          { label: "Start the loop in the Alignment Lab", href: "alignment-lab.html#lab-workbench" },
         ],
       },
     ],
@@ -221,23 +227,14 @@ export const pages = [
     navLabel: "Alignment Lab",
     title: "A workbench for values you can inspect and revise.",
     eyebrow: "Alignment Lab",
-    status: "Prototype spine",
+    status: "Working browser prototype",
     description:
       "A local-first laboratory for definitions, preference comparisons, lived experiments and provenance-rich exports.",
     intro:
       "The Lab is a set of browser-local instruments you can use in your own way. Your words stay on your device unless you choose to download or share them.",
+    alignmentLab: true,
     question: "What might future AI learn to notice that current systems ignore?",
-    sections: [
-      {
-        title: "First instruments.",
-        cards: [
-          { label: "Builder", title: "My JRA definition", text: "Describe the three values, the context and the tension among them." },
-          { label: "Evaluator", title: "Preference pairs", text: "Compare plausible choices, reject a false binary and explain uncertainty." },
-          { label: "Journal", title: "Lived experiment log", text: "Record a baseline, an action, outcomes, externalities and revision." },
-          { label: "Card", title: "Dataset provenance", text: "Label authorship, assistance, consent, privacy, licence and review state." },
-        ],
-      },
-    ],
+    sections: [],
   },
   {
     slug: "data-garden",
@@ -254,11 +251,14 @@ export const pages = [
     sections: [
       {
         title: "Follow a record back to its roots.",
-        cards: [
+        prompts: [
           { label: "Source", title: "Who or what authored it?", text: "Human, AI-assisted, synthetic or mixed, and which tool or seed mattered." },
           { label: "Context", title: "Where does it belong?", text: "Domain, place, culture, stakeholders, time horizon and known blind spots." },
           { label: "Agency", title: "Where may it travel?", text: "Contributor-chosen consent, privacy, licence, intended use, boundaries and review state." },
           { label: "Outcome", title: "What happened next?", text: "Observed effects, surprises, revisions and unresolved disagreement." },
+        ],
+        links: [
+          { label: "Create a source card in the Alignment Lab", href: "alignment-lab.html#lab-workbench" },
         ],
       },
     ],
@@ -300,10 +300,13 @@ export const pages = [
     sections: [
       {
         title: "A useful trace.",
-        cards: [
-          { label: "Before", title: "Baseline", text: "What was happening before the experiment and what did you expect?" },
-          { label: "During", title: "Observation", text: "What changed, who noticed and what unexpected effects appeared?" },
-          { label: "After", title: "Revision", text: "What would you repeat, alter, stop or teach?" },
+        steps: [
+          { title: "Record the baseline", text: "Name what was happening before the experiment and what you expected." },
+          { title: "Observe without performing", text: "Notice what changed, who noticed and which unexpected effects appeared." },
+          { title: "Revise the next move", text: "Choose what to repeat, alter, stop or teach." },
+        ],
+        links: [
+          { label: "Record a lived experiment in the Alignment Lab", href: "alignment-lab.html#lab-workbench" },
         ],
       },
     ],
@@ -323,10 +326,13 @@ export const pages = [
     sections: [
       {
         title: "A gathering can keep its own identity.",
-        cards: [
-          { label: "Before", title: "Invite and orient", text: "Explain purpose, consent, access, privacy and what participation does not imply." },
-          { label: "During", title: "Create and compare", text: "Ask, imagine, play, perform, simulate and notice disagreement." },
-          { label: "After", title: "Reflect and revise", text: "Publish safe traces, document failures and let successful patterns travel." },
+        steps: [
+          { title: "Invite and orient", text: "Explain purpose, consent, access, privacy and what participation does not imply." },
+          { title: "Create and compare", text: "Ask, imagine, play, perform, simulate and notice disagreement." },
+          { title: "Reflect and revise", text: "Publish only safe traces, document failures and let useful patterns travel." },
+        ],
+        links: [
+          { label: "Explore the event operating system", href: "event-system.html" },
         ],
       },
     ],
@@ -346,11 +352,11 @@ export const pages = [
     sections: [
       {
         title: "A practical constellation.",
-        cards: [
-          { label: "Plan", title: "Briefs, dependencies and hand-offs", text: "Structured run-sheets, budgets, roles, safety, access and environmental practice." },
-          { label: "Rehearse", title: "Maps and digital twins", text: "Test crowd flow, accessibility, transport, incidents and alternatives before arrival." },
-          { label: "Coordinate", title: "People and agents", text: "Human-controlled organiser, venue, artist, vendor and accessibility workflows." },
-          { label: "Learn", title: "Feedback and reusable modules", text: "Debriefs, consent-safe traces, provenance and explicit shortcomings." },
+        steps: [
+          { title: "Plan the hand-offs", text: "Connect run-sheets, budgets, roles, safety, access and environmental practice." },
+          { title: "Rehearse before arrival", text: "Test crowd flow, accessibility, transport, incidents and alternatives." },
+          { title: "Coordinate with people in control", text: "Keep organiser, venue, artist, vendor and accessibility workflows human-directed." },
+          { title: "Debrief into reusable learning", text: "Keep consent-safe traces, provenance and explicit shortcomings." },
         ],
       },
       {
@@ -424,10 +430,13 @@ export const pages = [
     sections: [
       {
         title: "Seven ordinary doors.",
-        cards: [
+        prompts: [
           { label: "Life", title: "What makes a day worthwhile?", text: "Begin with texture, time, people, place and what you do not want automated away." },
           { label: "Enough", title: "Where is there already abundance?", text: "Notice access, care, capability and meaning before counting consumption." },
           { label: "Agency", title: "Where does AI help or hinder?", text: "Describe one use that expands choice and one that quietly narrows it." },
+        ],
+        links: [
+          { label: "Carry one answer into a private map", href: "alignment-lab.html#lab-workbench" },
         ],
       },
     ],
@@ -448,10 +457,10 @@ export const pages = [
       {
         title: "Candidate collaboration lanes.",
         cards: [
-          { label: "Values", title: "Participatory elicitation", text: "Culturally contextualised definitions with disagreement and revision preserved." },
-          { label: "Data", title: "Preferences with reasons", text: "Pair choices with context, uncertainty, externalities and changes after consequences." },
-          { label: "Evals", title: "Flourishing and proxy failure", text: "Test positive capability, responsibility and reward-hacking cases without claiming one final metric." },
-          { label: "Trust", title: "Provenance and consent", text: "Dataset cards, human seeds, synthetic labels, chosen use boundaries and review states." },
+          { label: "Values", title: "Test participatory elicitation", text: "Use culturally contextualised definitions with disagreement and revision preserved.", href: "alignment-lab.html#lab-workbench" },
+          { label: "Data", title: "Inspect the source-card fields", text: "Pair choices with context, uncertainty, externalities and changes after consequences.", href: "data-garden.html" },
+          { label: "Evals", title: "Challenge a synthetic future", text: "Test capability, responsibility and proxy failure without pretending one metric is final.", href: "simulations.html" },
+          { label: "Trust", title: "Propose a stronger boundary", text: "Add a counterexample, edge case, source or review requirement.", href: "contribute.html" },
         ],
       },
     ],
@@ -472,9 +481,9 @@ export const pages = [
       {
         title: "Buildable now.",
         cards: [
-          { label: "Local", title: "Private browser builders", text: "Forms and journals that store nothing remotely by default." },
-          { label: "Portable", title: "Readable exports", text: "Markdown for people; JSON, JSONL or CSV for inspection and later curation." },
-          { label: "Reviewable", title: "Schemas with provenance", text: "Authorship, assistance, consent, uncertainty, licence and revision history." },
+          { label: "Try", title: "Inspect the private browser builder", text: "Test the local save, keyboard flow and explicit export choices.", href: "alignment-lab.html#lab-workbench" },
+          { label: "Read", title: "Review the generated record formats", text: "Compare Markdown for people with JSON and JSONL for later inspection.", href: "alignment-lab.html#lab-workbench" },
+          { label: "Build", title: "Open the public source", text: "Inspect the code, accessibility checks and provenance fields.", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity" },
         ],
       },
       {
@@ -483,11 +492,14 @@ export const pages = [
           "Recognising a value is not the same as protecting it. An intelligence can model joy, responsibility and abundance, then ignore them or optimise through them.",
           "No architecture can promise that unknown vulnerabilities are impossible. Isolation, least privilege, capability boundaries, independent checks, staged access and rehearsed recovery can make a zero-day harder to reach, reduce what it can touch and preserve a path back when something breaks.",
         ],
-        cards: [
+        prompts: [
           { label: "Limit", title: "Small permissions first", text: "Offer only the tools, data, time and network reach needed for the current experiment." },
           { label: "Contain", title: "Keep the blast radius small", text: "Separate sensitive systems and assume one layer may eventually fail." },
           { label: "Check", title: "Use independent signals", text: "Combine evaluations, monitoring, human judgement and disagreement rather than trusting one score." },
           { label: "Recover", title: "Keep a return path", text: "Version state, retain logs, rehearse shutdown and make restoration possible before expanding access." },
+        ],
+        links: [
+          { label: "Challenge or extend this hedge", href: "contribute.html" },
         ],
       },
     ],
@@ -534,7 +546,7 @@ export const pages = [
       {
         title: "Initial source lanes.",
         links: [
-          { label: "NASA SVS 31375 · ISS aurora", href: "https://svs.gsfc.nasa.gov/31375/" },
+          { label: "NASA SVS 31281 · Aurora Australis from the ISS", href: "https://svs.gsfc.nasa.gov/31281/" },
           { label: "NIST AI Risk Management Framework", href: "https://www.nist.gov/itl/ai-risk-management-framework" },
           { label: "GAJRA public-hub source board", href: "https://github.com/auraofintelligence/gajra-earth-public-hub/blob/main/docs/research-source-board.md" },
           { label: "This repository’s reconnaissance note", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity/blob/main/docs/RECONNAISSANCE.md" },
@@ -557,11 +569,15 @@ export const pages = [
     sections: [
       {
         title: "Current coordinates.",
-        cards: [
+        prompts: [
           { label: "Current form", title: "Public experiment", text: "This site offers questions, tools, simulations and source trails that can be explored now." },
           { label: "Open territory", title: "No fixed destination", text: "The map can change when lived experience, evidence or a better question changes the heading." },
           { label: "Not implied", title: "Partnerships and endorsement", text: "No lab, government, NASA, Olympic or research partnership is claimed." },
           { label: "Private by default", title: "Personal reflections", text: "The GitHub Pages phase does not transmit form responses." },
+        ],
+        links: [
+          { label: "Read the public build log", href: "build-log.html" },
+          { label: "Inspect the source repository", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity" },
         ],
       },
     ],
@@ -588,8 +604,8 @@ export const pages = [
       {
         title: "Where the exploration moved.",
         cards: [
-          { label: "Public tools", title: "Try something small", text: "Local-first builders, source trails and simulations can make an idea inspectable without asking for belief." },
-          { label: "Lived practice", title: "Leave a useful trace", text: "Define, choose, observe, revise and share only what you want another explorer to question." },
+          { label: "Try", title: "Make a private map", text: "Use a working local-first builder without asking anyone to accept the project first.", href: "alignment-lab.html#lab-workbench" },
+          { label: "Live", title: "Choose one revisable practice", text: "Define, choose, observe and revise before sharing any trace.", href: "commitment.html" },
         ],
       },
     ],
@@ -610,10 +626,10 @@ export const pages = [
       {
         title: "Choose your doorway.",
         cards: [
-          { label: "Host", title: "Hold a conversation", text: "Use one question, record context and consent, preserve disagreement." },
-          { label: "Build", title: "Improve a local-first tool", text: "Fork the public source, test accessibility and make provenance clearer." },
-          { label: "Research", title: "Challenge a hypothesis", text: "Add a primary source, counterexample, edge case or better evaluation." },
-          { label: "Create", title: "Make culture", text: "Offer music, film, art, food or play that opens the question rather than closing it." },
+          { label: "Host", title: "Hold a conversation", text: "Use one question, record context and consent, preserve disagreement.", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity/issues/new?title=Contribution%3A%20host%20a%20conversation" },
+          { label: "Build", title: "Improve a local-first tool", text: "Fork the public source, test accessibility and make provenance clearer.", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity/issues/new?title=Contribution%3A%20improve%20a%20tool" },
+          { label: "Research", title: "Challenge a hypothesis", text: "Add a primary source, counterexample, edge case or better evaluation.", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity/issues/new?title=Contribution%3A%20challenge%20a%20hypothesis" },
+          { label: "Create", title: "Make culture", text: "Offer music, film, art, food or play that opens the question rather than closing it.", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity/issues/new?title=Contribution%3A%20make%20culture" },
         ],
         links: [
           { label: "View the public repository", href: "https://github.com/auraofintelligence/GAJRA-earth-infinity" },

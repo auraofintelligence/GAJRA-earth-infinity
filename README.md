@@ -21,8 +21,10 @@ The site is being built in visible layers so the Git history and [public build l
 - Build 1: multi-page spine, grouped navigation, status boundaries and motion control.
 - Build 2: cinematic media system and rights-safe visual language.
 - Build 3: local-first Alignment Lab builders and exports.
-- Build 4: deeper research, events, ecosystem and source trails.
-- Build 5: final accessibility, motion, mobile, performance and overstatement review.
+- Build 4: borderless world map with satellite, flat and sphere views.
+- Build 5: browser-first group join package and human review path.
+- Build 6: prune the early spine into eight useful visitor journeys.
+- Build 7: final accessibility, motion, mobile, performance and overstatement review.
 
 ## Architecture
 
@@ -33,6 +35,7 @@ The site uses a small dependency-free Node generator:
 - `assets/site.css` owns the visual and responsive system.
 - `assets/site.js` owns navigation and the persistent 0-100 Motion Vibrancy control.
 - `assets/cosmos.js` owns the first canvas solar-system treatment.
+- `assets/alignment-lab.js` owns the browser-local Alignment Lab, explicit local save and Markdown, JSON and JSONL exports.
 - `tools/check-site.mjs` checks generated pages, local links and superseded launch language.
 - `docs/RECONNAISSANCE.md` records the source decisions and public boundaries.
 - `docs/ASSET_PROVENANCE.md` records media sources and rights treatment.

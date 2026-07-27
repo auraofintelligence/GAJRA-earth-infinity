@@ -37,9 +37,16 @@ Do not depict the real Earth with vector art, CSS gradients, procedural canvas c
 Every non-home public page has its own 1920 by 720 raster hero in
 `assets/heroes/`.
 
+- `about.webp` is the first replacement in the new generated hero series. Its
+  source is `assets/media/generated/about-hero-source-v1.png`.
+- It was generated with OpenAI's built-in image-generation tool on 27 July
+  2026 as a cinematic, tactile flower-garland threshold with the left side kept
+  calm for readable page copy. The prompt explicitly excluded Earth, globes,
+  vector art, text, logos and watermarks.
 - `earth-time.webp` is a crop of the real ISS aurora photograph listed below.
-- The other 20 images are deterministic abstract field maps generated locally
-  by `tools/build-hero-images.py`.
+- The remaining abstract images are temporary deterministic field maps
+  generated locally by `tools/build-hero-images.py`. They are queued for
+  replacement only after the smaller functional page architecture is settled.
 - They are original code-generated project assets. They depict paths, networks,
   instruments, waves and other abstract ideas. They are not depictions of
   Earth.
@@ -48,11 +55,16 @@ Every non-home public page has its own 1920 by 720 raster hero in
 ### NASA SVS 31281
 
 - Source page: <https://svs.gsfc.nasa.gov/31281/>
-- Local source: `assets/media/nasa-iss-aurora-2022.jpg`.
+- Active home-page poster: `assets/media/nasa-aurora-australis-2022.jpg`.
+- Earlier local source: `assets/media/nasa-iss-aurora-2022.jpg`.
 - Local hero derivative: `assets/heroes/earth-time.webp`.
+- Motion source: official NASA-hosted 1920 x 1080 WebM file, loaded with
+  metadata only until playback.
 - Subject: Aurora Australis photographed from the International Space Station
-  on 17 August 2022, with the sequence ending over Perth.
-- Credit: NASA Scientific Visualization Studio.
+  on 17 August 2022. The sequence begins above the Southern Ocean between
+  Africa and Antarctica, then ends with Australia and Perth in view.
+- Credit: Earth Science and Remote Sensing Unit, NASA Johnson Space Center;
+  image processing by Marit Jentoft-Nilsen.
 - Treatment: factual and educational Earth imagery with NASA credited and no
   endorsement claim.
 
