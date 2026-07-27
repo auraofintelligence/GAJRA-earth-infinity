@@ -1213,25 +1213,60 @@ html[data-motion="off"] .signal-card.is-touch-balanced {
 }
 
 .link-field {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
-  gap: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
   margin-top: 2rem;
 }
 
 .link-field a {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  border-bottom: 1px solid var(--line);
-  padding: 0.85rem 0;
+  gap: 0.8rem;
+  min-height: 3.5rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.55rem 0.65rem 0.55rem 1.2rem;
+  background:
+    radial-gradient(circle at var(--cursor-x, 50%) var(--cursor-y, 50%), rgba(115, 244, 223, 0.11), transparent 8rem),
+    rgba(255, 255, 255, 0.025);
+  color: var(--paper);
   font-weight: 750;
   text-decoration: none;
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.16);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.link-field a:hover,
+.link-field a:focus-visible {
+  border-color: rgba(115, 244, 223, 0.72);
+  background-color: rgba(115, 244, 223, 0.055);
+  color: var(--responsibility);
+  transform: translateY(-2px);
 }
 
 .link-field span {
+  display: grid;
+  flex: 0 0 2.35rem;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border: 1px solid rgba(115, 244, 223, 0.38);
+  border-radius: 50%;
+  background: rgba(115, 244, 223, 0.08);
   color: var(--responsibility);
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 180ms ease;
+}
+
+.link-field a:hover span,
+.link-field a:focus-visible span {
+  transform: translate(2px, -2px);
 }
 
 .alignment-lab {

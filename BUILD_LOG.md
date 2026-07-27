@@ -102,6 +102,7 @@
 - Added a question to carry into each room so an event listing can become preparation rather than passive promotion.
 - Labelled listings as invitations to inspect, not GAJRA Earth endorsements.
 - Added automated checks for source links, participation routes, calendar support and accidental network transmission.
+- Replaced the long underlined section links with compact action tiles that keep each label and arrow together.
 
 ## Next builds
 
