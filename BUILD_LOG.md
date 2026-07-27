@@ -105,6 +105,7 @@
 - Replaced the long underlined section links with compact action tiles that keep each label and arrow together.
 - Cut the Meeting Space from six explanatory sections to one invitation builder and two useful onward paths.
 - Reduced the meeting form to the details required to invite people, hold the question and name the shared trace.
+- Centred editorial sections in a calmer reading column and brought section numbers back beside their headings.
 
 ## Next builds
 
