@@ -75,8 +75,15 @@
 - Moved Earth-to-Sol stewardship and source trails into Culture.
 - Moved atlas joining, status, archive and build utility paths into Build With Us.
 
+## Build 6 - Plain core and public stakes - 27 July 2026
+
+- Stated the front-page purpose in clear language: GAJRA Earth convenes a meeting of minds about self-alignment and AI alignment within Joyful Responsible Abundance.
+- Added a plain-language explanation of self-alignment and AI alignment before the more poetic site layers.
+- Added a source-backed homepage section on why this matters now: money, current AI safety rooms, frontier-industry coordination, AI-for-good spaces and the missing middle.
+- Framed the stakes as practical and lived: work, education, health, media, culture, trust, ecology, security, agency and ordinary days.
+
 ## Next builds
 
-- Build 6: useful map layers for festivals, working groups, labs, data centres, grant labs, tender labs and starter field kits.
-- Build 7: a browser-first group join package with local drafting, readable exports and deliberate SMS, WhatsApp or email handoff for human review.
-- Build 8: final accessibility, motion, mobile, performance and overstatement review.
+- Build 7: useful map layers for festivals, working groups, labs, data centres, grant labs, tender labs and starter field kits.
+- Build 8: a browser-first group join package with local drafting, readable exports and deliberate SMS, WhatsApp or email handoff for human review.
+- Build 9: final accessibility, motion, mobile, performance and overstatement review.

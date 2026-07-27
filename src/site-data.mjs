@@ -6,7 +6,7 @@ export const site = {
   assetVersion: "20260727i",
   buildLabel: "Live public experiment · Earth in view",
   description:
-    "A public field guide for new and seasoned explorers mapping Joyful Responsible Abundance across life, culture, events and AI alignment.",
+    "A meeting of minds for self-alignment and AI alignment within Joyful Responsible Abundance.",
 };
 
 export const navGroups = [
@@ -37,12 +37,26 @@ export const pages = [
     eyebrow: "The choice",
     status: "Live experiment",
     description:
-      "Enter GAJRA Earth as an explorer: name your coordinates, try a path, observe what changes and leave a map others can question.",
+      "A clear public doorway for people exploring self-alignment and AI alignment through Joyful Responsible Abundance.",
     intro:
-      "Infinity is not a destination. It is a choice: to create more Joyful Responsible Abundance in daily life, and to guide intelligence towards recognising tensions, protecting what matters and helping joy, responsibility and abundance grow together.",
+      "GAJRA Earth exists to convene a meeting of minds about self-alignment and AI alignment within the trinity of Joyful Responsible Abundance.",
     home: true,
     question: "What is the point of longer, healthier lives if not to enjoy the extra time?",
     sections: [
+      {
+        title: "Plainly, this is the point.",
+        lead:
+          "GAJRA Earth is a meeting space for people asking how humans and artificial intelligence can align towards lives with more joy, stronger responsibility and shareable abundance.",
+        paragraphs: [
+          "Self-alignment asks: what am I actually steering towards, and what does that do to other people, places and futures?",
+          "AI alignment asks: what are our tools, models, agents and institutions being steered towards, and who gets to notice when the steering is wrong?",
+          "GAJRA holds those questions together. The point is not only avoiding disaster. The point is choosing better destinations, better journeys and better returns home.",
+        ],
+        links: [
+          { label: "Open the private Alignment Lab", href: "alignment-lab.html#lab-workbench" },
+          { label: "Read the meeting-space frame", href: "about.html" },
+        ],
+      },
       {
         title: "What might make a life worth aligning towards?",
         lead:
@@ -66,6 +80,49 @@ export const pages = [
             text: "Export a private record with provenance, uncertainty, consent and what changed.",
             href: "alignment-lab.html",
           },
+        ],
+      },
+      {
+        title: "Why this matters now.",
+        lead:
+          "AI is moving through money, institutions, culture and daily life faster than most people can metabolise. A public meeting room helps the conversation move beyond fear headlines and product demos.",
+        cards: [
+          {
+            label: "Money",
+            title: "The build race is already huge",
+            text: "Stanford HAI reports that U.S. private AI investment reached 285.9 billion US dollars in 2025, while private investment grew fastest globally.",
+            href: "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+          },
+          {
+            label: "State of play",
+            title: "Governments are building safety rooms",
+            text: "The Bletchley and Seoul processes, national AI Safety Institutes and international safety reports are mapping risks, testing and governance.",
+            href: "https://www.gov.uk/government/publications/seoul-declaration-for-safe-innovative-and-inclusive-ai-ai-seoul-summit-2024",
+          },
+          {
+            label: "Industry",
+            title: "Frontier labs are coordinating too",
+            text: "The Frontier Model Forum brings major AI companies around public safety, national security, evaluations and shared research.",
+            href: "https://www.frontiermodelforum.org/",
+          },
+          {
+            label: "Good",
+            title: "AI-for-good spaces already exist",
+            text: "AI for Good convenes UN agencies, governments, industry and civil society around practical AI uses for global challenges.",
+            href: "https://aiforgood.itu.int/",
+          },
+        ],
+      },
+      {
+        title: "The missing middle.",
+        paragraphs: [
+          "Technical safety asks whether powerful systems can be tested, contained and governed. Public AI-for-good spaces ask where AI can help. GAJRA Earth adds a human question beside both: what kind of selves, communities and futures are worth aligning towards?",
+          "That question belongs with builders, artists, scientists, families, founders, elders, organisers, sceptics, teachers, musicians, policy people and anyone whose life is already being shaped by automated decisions.",
+          "The stakes are practical and intimate: money, work, education, health, media, culture, public trust, ecological pressure, cyber security, biosecurity, human agency and the texture of ordinary days.",
+        ],
+        links: [
+          { label: "Explore the Bridge Atlas", href: "ecosystem.html#world-map-tool-title" },
+          { label: "See source trails", href: "culture.html#source-trails" },
         ],
       },
       {
