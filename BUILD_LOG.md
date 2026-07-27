@@ -64,9 +64,19 @@
 - Added guardrail checks for unwanted map tile sources, geolocation requests and forbidden flag-related map chrome.
 - Vendored MapLibre GL JS assets and licence text so the map engine is visible in source and not loaded from a live CDN.
 
+## Build 5 - Pruned public journey - 27 July 2026
+
+- Reduced the main public navigation to eight useful doors: Home, Meeting Space, Alignment Lab, Gather, Bridge Atlas, Frontier Labs, Culture and Build With Us.
+- Preserved old room URLs as lightweight redirect trails into the nearest useful room.
+- Moved the JRA definition and small commitment loop into the Meeting Space.
+- Moved Data Garden, Simulations and Live Experiments into the Alignment Lab as one source-and-edge-walk workbench.
+- Added starter field-kit lanes to Gather: listening stations, tech help and festival host markers.
+- Moved AI-builder hedge language and technical map-layer planning into Frontier Labs.
+- Moved Earth-to-Sol stewardship and source trails into Culture.
+- Moved atlas joining, status, archive and build utility paths into Build With Us.
+
 ## Next builds
 
-- Build 5: prune the early 22-page spine into about eight useful visitor journeys, preserving old links with redirects.
 - Build 6: useful map layers for festivals, working groups, labs, data centres, grant labs, tender labs and starter field kits.
 - Build 7: a browser-first group join package with local drafting, readable exports and deliberate SMS, WhatsApp or email handoff for human review.
 - Build 8: final accessibility, motion, mobile, performance and overstatement review.

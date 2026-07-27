@@ -21,6 +21,23 @@ function escapeHtml(value = "") {
 }
 
 for (const page of pages) {
+  const filePath = resolve(root, page.file);
+  const html = await readFile(filePath, "utf8");
+
+  if (page.redirectTo) {
+    if (!html.includes("<!doctype html>")) missing.push(`${page.file}: doctype`);
+    if (!html.includes('lang="en-AU"')) missing.push(`${page.file}: language`);
+    if (!html.includes('http-equiv="refresh"')) missing.push(`${page.file}: redirect refresh`);
+    if (!html.includes(`href="${escapeHtml(page.redirectTo)}"`)) missing.push(`${page.file}: redirect link`);
+    const target = page.redirectTo.split("#")[0];
+    try {
+      await access(resolve(root, target));
+    } catch {
+      missing.push(`${page.file} -> ${target}`);
+    }
+    continue;
+  }
+
   for (const section of page.sections || []) {
     for (const card of section.cards || []) {
       if (!card.href) {
@@ -29,8 +46,6 @@ for (const page of pages) {
     }
   }
 
-  const filePath = resolve(root, page.file);
-  const html = await readFile(filePath, "utf8");
   if (!html.includes("<!doctype html>")) missing.push(`${page.file}: doctype`);
   if (!html.includes('lang="en-AU"')) missing.push(`${page.file}: language`);
   if (!html.includes('class="skip-link"')) missing.push(`${page.file}: skip link`);

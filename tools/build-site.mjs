@@ -2,6 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { pages, navGroups, site } from "../src/site-data.mjs";
 
 const pageBySlug = new Map(pages.map((page) => [page.slug, page]));
+const activePages = pages.filter((page) => !page.redirectTo);
 
 function escapeHtml(value = "") {
   return String(value)
@@ -204,7 +205,7 @@ function renderSections(page) {
     .map(
       (section, index) => `
       ${index ? renderKintsugiSeam(`section-${page.slug}-${index}`, index) : ""}
-      <section class="content-section">
+      <section class="content-section" id="${toId(section.title)}">
         <div class="section-heading">
           <span class="section-number">${String(index + 1).padStart(2, "0")}</span>
           <h2>${escapeHtml(section.title)}</h2>
@@ -527,9 +528,9 @@ function renderMarkdown(markdown) {
 }
 
 function renderPageSequence(currentSlug) {
-  const index = pages.findIndex((page) => page.slug === currentSlug);
-  const previous = index > 0 ? pages[index - 1] : null;
-  const next = index < pages.length - 1 ? pages[index + 1] : null;
+  const index = activePages.findIndex((page) => page.slug === currentSlug);
+  const previous = index > 0 ? activePages[index - 1] : null;
+  const next = index >= 0 && index < activePages.length - 1 ? activePages[index + 1] : null;
   return `<nav class="page-sequence" aria-label="Page sequence">
     ${
       previous
@@ -736,7 +737,7 @@ function renderPage(page, buildLogMarkdown, mapRecordsData) {
       : page.worldMap
         ? `${renderWorldMapTool(mapRecordsData)}${renderWorldMapLedger(mapRecordsData)}${renderSections(page)}`
         : page.alignmentLab
-          ? renderAlignmentLab()
+          ? `${renderAlignmentLab()}${renderSections(page)}`
           : renderSections(page);
   const question = page.question && !page.home
     ? `<aside class="question-pause" aria-labelledby="reflection-question-${page.slug}">
@@ -805,10 +806,40 @@ function renderPage(page, buildLogMarkdown, mapRecordsData) {
     <div class="footer-map">${renderFooter()}</div>
     <div class="colophon">
       <p>Built on Minjerribah, Quandamooka Country, Australia. Analytics-free, cookie-free and quiet unless you choose an export.</p>
-      <p><a href="LICENSE">Strange But True Public Source Licence</a>: non-commercial use with credit; all commercial rights reserved. <a href="${site.repositoryUrl}" target="_blank" rel="noopener noreferrer">Source repository</a>.</p>
+      <p><a href="site-map.html">Site map</a>. <a href="build-log.html">Build log</a>. <a href="LICENSE">Strange But True Public Source Licence</a>: non-commercial use with credit; all commercial rights reserved. <a href="${site.repositoryUrl}" target="_blank" rel="noopener noreferrer">Source repository</a>.</p>
     </div>
   </footer>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
+</body>
+</html>`;
+}
+
+function renderRedirectPage(page) {
+  const target = page.redirectTo;
+  const title = `${page.navLabel} has moved`;
+  return `<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="0; url=${escapeHtml(target)}">
+  <link rel="canonical" href="${escapeHtml(target)}">
+  <meta name="robots" content="noindex">
+  <title>${escapeHtml(title)} · ${site.name}</title>
+  <link rel="icon" href="assets/aura-heart-32.png" sizes="32x32" type="image/png">
+  <link rel="stylesheet" href="assets/site.css?v=${site.assetVersion}">
+</head>
+<body class="error-page">
+  <main id="main" class="error-panel">
+    <span class="status-chip">Trail moved</span>
+    <p class="eyebrow">Pruned into a useful room</p>
+    <h1>${escapeHtml(title)}.</h1>
+    <p>This older room now opens inside the smaller GAJRA Earth journey.</p>
+    <div class="hero-actions">
+      <a class="button primary" href="${escapeHtml(target)}">Open the useful room</a>
+      <a class="button secondary" href="site-map.html">Open the site map</a>
+    </div>
+  </main>
 </body>
 </html>`;
 }
@@ -844,7 +875,7 @@ function render404() {
 }
 
 function renderSitemapXml() {
-  const urls = pages
+  const urls = activePages
     .map(
       (page) => `  <url>
     <loc>${site.baseUrl}${page.file}</loc>
@@ -862,7 +893,9 @@ const buildLogMarkdown = await readFile(new URL("../BUILD_LOG.md", import.meta.u
 const mapRecordsData = JSON.parse(await readFile(new URL("../data/map-records.json", import.meta.url), "utf8"));
 
 for (const page of pages) {
-  const html = renderPage(page, buildLogMarkdown, mapRecordsData).replace(/^[\t ]+$/gm, "");
+  const html = (page.redirectTo
+    ? renderRedirectPage(page)
+    : renderPage(page, buildLogMarkdown, mapRecordsData)).replace(/^[\t ]+$/gm, "");
   await writeFile(
     new URL(`../${page.file}`, import.meta.url),
     html,
