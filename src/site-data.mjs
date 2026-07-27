@@ -3,7 +3,7 @@ export const site = {
   longName: "Global Association for Joyful Responsible Abundance on Earth",
   baseUrl: "https://auraofintelligence.github.io/GAJRA-earth-infinity/",
   repositoryUrl: "https://github.com/auraofintelligence/GAJRA-earth-infinity",
-  assetVersion: "20260727d",
+  assetVersion: "20260727f",
   buildLabel: "Live public experiment · Earth in view",
   description:
     "A public field guide for new and seasoned explorers mapping Joyful Responsible Abundance across life, culture, events and AI alignment.",
@@ -124,14 +124,14 @@ export const pages = [
   {
     slug: "about",
     file: "about.html",
-    navLabel: "What it is",
+    navLabel: "The meeting space",
     title: "A flower garland, scaled to a living planet.",
-    eyebrow: "What GAJRA Earth is",
-    status: "Concept",
+    eyebrow: "Meeting space",
+    status: "Living threshold",
     description:
-      "GAJRA Earth is an evolving meeting space before the AI frontier, not a registered global association.",
+      "GAJRA Earth is a meeting space before the AI frontier, with a public experiment now open and the formal association layer still ahead.",
     intro:
-      "A gajra is made one flower at a time. At planetary scale, the aurora becomes Earth’s luminous garland. The metaphor matters: no single person, culture or model gets to be the whole definition.",
+      "A gajra is made one flower at a time. At planetary scale, the aurora becomes Earth’s luminous garland. Each person, culture and model may carry one flower in the circle.",
     question: "What remains plural even when coordination becomes global?",
     sections: [
       {
@@ -139,7 +139,7 @@ export const pages = [
         paragraphs: [
           "GAJRA Earth offers a safer meeting space before exploring infinity: somewhere to compare headings, surface possible consequences, choose boundaries and decide what should travel.",
           "It is also a threshold where maps can be bought and shared, journeys prepared, and returning wanderers welcomed home to celebration, story and new knowledge.",
-          "The hedge is not a promise that nothing can go wrong. It creates layered room to pause, test, disagree, contain failure and keep a return path before capability reaches further.",
+          "The hedge creates layered room to pause, test, disagree, contain failure and keep a return path before capability reaches further.",
         ],
       },
       {
@@ -170,7 +170,7 @@ export const pages = [
     eyebrow: "Joyful Responsible Abundance",
     status: "Working definition",
     description:
-      "Explore joy, responsibility, abundance and balance without turning them into three marketing adjectives.",
+      "Explore joy, responsibility, abundance and balance as living coordinates for fieldwork, music, maps and ordinary choices.",
     intro:
       "The words are deliberately spacious. Their usefulness comes from defining them in context, noticing where they conflict and remaining willing to revise.",
     question: "What brings joy without borrowing heavily from another person, species, place or generation?",
@@ -199,11 +199,11 @@ export const pages = [
     navLabel: "The commitment",
     title: "A choice small enough to live.",
     eyebrow: "The commitment",
-    status: "Prototype pathway",
+    status: "First path",
     description:
       "Move from a broad value statement to one private, revisable lived experiment.",
     intro:
-      "A commitment here can be a temporary heading rather than a purity test: a chosen action, a reason for exploring it, a way to notice consequences and complete freedom to change course.",
+      "A commitment here is a temporary heading: a chosen action, a reason for exploring it, a way to notice consequences and complete freedom to change course.",
     question: "What commitment is small enough to live this week?",
     sections: [
       {
@@ -227,7 +227,7 @@ export const pages = [
     navLabel: "Alignment Lab",
     title: "A workbench for values you can inspect and revise.",
     eyebrow: "Alignment Lab",
-    status: "Working browser prototype",
+    status: "Local-first lab",
     description:
       "A local-first laboratory for definitions, preference comparisons, lived experiments and provenance-rich exports.",
     intro:
@@ -242,7 +242,7 @@ export const pages = [
     navLabel: "Data Garden",
     title: "A garden for context and unfinished answers.",
     eyebrow: "Data Garden",
-    status: "Research direction",
+    status: "Source garden",
     description:
       "A provenance-first commons for plural human signals, awkward edge cases, lived outcomes and revisions.",
     intro:
@@ -269,7 +269,7 @@ export const pages = [
     navLabel: "Simulations",
     title: "Rehearsals for choices no one has fully mapped.",
     eyebrow: "Synthetic futures",
-    status: "Prototype planned",
+    status: "Rehearsal room",
     description:
       "Branching, clearly synthetic scenarios for comparing benefits, harms, externalities and future consequences.",
     intro:
@@ -317,7 +317,7 @@ export const pages = [
     navLabel: "Events & gatherings",
     title: "Where proposed values meet bodies, weather and time.",
     eyebrow: "Events and gatherings",
-    status: "Concept pathway",
+    status: "Gathering path",
     description:
       "Events as practical alignment environments for culture, logistics, consent, consequence and collective reflection.",
     intro:
@@ -343,7 +343,7 @@ export const pages = [
     navLabel: "Event operating system",
     title: "Tools owned and evolved around the gathering.",
     eyebrow: "Modern event operating system",
-    status: "Technical direction",
+    status: "Event workbench",
     description:
       "A modular, agent-ready event architecture grounded in consent, accessibility, rehearsal and public-safe learning.",
     intro:
@@ -384,12 +384,15 @@ export const pages = [
     question: "What did earlier festivals create that digital platforms have struggled to replace?",
     sections: [
       {
-        title: "A living score, not a compulsory anthem.",
+        title: "A lyrical map for going beyond.",
         paragraphs: [
-          "The Infinity music universe already holds songs about consent, protopia, repair, cosmic scale and choosing infinity. GAJRA can link to those works without making one artist the soundtrack for everyone.",
+          "The Infinity music universe already holds songs about consent, protopia, repair, cosmic scale and choosing infinity. A Protopian Gambit works like one lyrical map through crisis, care, courage and civic stewardship.",
+          "We Go Beyond is one key for this site: a bridge from safe smallness into wider responsibility, with the heart still first.",
         ],
         links: [
           { label: "Enter the Infinity music universe", href: "https://auraofintelligence.github.io/i-C-infinity-music-universe/" },
+          { label: "Open A Protopian Gambit", href: "https://auraofintelligence.github.io/i-C-infinity-music-universe/albums/a-protopian-gambit/" },
+          { label: "Open We Go Beyond", href: "https://auraofintelligence.github.io/i-C-infinity-music-universe/songs/a-protopian-gambit-22-we-go-beyond/" },
         ],
       },
     ],
@@ -411,6 +414,17 @@ export const pages = [
         title: "Abundance includes enough.",
         paragraphs: [
           "The Earth lane asks which forms of capability can grow while extraction falls, whose time is currently treated as free, and what future generations inherit from today’s convenience.",
+        ],
+      },
+      {
+        title: "Civic stewardship, Earth to Sol.",
+        paragraphs: [
+          "The stewardship frame begins close to home and stretches outward: Earth, the Sun, the weather of the heliosphere and the shared Sol system that gives this experiment its clock, light and edge.",
+          "Going beyond safe smallness carries care further than the old map expected.",
+        ],
+        links: [
+          { label: "Open the bridge atlas", href: "ecosystem.html" },
+          { label: "Follow the lyrical map", href: "culture.html" },
         ],
       },
     ],
@@ -447,7 +461,7 @@ export const pages = [
     navLabel: "For frontier labs",
     title: "A civic and lived-data layer beside technical safety.",
     eyebrow: "Research invitation",
-    status: "Proposed",
+    status: "Open research invitation",
     description:
       "A concise research invitation around participatory values, preference justifications, lived outcomes and disagreement-preserving datasets.",
     intro:
@@ -490,7 +504,7 @@ export const pages = [
         title: "What could form a safer hedge around capability?",
         paragraphs: [
           "Recognising a value is not the same as protecting it. An intelligence can model joy, responsibility and abundance, then ignore them or optimise through them.",
-          "No architecture can promise that unknown vulnerabilities are impossible. Isolation, least privilege, capability boundaries, independent checks, staged access and rehearsed recovery can make a zero-day harder to reach, reduce what it can touch and preserve a path back when something breaks.",
+          "Frontier builders still travel with uncertainty. Isolation, least privilege, capability boundaries, independent checks, staged access and rehearsed recovery make a zero-day harder to reach, reduce what it can touch and preserve a path back when something breaks.",
         ],
         prompts: [
           { label: "Limit", title: "Small permissions first", text: "Offer only the tools, data, time and network reach needed for the current experiment." },
@@ -508,17 +522,34 @@ export const pages = [
     slug: "ecosystem",
     file: "ecosystem.html",
     navLabel: "Ecosystem map",
-    title: "Many projects, one doorway, no forced merger.",
-    eyebrow: "Ecosystem",
-    status: "Independent project map",
+    title: "Every border, a bridge.",
+    eyebrow: "World map",
+    status: "Atlas seed",
     description:
-      "A map of related Aura, civic, cultural, event and research projects with their independence intact.",
+      "A neutral satellite atlas for groups, bridge work and public experiments as they join GAJRA Earth.",
     intro:
-      "GAJRA Earth is the alignment proposition and participatory practice. Connected projects can supply tools, experiments, culture or context without becoming proof that GAJRA is an operating institution.",
-    question: "Which connection creates capability without erasing identity?",
+      "GAJRA Earth begins with a world view that sees the planet before the paperwork. The first atlas seed uses satellite imagery, chosen public traces and human-vetted updates so groups may appear as places, bridges and invitations rather than badges.",
+    worldMap: true,
+    question: "Which bridge creates capability without erasing identity?",
     sections: [
       {
-        title: "Supporting pathways.",
+        title: "Three bridge readings.",
+        prompts: [
+          { label: "Reclaim", title: "Where a crossing repairs", text: "Some bridges begin where trust, place or language was damaged. The marker carries source, consent and a return path for correction." },
+          { label: "Acclaim", title: "Where a crossing celebrates", text: "Some bridges begin with souls, seeds and shared patterns already grown. The marker welcomes travellers without flattening the host culture." },
+          { label: "Travel", title: "Choose the frame", text: "The same crossing may call for quiet repair in one place and public celebration in another." },
+        ],
+      },
+      {
+        title: "Next bridge layers.",
+        cards: [
+          { label: "Gather", title: "Festival and field-kit hosts", text: "Show listening stations, starter field kits and public-awareness rooms after they opt in.", href: "events.html" },
+          { label: "Research", title: "Labs, data centres and working groups", text: "Separate public signals, broad locations and source status without implying endorsement.", href: "frontier-labs.html" },
+          { label: "Build", title: "Grant, tender and local help desks", text: "Adapt the Straddie-style labs into practical GAJRA field support where there is consent.", href: "contribute.html" },
+        ],
+      },
+      {
+        title: "Existing trailheads.",
         links: [
           { label: "GAJRA public source hub", href: "https://auraofintelligence.github.io/gajra-earth-public-hub/" },
           { label: "Aura Events", href: "https://auraofintelligence.github.io/aura-events.html" },
@@ -558,13 +589,13 @@ export const pages = [
     slug: "status",
     file: "status.html",
     navLabel: "Reality & boundaries",
-    title: "What exists, what is proposed and what changed.",
+    title: "Current coordinates and open territory.",
     eyebrow: "Reality layer",
     status: "Current status",
     description:
-      "What exists, what is proposed, what did not launch and what this site does not imply.",
+      "A plain status layer for current tools, open invitations, historical knots and claims kept inside their evidence.",
     intro:
-      "GAJRA Earth is an evolving concept and public experiment. It is not currently a registered global association.",
+      "At this stage, GAJRA Earth is an evolving concept and public experiment rather than a registered global association.",
     question: "Which claim on this site deserves stronger evidence or a narrower label?",
     sections: [
       {
@@ -572,8 +603,8 @@ export const pages = [
         prompts: [
           { label: "Current form", title: "Public experiment", text: "This site offers questions, tools, simulations and source trails that can be explored now." },
           { label: "Open territory", title: "No fixed destination", text: "The map can change when lived experience, evidence or a better question changes the heading." },
-          { label: "Not implied", title: "Partnerships and endorsement", text: "No lab, government, NASA, Olympic or research partnership is claimed." },
-          { label: "Private by default", title: "Personal reflections", text: "The GitHub Pages phase does not transmit form responses." },
+          { label: "Clear air", title: "Partnerships and endorsement", text: "The site claims no lab, government, NASA, Olympic or research partnership." },
+          { label: "Local unless exported", title: "Personal reflections", text: "The GitHub Pages phase keeps form responses on the visitor's device." },
         ],
         links: [
           { label: "Read the public build log", href: "build-log.html" },

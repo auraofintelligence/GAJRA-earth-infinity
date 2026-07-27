@@ -3,21 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Many projects, one doorway, no forced merger. · GAJRA Earth</title>
-  <meta name="description" content="A map of related Aura, civic, cultural, event and research projects with their independence intact.">
+  <title>Every border, a bridge. · GAJRA Earth</title>
+  <meta name="description" content="A neutral satellite atlas for groups, bridge work and public experiments as they join GAJRA Earth.">
   <meta name="theme-color" content="#07070a">
-  <meta property="og:title" content="Many projects, one doorway, no forced merger. · GAJRA Earth">
-  <meta property="og:description" content="A map of related Aura, civic, cultural, event and research projects with their independence intact.">
+  <meta property="og:title" content="Every border, a bridge. · GAJRA Earth">
+  <meta property="og:description" content="A neutral satellite atlas for groups, bridge work and public experiments as they join GAJRA Earth.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://auraofintelligence.github.io/GAJRA-earth-infinity/ecosystem.html">
   <link rel="icon" href="assets/aura-heart-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="assets/aura-heart-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="assets/aura-heart-180.png">
-  <link rel="stylesheet" href="assets/site.css?v=20260727d">
+  <link rel="stylesheet" href="assets/vendor/maplibre-gl.css?v=20260727f">
+  <link rel="stylesheet" href="assets/site.css?v=20260727f">
   <script>document.documentElement.classList.add("js");</script>
-  <script defer src="assets/site.js?v=20260727d"></script>
+  <script defer src="assets/site.js?v=20260727f"></script>
 
 
+  <script type="module" src="assets/world-map.js?v=20260727f"></script>
 </head>
 <body id="top" data-page="ecosystem">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -30,7 +32,7 @@
     <nav id="primary-navigation" class="primary-navigation" aria-label="Primary" data-primary-nav>
       <details class="nav-world">
         <summary>Choose</summary>
-        <div class="nav-world-links"><a href="index.html">Home</a><a href="about.html">What it is</a><a href="jra.html">Joy · responsibility · abundance</a><a href="commitment.html">The commitment</a></div>
+        <div class="nav-world-links"><a href="index.html">Home</a><a href="about.html">The meeting space</a><a href="jra.html">Joy · responsibility · abundance</a><a href="commitment.html">The commitment</a></div>
       </details><details class="nav-world">
         <summary>Practise</summary>
         <div class="nav-world-links"><a href="alignment-lab.html">Alignment Lab</a><a href="data-garden.html">Data Garden</a><a href="simulations.html">Simulations</a><a href="experiments.html">Live experiments</a></div>
@@ -67,16 +69,24 @@
   </header>
 
   <main id="main">
-    <header class="page-hero">
+    <header class="page-hero world-map-visual-hero">
     <figure class="page-hero-media" aria-hidden="true">
-      <img src="assets/heroes/ecosystem.webp" width="1920" height="720" alt="">
+      <img src="assets/media/nasa-blue-marble-2012.jpg" width="2048" height="2048" alt="">
     </figure>
     <div class="page-hero-copy">
-      <span class="status-chip">Independent project map</span>
-      <p class="eyebrow">Ecosystem</p>
-      <h1>Many projects, one doorway, no forced merger.</h1>
-      <p class="page-intro">GAJRA Earth is the alignment proposition and participatory practice. Connected projects can supply tools, experiments, culture or context without becoming proof that GAJRA is an operating institution.</p>
+      <span class="status-chip">Atlas seed</span>
+      <p class="eyebrow">World map</p>
+      <h1>Every border, a bridge.</h1>
+      <p class="page-intro">GAJRA Earth begins with a world view that sees the planet before the paperwork. The first atlas seed uses satellite imagery, chosen public traces and human-vetted updates so groups may appear as places, bridges and invitations rather than badges.</p>
     </div>
+    <details class="source-disclosure world-map-hero-source">
+    <summary aria-label="Show source acknowledgement: Earth-view hero source" title="Source acknowledgement"><span aria-hidden="true">i</span></summary>
+    <div class="source-disclosure-panel">
+      <strong>Earth-view hero source</strong>
+      <p>The Earth-view image uses NASA&#039;s 2012 Blue Marble raster. The atlas workbench begins below.</p>
+      <a href="https://svs.gsfc.nasa.gov/30002/" target="_blank" rel="noopener noreferrer">Source and full credits: NASA SVS 30002<span aria-hidden="true">↗</span></a>
+    </div>
+  </details>
   </header>
     <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
@@ -86,12 +96,159 @@
 
     <div class="page-shell">
 
-
+      <section class="world-map-tool" aria-labelledby="world-map-tool-title">
+    <header class="world-map-tool-head">
+      <div>
+        <p class="eyebrow">Bridge atlas</p>
+        <h2 id="world-map-tool-title">Where the next trace appears.</h2>
+        <p id="world-map-description" class="page-intro">Move between sphere and flat view, follow public records and choose how much place detail belongs in the open. The first seed is broad on purpose: enough to orient, light enough to leave people sovereign.</p>
+      </div>
+      <div class="world-map-tool-panel" aria-label="Map controls and current records">
+        <dl>
+          <div><dt>Records</dt><dd>1</dd></div>
+          <div><dt>Joined groups</dt><dd>0</dd></div>
+        </dl>
+        <div class="world-map-controls" aria-label="Map view controls">
+          <button type="button" data-map-projection="globe" aria-pressed="true">Sphere</button>
+          <button type="button" data-map-projection="mercator" aria-pressed="false">Flat</button>
+          <button type="button" data-map-reset>Reset view</button>
+        </div>
+      </div>
+    </header>
+    <div class="world-map-frame">
+      <div
+        id="gajra-world-map"
+        class="world-map-canvas"
+        data-world-map
+        role="application"
+        tabindex="0"
+        aria-describedby="world-map-description world-map-status"
+        aria-label="Borderless satellite atlas of public GAJRA Earth records"
+      >
+        <img class="world-map-fallback" src="assets/media/nasa-blue-marble-2012.jpg" width="2048" height="2048" alt="">
+      </div>
+      <p class="world-map-status" id="world-map-status" role="status" aria-live="polite">Loading neutral satellite atlas.</p>
+      <details class="source-disclosure world-map-source">
+    <summary aria-label="Show map source acknowledgement" title="Map source acknowledgement"><span aria-hidden="true">i</span></summary>
+    <div class="source-disclosure-panel">
+      <strong>Map sources</strong>
+      <p>Base imagery is Sentinel-2 cloudless by EOX IT Services GmbH, containing modified Copernicus Sentinel data 2016. The engine is MapLibre GL JS. The atlas begins from satellite imagery and chosen public traces, without OpenStreetMap tiles or nation-flag map chrome.</p>
+      <a href="docs/ASSET_PROVENANCE.md">Read map source notes<span aria-hidden="true">&#8599;</span></a>
+    </div>
+  </details>
+      <script type="application/json" id="gajra-world-map-data">{"format":"gajra-earth-public-map-v1","updated":"2026-07-27","policy":{"surface":"Neutral satellite imagery with no political boundary layer.","flags":"No national flags, campaign marks or country badges belong on the map surface.","precision":"Public records prefer broad or consented locations. Exact pins are never implied by default.","publication":"Joined groups appear only after human review and a public source commit."},"sources":[{"id":"eox-sentinel-2-cloudless-2016","label":"Sentinel-2 cloudless 2016","url":"https://cloudless.eox.at/","credit":"Sentinel-2 cloudless by EOX IT Services GmbH, contains modified Copernicus Sentinel data 2016.","licence":"CC BY 4.0"},{"id":"maplibre-gl-js","label":"MapLibre GL JS","url":"https://maplibre.org/maplibre-gl-js/docs/","credit":"Open-source map rendering engine.","licence":"BSD-3-Clause"}],"records":[{"id":"gajra-earth-origin","kind":"project-origin","status":"published","name":"GAJRA Earth public build origin","locationLabel":"Minjerribah, Quandamooka Country, Australia","coordinates":[153.45,-27.5],"precision":"broad-area","categories":["public-source","field-kit","build-origin"],"url":"https://github.com/auraofintelligence/GAJRA-earth-infinity","publicNote":"A broad origin marker for this public site build. It opens the atlas at origin scale while keeping venue, membership and endorsement claims separate.","bridgeOffer":"Browser-first tools, starter field kits, public source trails and a path for future groups to carry chosen traces into the repo."}],"bridges":[]}</script>
+    </div>
+  </section><section class="world-map-ledger" aria-labelledby="world-map-ledger-title">
+    <div class="section-heading">
+      <span class="section-number">01</span>
+      <h2 id="world-map-ledger-title">Public map records.</h2>
+    </div>
+    <div class="world-map-ledger-grid">
+      <div>
+        <p class="section-lead">The atlas is ready for chosen group traces, bridges and starter field-kit locations. It begins with one broad public origin marker and waits for the first joined-group trace.</p>
+        <dl class="world-map-counts">
+          <div><dt>Published records</dt><dd>1</dd></div>
+          <div><dt>Joined groups</dt><dd>0</dd></div>
+          <div><dt>Bridge lines</dt><dd>0</dd></div>
+        </dl>
+      </div>
+      <div class="world-map-records" data-map-record-list>
+        <h3>Records in view</h3>
+        <ol><li>
+        <button type="button" data-map-record-button="gajra-earth-origin">
+          <span>project origin</span>
+          <strong>GAJRA Earth public build origin</strong>
+          <small>Minjerribah, Quandamooka Country, Australia Â· broad-area</small>
+        </button>
+        <p>A broad origin marker for this public site build. It opens the atlas at origin scale while keeping venue, membership and endorsement claims separate.</p>
+      </li></ol>
+        <p class="quiet-note">The public joined-groups layer is still waiting for its first chosen trace. Each new marker can carry consent, place precision, source notes and a way back for correction.</p>
+      </div>
+    </div>
+  </section>
 
       <section class="content-section">
         <div class="section-heading">
           <span class="section-number">01</span>
-          <h2>Supporting pathways.</h2>
+          <h2>Three bridge readings.</h2>
+        </div>
+
+
+
+
+        <div class="prompt-grid"><article>
+        <span>Reclaim</span>
+        <h3>Where a crossing repairs</h3>
+        <p>Some bridges begin where trust, place or language was damaged. The marker carries source, consent and a return path for correction.</p>
+      </article><article>
+        <span>Acclaim</span>
+        <h3>Where a crossing celebrates</h3>
+        <p>Some bridges begin with souls, seeds and shared patterns already grown. The marker welcomes travellers without flattening the host culture.</p>
+      </article><article>
+        <span>Travel</span>
+        <h3>Choose the frame</h3>
+        <p>The same crossing may call for quiet repair in one place and public celebration in another.</p>
+      </article></div>
+
+
+      </section>
+      <div class="kintsugi-seam" data-kintsugi aria-hidden="true">
+    <svg viewBox="0 0 1200 46" preserveAspectRatio="none" focusable="false">
+      <defs>
+        <linearGradient class="seam-gradient" id="rgb-section-ecosystem-1" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#ff4654"/>
+          <stop offset=".17" stop-color="#ffbf52"/>
+          <stop offset=".35" stop-color="#73f4df"/>
+          <stop offset=".54" stop-color="#236bff"/>
+          <stop offset=".72" stop-color="#b194ff"/>
+          <stop offset=".87" stop-color="#ff5ba3"/>
+          <stop offset="1" stop-color="#ff4654"/>
+        </linearGradient>
+      </defs>
+      <path class="seam-path" pathLength="1" stroke="url(#rgb-section-ecosystem-1)" d="M0 22 L110 26 L190 14 L275 28 L370 18 L440 30 L560 16 L650 24 L760 12 L850 26 L940 18 L1050 28 L1130 20 L1200 24"/>
+      <path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-ecosystem-1)" d="M190 14 L176 4"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-ecosystem-1)" d="M440 30 L452 42"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-ecosystem-1)" d="M760 12 L774 3"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-ecosystem-1)" d="M1050 28 L1037 41"/>
+    </svg>
+  </div>
+      <section class="content-section">
+        <div class="section-heading">
+          <span class="section-number">02</span>
+          <h2>Next bridge layers.</h2>
+        </div>
+
+
+
+
+
+        <div class="card-grid"><a class="signal-card" href="events.html"><span class="card-label">Gather</span>
+        <h3>Festival and field-kit hosts</h3>
+        <p>Show listening stations, starter field kits and public-awareness rooms after they opt in.</p><span class="card-arrow" aria-hidden="true">↗</span></a><a class="signal-card" href="frontier-labs.html"><span class="card-label">Research</span>
+        <h3>Labs, data centres and working groups</h3>
+        <p>Separate public signals, broad locations and source status without implying endorsement.</p><span class="card-arrow" aria-hidden="true">↗</span></a><a class="signal-card" href="contribute.html"><span class="card-label">Build</span>
+        <h3>Grant, tender and local help desks</h3>
+        <p>Adapt the Straddie-style labs into practical GAJRA field support where there is consent.</p><span class="card-arrow" aria-hidden="true">↗</span></a></div>
+
+      </section>
+      <div class="kintsugi-seam" data-kintsugi aria-hidden="true">
+    <svg viewBox="0 0 1200 46" preserveAspectRatio="none" focusable="false">
+      <defs>
+        <linearGradient class="seam-gradient" id="rgb-section-ecosystem-2" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#ff4654"/>
+          <stop offset=".17" stop-color="#ffbf52"/>
+          <stop offset=".35" stop-color="#73f4df"/>
+          <stop offset=".54" stop-color="#236bff"/>
+          <stop offset=".72" stop-color="#b194ff"/>
+          <stop offset=".87" stop-color="#ff5ba3"/>
+          <stop offset="1" stop-color="#ff4654"/>
+        </linearGradient>
+      </defs>
+      <path class="seam-path" pathLength="1" stroke="url(#rgb-section-ecosystem-2)" d="M0 24 L130 20 L215 28 L305 14 L360 26 L475 18 L530 30 L645 16 L740 24 L810 10 L890 26 L1000 18 L1090 26 L1200 22"/>
+      <path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-ecosystem-2)" d="M305 14 L320 4"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-ecosystem-2)" d="M530 30 L545 42"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-ecosystem-2)" d="M810 10 L796 2"/><path class="seam-path seam-branch" pathLength="1" stroke="url(#rgb-section-ecosystem-2)" d="M1000 18 L1016 35"/>
+    </svg>
+  </div>
+      <section class="content-section">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <h2>Existing trailheads.</h2>
         </div>
 
 
@@ -103,7 +260,7 @@
       </section>
       <aside class="question-pause" aria-labelledby="reflection-question-ecosystem">
         <h2 id="reflection-question-ecosystem">Pause here</h2>
-        <p>Which connection creates capability without erasing identity?</p>
+        <p>Which bridge creates capability without erasing identity?</p>
         <a href="alignment-lab.html">Carry this question into the Lab</a>
       </aside>
       <nav class="page-sequence" aria-label="Page sequence">
@@ -134,11 +291,11 @@
     <div class="footer-intro">
       <span class="eyebrow">Live public experiment · Earth in view</span>
       <h2>A living public doorway.</h2>
-      <p>This site is an evolving concept, practice and research invitation, not a registered global association or announced global event.</p>
+      <p>This doorway is a public experiment, practice space and research invitation. The formal association and global event layers remain open territory.</p>
     </div>
     <div class="footer-map"><div class="footer-group">
         <h2>Choose</h2>
-        <ul><li><a href="index.html">Home</a></li><li><a href="about.html">What it is</a></li><li><a href="jra.html">Joy · responsibility · abundance</a></li><li><a href="commitment.html">The commitment</a></li></ul>
+        <ul><li><a href="index.html">Home</a></li><li><a href="about.html">The meeting space</a></li><li><a href="jra.html">Joy · responsibility · abundance</a></li><li><a href="commitment.html">The commitment</a></li></ul>
       </div><div class="footer-group">
         <h2>Practise</h2>
         <ul><li><a href="alignment-lab.html">Alignment Lab</a></li><li><a href="data-garden.html">Data Garden</a></li><li><a href="simulations.html">Simulations</a></li><li><a href="experiments.html">Live experiments</a></li></ul>
@@ -156,7 +313,7 @@
         <ul><li><a href="contribute.html">Contribute</a></li><li><a href="site-map.html">Site map</a></li><li><a href="build-log.html">Build log</a></li></ul>
       </div></div>
     <div class="colophon">
-      <p>Built on Minjerribah, Quandamooka Country, Australia. No analytics, cookies or invisible form transmission.</p>
+      <p>Built on Minjerribah, Quandamooka Country, Australia. Analytics-free, cookie-free and quiet unless you choose an export.</p>
       <p><a href="LICENSE">Strange But True Public Source Licence</a>: non-commercial use with credit; all commercial rights reserved. <a href="https://github.com/auraofintelligence/GAJRA-earth-infinity" target="_blank" rel="noopener noreferrer">Source repository</a>.</p>
     </div>
   </footer>

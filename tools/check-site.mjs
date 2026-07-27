@@ -55,7 +55,27 @@ for (const page of pages) {
     misplacedHistory.push(page.file);
   }
 
-  if (!page.home) {
+  if (page.worldMap) {
+    const worldMapRequirements = [
+      'class="page-hero world-map-visual-hero"',
+      'assets/media/nasa-blue-marble-2012.jpg',
+      'class="world-map-tool"',
+      'data-world-map',
+      'assets/world-map.js?v=',
+      'assets/vendor/maplibre-gl.css?v=',
+      'id="gajra-world-map-data"',
+      'data-map-projection="globe"',
+      'data-map-projection="mercator"',
+      'data-map-record-button=',
+    ];
+    for (const requirement of worldMapRequirements) {
+      if (!html.includes(requirement)) missing.push(`${page.file}: ${requirement}`);
+    }
+    const heroMatch = html.match(/<header class="page-hero world-map-visual-hero"[\s\S]*?<\/header>/);
+    if (heroMatch && heroMatch[0].includes("data-world-map")) {
+      missing.push(`${page.file}: functional map should not live inside the hero`);
+    }
+  } else if (!page.home) {
     const expectedHero = `assets/heroes/${page.slug}.webp`;
     if (!html.includes(`src="${expectedHero}"`)) {
       missing.push(`${page.file}: unique hero ${expectedHero}`);
@@ -93,9 +113,10 @@ const textExtensions = new Set([".css", ".html", ".js", ".json", ".md", ".mjs", 
 async function findEmDashes(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
   for (const entry of entries) {
-    if (entry.name === ".git") continue;
+    if (entry.name === ".git" || entry.name === "node_modules") continue;
     const path = resolve(directory, entry.name);
     if (entry.isDirectory()) {
+      if (path === resolve(root, "assets", "vendor")) continue;
       await findEmDashes(path);
       continue;
     }
@@ -146,6 +167,22 @@ for (const control of formControls) {
   if (!before.includes("<label") && !/aria-label=|aria-labelledby=/.test(tag)) {
     missing.push(`alignment-lab.html: unlabelled ${control[1]} control`);
   }
+}
+
+const mapHtml = await readFile(resolve(root, "ecosystem.html"), "utf8");
+const mapScript = await readFile(resolve(root, "assets/world-map.js"), "utf8");
+const mapData = JSON.parse(await readFile(resolve(root, "data/map-records.json"), "utf8"));
+if (/tile\.openstreetmap\.org|ukraine|flagcdn|leaflet/i.test(`${mapHtml}\n${mapScript}`)) {
+  missing.push("world map: forbidden map chrome or flag source");
+}
+if (!JSON.stringify(mapData.policy || {}).includes("No national flags")) {
+  missing.push("data/map-records.json: no-flag policy");
+}
+if (!mapScript.includes("s2cloudless_3857")) {
+  missing.push("assets/world-map.js: neutral satellite tile source");
+}
+if (/GeolocateControl|navigator\.geolocation/i.test(mapScript)) {
+  missing.push("assets/world-map.js: unexpected geolocation request");
 }
 
 const notFoundHtml = await readFile(resolve(root, "404.html"), "utf8");

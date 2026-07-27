@@ -285,7 +285,7 @@ function renderAlignmentLab() {
           </label>
           <label class="value-field responsibility-field">
             <span>Responsibility is the hedge</span>
-            <textarea name="responsibility" data-lab-field rows="5" placeholder="What needs consent, protection, limits, checking or a safe return path?"></textarea>
+            <textarea name="responsibility" data-lab-field rows="5" placeholder="Where do consent, protection, limits, checking or a safe return path belong?"></textarea>
           </label>
           <label class="value-field abundance-field">
             <span>Abundance is the gift</span>
@@ -323,7 +323,7 @@ function renderAlignmentLab() {
             <label><input type="radio" name="preference" value="path_b" data-lab-field> Path B</label>
             <label><input type="radio" name="preference" value="conditional" data-lab-field> Both, under different conditions</label>
             <label><input type="radio" name="preference" value="neither" data-lab-field> Neither</label>
-            <label><input type="radio" name="preference" value="another" data-lab-field> I need another path</label>
+            <label><input type="radio" name="preference" value="another" data-lab-field> I would explore another path</label>
           </fieldset>
           <label class="full-field">
             <span>Conditions, reasoning and missing options</span>
@@ -563,7 +563,132 @@ function renderMotionControl() {
   </details>`;
 }
 
-function renderHero(page) {
+function renderWorldMapDisclosure() {
+  return `<details class="source-disclosure world-map-source">
+    <summary aria-label="Show map source acknowledgement" title="Map source acknowledgement"><span aria-hidden="true">i</span></summary>
+    <div class="source-disclosure-panel">
+      <strong>Map sources</strong>
+      <p>Base imagery is Sentinel-2 cloudless by EOX IT Services GmbH, containing modified Copernicus Sentinel data 2016. The engine is MapLibre GL JS. The atlas begins from satellite imagery and chosen public traces, without OpenStreetMap tiles or nation-flag map chrome.</p>
+      <a href="docs/ASSET_PROVENANCE.md">Read map source notes<span aria-hidden="true">&#8599;</span></a>
+    </div>
+  </details>`;
+}
+
+function serialiseJsonForHtml(data) {
+  return JSON.stringify(data).replaceAll("</", "<\\/");
+}
+
+function renderWorldMapVisualHero(page) {
+  return `<header class="page-hero world-map-visual-hero">
+    <figure class="page-hero-media" aria-hidden="true">
+      <img src="assets/media/nasa-blue-marble-2012.jpg" width="2048" height="2048" alt="">
+    </figure>
+    <div class="page-hero-copy">
+      <span class="status-chip">${escapeHtml(page.status)}</span>
+      <p class="eyebrow">${escapeHtml(page.eyebrow)}</p>
+      <h1>${escapeHtml(page.title)}</h1>
+      <p class="page-intro">${escapeHtml(page.intro)}</p>
+    </div>
+    ${renderSourceDisclosure(
+      {
+        label: "Earth-view hero source",
+        caption: "The Earth-view image uses NASA's 2012 Blue Marble raster. The atlas workbench begins below.",
+        sourceUrl: "https://svs.gsfc.nasa.gov/30002/",
+        credit: "Source and full credits: NASA SVS 30002",
+      },
+      "world-map-hero-source",
+    )}
+  </header>`;
+}
+
+function renderWorldMapTool(mapRecordsData) {
+  const records = mapRecordsData.records || [];
+  const joinedRecords = records.filter((record) => record.kind !== "project-origin");
+  return `<section class="world-map-tool" aria-labelledby="world-map-tool-title">
+    <header class="world-map-tool-head">
+      <div>
+        <p class="eyebrow">Bridge atlas</p>
+        <h2 id="world-map-tool-title">Where the next trace appears.</h2>
+        <p id="world-map-description" class="page-intro">Move between sphere and flat view, follow public records and choose how much place detail belongs in the open. The first seed is broad on purpose: enough to orient, light enough to leave people sovereign.</p>
+      </div>
+      <div class="world-map-tool-panel" aria-label="Map controls and current records">
+        <dl>
+          <div><dt>Records</dt><dd>${records.length}</dd></div>
+          <div><dt>Joined groups</dt><dd>${joinedRecords.length}</dd></div>
+        </dl>
+        <div class="world-map-controls" aria-label="Map view controls">
+          <button type="button" data-map-projection="globe" aria-pressed="true">Sphere</button>
+          <button type="button" data-map-projection="mercator" aria-pressed="false">Flat</button>
+          <button type="button" data-map-reset>Reset view</button>
+        </div>
+      </div>
+    </header>
+    <div class="world-map-frame">
+      <div
+        id="gajra-world-map"
+        class="world-map-canvas"
+        data-world-map
+        role="application"
+        tabindex="0"
+        aria-describedby="world-map-description world-map-status"
+        aria-label="Borderless satellite atlas of public GAJRA Earth records"
+      >
+        <img class="world-map-fallback" src="assets/media/nasa-blue-marble-2012.jpg" width="2048" height="2048" alt="">
+      </div>
+      <p class="world-map-status" id="world-map-status" role="status" aria-live="polite">Loading neutral satellite atlas.</p>
+      ${renderWorldMapDisclosure()}
+      <script type="application/json" id="gajra-world-map-data">${serialiseJsonForHtml(mapRecordsData)}</script>
+    </div>
+  </section>`;
+}
+
+function renderWorldMapLedger(mapRecordsData) {
+  const records = mapRecordsData.records || [];
+  const joinedRecords = records.filter((record) => record.kind !== "project-origin");
+  const recordItems = records
+    .map(
+      (record) => `<li>
+        <button type="button" data-map-record-button="${escapeHtml(record.id)}">
+          <span>${escapeHtml(record.kind.replaceAll("-", " "))}</span>
+          <strong>${escapeHtml(record.name)}</strong>
+          <small>${escapeHtml(record.locationLabel)} Â· ${escapeHtml(record.precision)}</small>
+        </button>
+        <p>${escapeHtml(record.publicNote)}</p>
+      </li>`,
+    )
+    .join("");
+
+  return `<section class="world-map-ledger" aria-labelledby="world-map-ledger-title">
+    <div class="section-heading">
+      <span class="section-number">01</span>
+      <h2 id="world-map-ledger-title">Public map records.</h2>
+    </div>
+    <div class="world-map-ledger-grid">
+      <div>
+        <p class="section-lead">The atlas is ready for chosen group traces, bridges and starter field-kit locations. It begins with one broad public origin marker and waits for the first joined-group trace.</p>
+        <dl class="world-map-counts">
+          <div><dt>Published records</dt><dd>${records.length}</dd></div>
+          <div><dt>Joined groups</dt><dd>${joinedRecords.length}</dd></div>
+          <div><dt>Bridge lines</dt><dd>${(mapRecordsData.bridges || []).length}</dd></div>
+        </dl>
+      </div>
+      <div class="world-map-records" data-map-record-list>
+        <h3>Records in view</h3>
+        <ol>${recordItems}</ol>
+        ${
+          joinedRecords.length
+            ? ""
+            : `<p class="quiet-note">The public joined-groups layer is still waiting for its first chosen trace. Each new marker can carry consent, place precision, source notes and a way back for correction.</p>`
+        }
+      </div>
+    </div>
+  </section>`;
+}
+
+function renderHero(page, mapRecordsData) {
+  if (page.worldMap) {
+    return renderWorldMapVisualHero(page, mapRecordsData);
+  }
   if (page.home) {
     return `<section class="home-hero" aria-labelledby="home-choice-title">
       <canvas class="cosmos-canvas" data-cosmos aria-hidden="true"></canvas>
@@ -603,14 +728,16 @@ function renderHero(page) {
   </header>`;
 }
 
-function renderPage(page, buildLogMarkdown) {
+function renderPage(page, buildLogMarkdown, mapRecordsData) {
   const pageContent = page.sitemap
     ? renderSitemap()
     : page.buildLog
       ? renderMarkdown(buildLogMarkdown)
-      : page.alignmentLab
-        ? renderAlignmentLab()
-        : renderSections(page);
+      : page.worldMap
+        ? `${renderWorldMapTool(mapRecordsData)}${renderWorldMapLedger(mapRecordsData)}${renderSections(page)}`
+        : page.alignmentLab
+          ? renderAlignmentLab()
+          : renderSections(page);
   const question = page.question && !page.home
     ? `<aside class="question-pause" aria-labelledby="reflection-question-${page.slug}">
         <h2 id="reflection-question-${page.slug}">Pause here</h2>
@@ -634,11 +761,13 @@ function renderPage(page, buildLogMarkdown) {
   <link rel="icon" href="assets/aura-heart-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="assets/aura-heart-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="assets/aura-heart-180.png">
+  ${page.worldMap ? `<link rel="stylesheet" href="assets/vendor/maplibre-gl.css?v=${site.assetVersion}">` : ""}
   <link rel="stylesheet" href="assets/site.css?v=${site.assetVersion}">
   <script>document.documentElement.classList.add("js");</script>
   <script defer src="assets/site.js?v=${site.assetVersion}"></script>
   ${page.home ? `<script defer src="assets/cosmos.js?v=${site.assetVersion}"></script>` : ""}
   ${page.alignmentLab ? `<script defer src="assets/alignment-lab.js?v=${site.assetVersion}"></script>` : ""}
+  ${page.worldMap ? `<script type="module" src="assets/world-map.js?v=${site.assetVersion}"></script>` : ""}
 </head>
 <body id="top" data-page="${page.slug}">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -655,7 +784,7 @@ function renderPage(page, buildLogMarkdown) {
   </header>
 
   <main id="main">
-    ${renderHero(page)}
+    ${renderHero(page, mapRecordsData)}
     ${renderTicker()}
     ${page.home ? renderBelowTicker(page) : ""}
     <div class="page-shell">
@@ -671,11 +800,11 @@ function renderPage(page, buildLogMarkdown) {
     <div class="footer-intro">
       <span class="eyebrow">${site.buildLabel}</span>
       <h2>A living public doorway.</h2>
-      <p>This site is an evolving concept, practice and research invitation, not a registered global association or announced global event.</p>
+      <p>This doorway is a public experiment, practice space and research invitation. The formal association and global event layers remain open territory.</p>
     </div>
     <div class="footer-map">${renderFooter()}</div>
     <div class="colophon">
-      <p>Built on Minjerribah, Quandamooka Country, Australia. No analytics, cookies or invisible form transmission.</p>
+      <p>Built on Minjerribah, Quandamooka Country, Australia. Analytics-free, cookie-free and quiet unless you choose an export.</p>
       <p><a href="LICENSE">Strange But True Public Source Licence</a>: non-commercial use with credit; all commercial rights reserved. <a href="${site.repositoryUrl}" target="_blank" rel="noopener noreferrer">Source repository</a>.</p>
     </div>
   </footer>
@@ -730,9 +859,10 @@ ${urls}
 }
 
 const buildLogMarkdown = await readFile(new URL("../BUILD_LOG.md", import.meta.url), "utf8");
+const mapRecordsData = JSON.parse(await readFile(new URL("../data/map-records.json", import.meta.url), "utf8"));
 
 for (const page of pages) {
-  const html = renderPage(page, buildLogMarkdown).replace(/^[\t ]+$/gm, "");
+  const html = renderPage(page, buildLogMarkdown, mapRecordsData).replace(/^[\t ]+$/gm, "");
   await writeFile(
     new URL(`../${page.file}`, import.meta.url),
     html,

@@ -53,9 +53,20 @@
 - Changed the grouped navigation into an accordion so opening one section closes the others.
 - Replaced the plain diagram on the first concept hero with a rich original raster artwork.
 
+## Build 4 - Borderless atlas foundation - 27 July 2026
+
+- Replaced the static Ecosystem page hero with a working satellite atlas.
+- Added sphere and flat view controls with no geolocation prompt.
+- Used neutral Sentinel-2 cloudless imagery rather than OpenStreetMap tiles or a political boundary layer.
+- Added a no national flags map policy in the public map data.
+- Published one broad build-origin record and no joined-group claims.
+- Added a screen-reader-accessible public records ledger below the map.
+- Added guardrail checks for unwanted map tile sources, geolocation requests and forbidden flag-related map chrome.
+- Vendored MapLibre GL JS assets and licence text so the map engine is visible in source and not loaded from a live CDN.
+
 ## Next builds
 
-- Build 4: a borderless world map using neutral satellite imagery, with flat and sphere views, joined groups and bridge connections.
 - Build 5: a browser-first group join package with local drafting, readable exports and deliberate SMS, WhatsApp or email handoff for human review.
 - Build 6: prune the early 22-page spine into eight useful visitor journeys, preserving old links with redirects.
-- Build 7: final accessibility, motion, mobile, performance and overstatement review.
+- Build 7: useful map layers for festivals, working groups, labs, data centres, grants, tenders and starter field kits.
+- Build 8: final accessibility, motion, mobile, performance and overstatement review.

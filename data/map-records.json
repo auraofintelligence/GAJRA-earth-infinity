@@ -1,0 +1,42 @@
+{
+  "format": "gajra-earth-public-map-v1",
+  "updated": "2026-07-27",
+  "policy": {
+    "surface": "Neutral satellite imagery with no political boundary layer.",
+    "flags": "No national flags, campaign marks or country badges belong on the map surface.",
+    "precision": "Public records prefer broad or consented locations. Exact pins are never implied by default.",
+    "publication": "Joined groups appear only after human review and a public source commit."
+  },
+  "sources": [
+    {
+      "id": "eox-sentinel-2-cloudless-2016",
+      "label": "Sentinel-2 cloudless 2016",
+      "url": "https://cloudless.eox.at/",
+      "credit": "Sentinel-2 cloudless by EOX IT Services GmbH, contains modified Copernicus Sentinel data 2016.",
+      "licence": "CC BY 4.0"
+    },
+    {
+      "id": "maplibre-gl-js",
+      "label": "MapLibre GL JS",
+      "url": "https://maplibre.org/maplibre-gl-js/docs/",
+      "credit": "Open-source map rendering engine.",
+      "licence": "BSD-3-Clause"
+    }
+  ],
+  "records": [
+    {
+      "id": "gajra-earth-origin",
+      "kind": "project-origin",
+      "status": "published",
+      "name": "GAJRA Earth public build origin",
+      "locationLabel": "Minjerribah, Quandamooka Country, Australia",
+      "coordinates": [153.45, -27.5],
+      "precision": "broad-area",
+      "categories": ["public-source", "field-kit", "build-origin"],
+      "url": "https://github.com/auraofintelligence/GAJRA-earth-infinity",
+      "publicNote": "A broad origin marker for this public site build. It opens the atlas at origin scale while keeping venue, membership and endorsement claims separate.",
+      "bridgeOffer": "Browser-first tools, starter field kits, public source trails and a path for future groups to carry chosen traces into the repo."
+    }
+  ],
+  "bridges": []
+}

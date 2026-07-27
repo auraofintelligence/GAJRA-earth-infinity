@@ -6,5 +6,8 @@
     "build:heroes": "python tools/build-hero-images.py",
     "build": "node tools/build-site.mjs",
     "check": "node tools/check-site.mjs"
+  },
+  "dependencies": {
+    "maplibre-gl": "6.0.0"
   }
 }

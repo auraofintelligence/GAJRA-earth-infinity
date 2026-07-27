@@ -70,6 +70,27 @@ This frame should be felt through illumination, generosity, bounded exploration
 and useful transformation. Do not place Luke's name, portrait, initials, coded
 praise or an idolised founder story into public copy to express it.
 
+## Songline spine
+
+Use the i C. infinity catalogue as a private-to-repo compass, not as the subject
+of the public site. `A Protopian Gambit` is a lyrical map for this build, and
+`We Go Beyond` is one key in that map.
+
+Carry the themes, not lyric blocks:
+
+- practical hope during crisis;
+- care made visible;
+- civic stewardship from Earth through the Sun and the Sol system;
+- going beyond safe smallness while keeping heart, source and return path;
+- exploration without conquest, ownership or a singular throne.
+
+`Every border a bridge` has at least two valid readings. One is repair and
+reclamation: harmed ground, harmed people or old systems find a crossing back.
+Another is acclaim and celebration: souls, seeds and shared memes already grown
+become visible enough to welcome a traveller into a new country or community.
+Neither reading is universally better. The page, map layer and invitation should
+choose the reading that fits the circumstance.
+
 ## Spatial logic
 
 GAJRA Earth is the safer meeting space before exploring infinity. It is not the
@@ -92,6 +113,38 @@ The meeting space can also act as a threshold marketplace and workshop where
 maps are bought and shared and journeys are prepared. Commercial activity
 should remain transparent and voluntary, with the Strange But True licence
 continuing to reserve the project's own commercial rights.
+
+## Functional atlas roadmap
+
+Build map pages only where location does real work. The atlas should support
+flat and sphere views, neutral satellite imagery, no nation flags, no political
+border layer and no implied endorsement.
+
+Priority layers:
+
+- Groups that have joined after human review.
+- Bridge lines between groups that consent to being connected.
+- Festivals and gatherings that host a GAJRA question, listening station or
+  field-kit room.
+- Working group general locations, with broad precision by default.
+- AI labs, frontier research groups and AI for Good target-audience pathways,
+  without implying United Nations or AI for Good backing.
+- Data centres, labelled as infrastructure signals only when source-backed.
+- Grant labs, tender labs and Straddie-style local support rooms.
+- Global founder atlas records and Straddie digital twin explainers, adapted
+  only after auditing the current local and remote repos.
+- Starter field kits in the Strange But True and p4a-xyz-cinema style: tech
+  help, public awareness, listening stations, no hard sell, meeting people
+  where they are and asking what Joyful Responsible Abundance means for them.
+
+Submission model:
+
+1. Browser-first drafting.
+2. No database in the public site.
+3. Visitor chooses SMS, WhatsApp or email package handoff only after the
+   destination proxy is configured.
+4. Human review checks consent, source, location precision, wording and safety.
+5. Reviewed public records are added to the GitHub repo as static data.
 
 ## Regeneration
 

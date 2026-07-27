@@ -36,6 +36,7 @@ The site uses a small dependency-free Node generator:
 - `assets/site.js` owns navigation and the persistent 0-100 Motion Vibrancy control.
 - `assets/cosmos.js` owns the first canvas solar-system treatment.
 - `assets/alignment-lab.js` owns the browser-local Alignment Lab, explicit local save and Markdown, JSON and JSONL exports.
+- `assets/world-map.js` owns the borderless satellite atlas and `data/map-records.json` owns public map records.
 - `tools/check-site.mjs` checks generated pages, local links and superseded launch language.
 - `docs/RECONNAISSANCE.md` records the source decisions and public boundaries.
 - `docs/ASSET_PROVENANCE.md` records media sources and rights treatment.

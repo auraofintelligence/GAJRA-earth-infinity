@@ -79,4 +79,26 @@ Every non-home public page has its own 1920 by 720 raster hero in
   diagram. It is drawn into the canvas as a raster crop, never reconstructed as
   vector or procedural planet art.
 
+## Build 4 map sources
+
+### Sentinel-2 cloudless 2016
+
+- Source page: <https://cloudless.eox.at/>
+- Tile source: `https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless_3857/default/g/{z}/{y}/{x}.jpg`
+- Credit: Sentinel-2 cloudless by EOX IT Services GmbH, contains modified
+  Copernicus Sentinel data 2016.
+- Licence: CC BY 4.0.
+- Treatment: neutral satellite imagery only. GAJRA Earth does not load a
+  political boundary layer, national flag layer or OpenStreetMap tile layer.
+
+### MapLibre GL JS 6.0.0
+
+- Source page: <https://maplibre.org/maplibre-gl-js/docs/>
+- Local files: `assets/vendor/maplibre-gl.mjs`,
+  `assets/vendor/maplibre-gl-shared.mjs`, `assets/vendor/maplibre-gl.css` and
+  `assets/vendor/maplibre-gl-LICENSE.txt`.
+- Licence: BSD-3-Clause, with included notices retained.
+- Treatment: open-source rendering engine. It does not imply MapLibre
+  endorsement of GAJRA Earth.
+
 No historic protest photograph will be copied into the site without appropriate rights.
