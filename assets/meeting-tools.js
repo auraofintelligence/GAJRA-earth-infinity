@@ -67,6 +67,25 @@
     const time = clean(data.time);
     const duration = clean(data.duration);
     const when = [date, time, duration].filter(Boolean).join(", ");
+    if (type === "meeting") {
+      return [
+        `# ${title}`,
+        "",
+        "A GAJRA EARTH MEETING CIRCLE",
+        "",
+        line(l.host, data.host),
+        line(l.location, data.location),
+        line("When", when),
+        line(l.invitees, data.invitees),
+        "",
+        "## The question",
+        clean(data.question) || "",
+        "",
+        line("Access and shared trace", data.trace),
+        "",
+        "A meeting of minds about self-alignment and AI alignment within Joyful Responsible Abundance."
+      ].join("\n");
+    }
     return [
       `# ${title}`,
       "",

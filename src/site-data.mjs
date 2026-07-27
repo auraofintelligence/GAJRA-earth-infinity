@@ -3,7 +3,7 @@ export const site = {
   longName: "Global Association for Joyful Responsible Abundance on Earth",
   baseUrl: "https://auraofintelligence.github.io/GAJRA-earth-infinity/",
   repositoryUrl: "https://github.com/auraofintelligence/GAJRA-earth-infinity",
-  assetVersion: "20260728b",
+  assetVersion: "20260728c",
   buildLabel: "Live public experiment · Earth in view",
   description:
     "A meeting of minds for self-alignment and AI alignment within Joyful Responsible Abundance.",
@@ -174,67 +174,21 @@ export const pages = [
     slug: "about",
     file: "about.html",
     navLabel: "The meeting space",
-    title: "Host a meeting of minds.",
+    title: "Bring a few minds together.",
     eyebrow: "Meeting space",
-    status: "Circle builder",
+    status: "Meeting circle",
     description:
-      "A practical room for setting up a GAJRA circle before the AI frontier reaches further.",
+      "A short path from curiosity to a real conversation about self-alignment, AI alignment and Joyful Responsible Abundance.",
     intro:
-      "Use this room to shape a small meeting: who is coming, why they are meeting, which question travels into the room and what trace may return.",
+      "GAJRA circles bring people together to explore self-alignment and AI alignment within Joyful Responsible Abundance. This page turns that intention into a shareable invitation.",
     meetingTool: true,
-    question: "Who would you invite into a meeting where the goal is clarity, not agreement?",
+    question: "",
     sections: [
       {
-        title: "What this room is for.",
-        paragraphs: [
-          "GAJRA Earth exists to convene a meeting of minds about self-alignment and AI alignment within Joyful Responsible Abundance.",
-          "A useful circle makes room for builders, sceptics, artists, scientists, families, founders, elders, organisers and everyday people to compare maps before any single map pretends to be the territory.",
-          "The room is a threshold: maps are shared, journeys are prepared, and returning wanderers bring back stories, questions, corrections and celebrations.",
-        ],
-      },
-      {
-        title: "Who belongs in the room.",
-        paragraphs: [
-          "Invite people who carry different kinds of sight: technical, lived, cultural, ecological, artistic, spiritual, economic and practical.",
-          "The meeting does not ask everyone to agree. It asks the room to notice what each path lights up, what it protects, what it gives and what it may ask someone else to carry.",
-        ],
-        links: [
-          { label: "Make a private map in the Alignment Lab", href: "alignment-lab.html#lab-workbench" },
-          { label: "Prepare a field kit", href: "events.html#field-kit-builder" },
-        ],
-      },
-      {
-        title: "Choose a first meeting type.",
+        title: "Another way in.",
         cards: [
-          { label: "Table", title: "Four to eight people", text: "A quiet room, one question, one shared note and a next invitation.", href: "#meeting-circle-builder" },
-          { label: "Lab", title: "Builders and researchers", text: "A technical circle that compares self-alignment, AI alignment and lived consequences.", href: "frontier-labs.html" },
-          { label: "Public", title: "Listening station", text: "A low-pressure place where people can define Joyful Responsible Abundance in their own words.", href: "events.html#field-kit-builder" },
-        ],
-      },
-      {
-        title: "The flower belongs here too.",
-        paragraphs: [
-          "A gajra is made one flower at a time. At planetary scale, the aurora becomes Earth’s luminous garland. Each person, culture and model may carry one flower in the circle.",
-          "The metaphor belongs after the invitation becomes useful: beauty helps people remember why the meeting is worth having.",
-        ],
-      },
-      {
-        title: "Joyful Responsible Abundance.",
-        prompts: [
-          { label: "Light", title: "Joy reveals the living terrain", text: "Love, play, rest, humour, belonging, beauty, curiosity, mastery, awe, meaning and time that feels alive." },
-          { label: "Hedge", title: "Responsibility keeps the crossing possible", text: "Consent, protection, limits, checking, repair and a safe return path before reach expands." },
-          { label: "Gift", title: "Abundance becomes shareable", text: "Health, time, shelter, food, energy, knowledge, capability, relationship, access and meaningful choice." },
-        ],
-      },
-      {
-        title: "The small crossing loop.",
-        steps: [
-          { title: "Name the light", text: "Write the joy, responsibility, abundance and balance visible in this terrain." },
-          { title: "Choose a crossing", text: "Pick one small action that could make a bridge real this week." },
-          { title: "Walk and return", text: "Try it quietly, notice the flow-on effects, then keep, revise or share the trace with consent intact." },
-        ],
-        links: [
-          { label: "Start the loop in the Alignment Lab", href: "alignment-lab.html#lab-workbench" },
+          { label: "Private", title: "Map your own alignment", text: "Open the browser-local Alignment Lab before entering a group conversation.", href: "alignment-lab.html#lab-workbench" },
+          { label: "Public", title: "Host a listening station", text: "Prepare a low-pressure table where people may answer in their own words.", href: "events.html#field-kit-builder" },
         ],
       },
     ],
@@ -242,7 +196,7 @@ export const pages = [
   {
     slug: "jra",
     file: "jra.html",
-    redirectTo: "about.html#joyful-responsible-abundance",
+    redirectTo: "index.html",
     navLabel: "Joy · responsibility · abundance",
     title: "Three living words, held in dynamic balance.",
     eyebrow: "Joyful Responsible Abundance",
@@ -274,7 +228,7 @@ export const pages = [
   {
     slug: "commitment",
     file: "commitment.html",
-    redirectTo: "about.html#the-small-crossing-loop",
+    redirectTo: "alignment-lab.html#lab-workbench",
     navLabel: "The commitment",
     title: "A choice small enough to live.",
     eyebrow: "The commitment",
@@ -573,7 +527,7 @@ export const pages = [
   {
     slug: "everyday",
     file: "everyday.html",
-    redirectTo: "about.html#choose-a-first-move",
+    redirectTo: "about.html#meeting-circle-builder",
     navLabel: "For everyday people",
     title: "Start with a day worth living.",
     eyebrow: "Everyday pathway",

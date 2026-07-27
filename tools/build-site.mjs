@@ -481,10 +481,10 @@ function renderMeetingTool() {
     <header class="planner-intro">
       <div>
         <span class="eyebrow">Meeting circle builder</span>
-        <h2 id="meeting-circle-builder-title">Turn the idea into an invitation.</h2>
-        <p>This tool composes a meeting note in your browser. Copy it, download it, turn it into a calendar file, or open it in your own email or WhatsApp when you choose.</p>
+        <h2 id="meeting-circle-builder-title">Make the invitation.</h2>
+        <p>A title, one question, a place and a time. The result is ready to share from this browser.</p>
       </div>
-      <p class="planner-status" data-planner-status role="status" aria-live="polite" aria-atomic="true">Ready. Nothing leaves this page by itself.</p>
+      <p class="planner-status" data-planner-status role="status" aria-live="polite" aria-atomic="true">Private until you share it.</p>
     </header>
     <div class="planner-grid">
       <form class="planner-form" data-planner-form>
@@ -492,16 +492,6 @@ function renderMeetingTool() {
           <label class="full-field">
             <span>Meeting title</span>
             <input type="text" name="title" placeholder="Meeting of minds for Joyful Responsible Abundance">
-          </label>
-          <label>
-            <span>Circle type</span>
-            <select name="kind">
-              <option>Small table</option>
-              <option>Builder lab</option>
-              <option>Public listening circle</option>
-              <option>Online call</option>
-              <option>Festival table</option>
-            </select>
           </label>
           <label>
             <span>Host or steward</span>
@@ -520,36 +510,16 @@ function renderMeetingTool() {
             <input type="time" name="time">
           </label>
           <label>
-            <span>Length</span>
-            <input type="text" name="duration" placeholder="90 minutes">
-          </label>
-          <label>
             <span>People to invite</span>
             <input type="text" name="invitees" placeholder="Builders, artists, neighbours, researchers">
           </label>
           <label class="full-field">
-            <span>Core question</span>
+            <span>The question</span>
             <textarea name="question" rows="4" placeholder="What should self-alignment and AI alignment protect, recognise and help grow here?"></textarea>
           </label>
-          <label>
-            <span>Joy to notice</span>
-            <textarea name="joy" rows="4" placeholder="What makes the room worth entering?"></textarea>
-          </label>
-          <label>
-            <span>Responsibility to protect</span>
-            <textarea name="responsibility" rows="4" placeholder="Consent, limits, people not in the room, return path"></textarea>
-          </label>
-          <label>
-            <span>Abundance to grow</span>
-            <textarea name="abundance" rows="4" placeholder="Time, capability, knowledge, care, access, shared benefit"></textarea>
-          </label>
-          <label>
-            <span>Trace and consent</span>
-            <textarea name="trace" rows="4" placeholder="Private notes, anonymous themes, named public line, or no public trace"></textarea>
-          </label>
           <label class="full-field">
-            <span>Next step after the circle</span>
-            <textarea name="next" rows="3" placeholder="Who carries the map home, and how will the room know what changed?"></textarea>
+            <span>Access and shared trace</span>
+            <textarea name="trace" rows="3" placeholder="Access needs, private notes, anonymous themes, named public line, or no public trace"></textarea>
           </label>
         </div>
       </form>
